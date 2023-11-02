@@ -1,15 +1,22 @@
 import Icon from "@expo/vector-icons/AntDesign";
+import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Logo from "../../assets/images/wc1.svg";
 import { color } from "../../constants/Colors";
 
 const WelcomeScreen = () => {
+    const router = useRouter();
+
     return (
         <View style={styles.base}>
             <Text style={[styles.header, styles.common]}>Welcome To</Text>
             <Text style={[styles.header, styles.common]}>SiberSim</Text>
-            <Logo style={[styles.customSvg, styles.common]} />
+            <Logo
+                width="85%"
+                height="80%"
+                style={[styles.customSvg, styles.common]}
+            />
             <Text style={styles.subheader}>
                 Your One Stop Solution To Protect Your Precious from Online
                 Fraud
@@ -21,10 +28,10 @@ const WelcomeScreen = () => {
                 iconStyle={styles.rightIcon}
                 borderRadius={20}
                 name="arrowright"
-                onPress={undefined}
+                onPress={() => router.push("/onboard")}
             >
                 <Text style={[styles.buttonText, { color: color.white }]}>
-                    Get Started{" "}
+                    Get Started
                 </Text>
             </Icon.Button>
             <Icon.Button
@@ -61,24 +68,20 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     customSvg: {
-        minHeight: "40%",
-        maxHeight: "45%",
-        height: "40%",
-        marginVertical: 20,
-    },
-    headerTop: {
-        paddingTop: 30,
+        minHeight: "35%",
+        maxHeight: "40%",
+        marginVertical: 15,
     },
     header: {
         fontFamily: "NotoSansBold",
-        fontSize: 40,
+        fontSize: 36,
         color: color.americanBlue,
         textAlign: "center",
         marginTop: -5,
     },
     subheader: {
         fontFamily: "NotoSans",
-        fontSize: 20,
+        fontSize: 18,
         color: color.americanBlue,
         textAlign: "center",
         paddingHorizontal: 50,

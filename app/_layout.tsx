@@ -70,7 +70,7 @@ function RootLayoutNav() {
                     options={{
                         title: "Welcome Page",
                         presentation: "modal",
-                        headerShown: true,
+                        headerShown: false,
                     }}
                 />
                 <Stack.Screen
