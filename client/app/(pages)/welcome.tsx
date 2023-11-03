@@ -39,7 +39,7 @@ const WelcomeScreen = () => {
                     iconStyle={styles.rightIcon}
                     borderRadius={20}
                     name="arrowright"
-                    onPress={() => router.push("/onboard")}
+                    onPress={() => router.push("/onboard/1")}
                 >
                     <Text style={[styles.buttonText, { color: color.white }]}>
                         Get Started
@@ -58,7 +58,7 @@ const WelcomeScreen = () => {
                     iconStyle={styles.rightIcon}
                     borderRadius={20}
                     name="arrowright"
-                    onPress={() => router.push("/onboard")}
+                    onPress={() => router.push("/onboard/1")}
                 >
                     <Text
                         style={[

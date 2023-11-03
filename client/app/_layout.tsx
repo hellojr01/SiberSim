@@ -16,7 +16,7 @@ export {
 
 export const unstable_settings = {
     // Ensure that reloading on `/modal` keeps a back button present.
-    initialRouteName: "(tabs)",
+    initialRouteName: "(pages)/welcome",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -59,7 +59,7 @@ function RootLayoutNav() {
         <ThemeProvider
             value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
-            <Stack>
+            <Stack initialRouteName="(pages)/welcome">
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen
                     name="modal"
@@ -69,16 +69,16 @@ function RootLayoutNav() {
                     name="(pages)/welcome"
                     options={{
                         title: "Welcome Page",
-                        presentation: "containedModal",
+                        presentation: "modal",
                         headerShown: false,
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/onboard"
+                    name="(pages)/onboard/[onboardId]"
                     options={{
                         title: "Onboard Page",
                         presentation: "modal",
-                        headerShown: true,
+                        headerShown: false,
                     }}
                 />
             </Stack>
