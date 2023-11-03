@@ -1,44 +1,47 @@
 import Icon from "@expo/vector-icons/AntDesign";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+    Pressable,
+    StyleSheet,
+    Text,
+    TouchableHighlight,
+    View,
+} from "react-native";
 import Logo1 from "../../assets/images/wc2.svg";
+import Logo2 from "../../assets/images/wc3.svg";
+import Logo3 from "../../assets/images/wc4.svg";
 import { color } from "../../constants/Colors";
 
 const OnboardScreen = () => {
+    const router = useRouter();
+    const Logo = Logo2;
+
     return (
         <View style={styles.base}>
-            <Text style={[styles.header, styles.common]}>
-                Stay One Step Ahead With SiberSim
-            </Text>
-            <Logo1
-                width="80%"
-                height="80%"
-                style={[styles.customSvg, styles.common]}
-            />
-            <Text style={styles.subheader}>
-                Learn to spot scams and protect your hard-earned money. Your
-                digital safety matters!
-            </Text>
-            <Icon
-                name="arrowright"
-                style={{
-                    borderRadius: 20,
-                    borderWidth: 3,
-                    borderColor: color.americanBlue,
-                    justifyContent: "center",
-                    alignSelf: "center",
-                    width: 100,
-                    lineHeight: 100,
-                    aspectRatio: 1,
-                    backgroundColor: color.americanBlue,
-                    textAlign: "center",
-                    fontSize: 44,
-                    color: color.white,
-                }}
-            />
+            <View style={styles.top}>
+                <Text style={[styles.header, styles.common]}>
+                    Stay One Step Ahead With SiberSim
+                </Text>
+            </View>
+            <View style={styles.middle}>
+                <Logo style={[styles.customSvg, styles.common]} />
+                <Text style={styles.subheader}>
+                    Learn to spot scams and protect your hard-earned money. Your
+                    digital safety matters!
+                </Text>
+            </View>
+            <View style={styles.bottom}>
+                <TouchableHighlight
+                    activeOpacity={0.75}
+                    underlayColor="tranparent"
+                >
+                    <Pressable onPress={() => router.push("/welcome")}>
+                        <Icon name="arrowright" style={styles.icon} />
+                    </Pressable>
+                </TouchableHighlight>
 
-            {/* <Icon.Button
+                {/* <Icon.Button
                 color={color.gray}
                 backgroundColor="transparent"
                 style={styles.buttonOne}
@@ -48,9 +51,10 @@ const OnboardScreen = () => {
                 onPress={undefined}
             >
             </Icon.Button> */}
-            <Link href="/(pages)/onboard" style={{ alignSelf: "center" }}>
-                <Text style={styles.skipText}>Skip Intro</Text>
-            </Link>
+                <Link href="/(pages)/onboard" style={{ alignSelf: "center" }}>
+                    <Text style={styles.skipText}>Skip Intro</Text>
+                </Link>
+            </View>
         </View>
     );
 };
@@ -61,18 +65,36 @@ const styles = StyleSheet.create({
     base: {
         flex: 1,
         alignContent: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
         backgroundColor: color.lavender,
-        paddingHorizontal: 10,
-        paddingVertical: "5%",
+        paddingHorizontal: 20,
+        paddingBottom: 40,
+    },
+    top: {
+        flex: 1,
+        justifyContent: "flex-end",
+    },
+    middle: {
+        flex: 2,
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingVertical: 20,
+    },
+    bottom: {
+        flex: 1,
+        justifyContent: "flex-start",
     },
     common: {
         alignSelf: "center",
     },
     customSvg: {
-        minHeight: "35%",
-        maxHeight: "40%",
-        marginVertical: 15,
+        minHeight: "40%",
+        maxHeight: "65%",
+        marginVertical: 10,
+        flex: 3,
+        flexBasis: 300,
+        flexGrow: 1,
+        flexShrink: 0,
     },
     header: {
         fontFamily: "NotoSansBold",
@@ -85,10 +107,29 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: color.americanBlue,
         textAlign: "center",
-        paddingHorizontal: 50,
+        paddingHorizontal: 40,
         marginBottom: 20,
+        marginTop: 20,
+        flex: 1,
+        flexBasis: 100,
+        flexGrow: 1,
+        flexShrink: 0,
     },
     icon: {
+        backgroundColor: color.americanBlue,
+        borderRadius: 20,
+        borderWidth: 3,
+        borderColor: color.americanBlue,
+        justifyContent: "center",
+        alignSelf: "center",
+        width: 100,
+        lineHeight: 100,
+        aspectRatio: 1,
+        textAlign: "center",
+        fontSize: 40,
+        color: color.white,
+    },
+    iconOld: {
         justifyContent: "center",
         alignSelf: "center",
         fontSize: 30,

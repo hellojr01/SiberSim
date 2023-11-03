@@ -69,7 +69,7 @@ function RootLayoutNav() {
                     name="(pages)/welcome"
                     options={{
                         title: "Welcome Page",
-                        presentation: "modal",
+                        presentation: "containedModal",
                         headerShown: false,
                     }}
                 />
