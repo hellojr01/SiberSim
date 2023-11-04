@@ -1,29 +1,31 @@
 import Icon from "@expo/vector-icons/AntDesign";
-import { Link, useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import Logo1 from "../../../assets/images/wc2.svg";
 import Logo2 from "../../../assets/images/wc3.svg";
 import Logo3 from "../../../assets/images/wc4.svg";
+import Logo404 from "../../../assets/images/missing404.svg";
 import { color } from "../../../constants/Colors";
 import { instances } from "../../../constants/onboardData";
 
 const OnboardScreen = () => {
     const router = useRouter();
-    const [pressed, setPressed] = useState(false);
+    const [pressB1, setPressB1] = useState(false);
+    const [pressB2, setPressB2] = useState(false);
+
     const { onboardId } = useLocalSearchParams();
     let value = 1;
-
     if (onboardId !== undefined)
         if (Array.isArray(onboardId)) {
-            parseInt(onboardId.join());
+            value = parseInt(onboardId.join());
         } else {
-            parseInt(onboardId);
+            value = parseInt(onboardId);
         }
 
     // if (value < 1 || value > instances.length);
-
-    let Logo = Logo1;
+    let Logo = Logo404;
     switch (value) {
         case 1:
             Logo = Logo1;
@@ -40,13 +42,14 @@ const OnboardScreen = () => {
 
     return (
         <View style={styles.base}>
+            <StatusBar translucent={false} />
             <View style={styles.top}>
                 <Text style={[styles.header, styles.common]}>
                     {onboardPage ? onboardPage.header : "Title Not Found!"}
                 </Text>
             </View>
             <View style={styles.middle}>
-                <Logo style={[styles.customSvg, styles.common]} />
+                <Logo width="100%" style={[styles.customSvg, styles.common]} />
                 <Text style={styles.subheader}>
                     {onboardPage
                         ? onboardPage.subheader
@@ -56,13 +59,13 @@ const OnboardScreen = () => {
             <View style={styles.bottom}>
                 <Pressable
                     onPressIn={() => {
-                        setPressed(!pressed);
+                        setPressB1(!pressB1);
                     }}
                     onPressOut={() => {
-                        setPressed(!pressed);
+                        setPressB1(!pressB1);
                     }}
                     onPress={() => {
-                        if (value >= 1 && value < 3)
+                        if (value >= 1 && value < instances.length)
                             router.replace(`/onboard/${value + 1}`);
                         else router.replace("/welcome");
                     }}
@@ -73,7 +76,7 @@ const OnboardScreen = () => {
                         style={[
                             styles.icon,
                             {
-                                opacity: pressed ? 0.75 : 1,
+                                opacity: pressB1 ? 0.75 : 1,
                             },
                         ]}
                     />
@@ -81,7 +84,11 @@ const OnboardScreen = () => {
                 <View
                     style={[
                         styles.common,
-                        { flexDirection: "row", marginTop: 20 },
+                        {
+                            flexDirection: "row",
+                            marginTop: 20,
+                            marginBottom: 10,
+                        },
                     ]}
                 >
                     <Text
@@ -118,13 +125,54 @@ const OnboardScreen = () => {
                         ]}
                     ></Text>
                 </View>
-                <Link
-                    replace
-                    href="/(pages)/onboard/3"
-                    style={{ alignSelf: "center", marginTop: 10 }}
+                <Pressable
+                    onPressIn={() => {
+                        setPressB2(!pressB2);
+                    }}
+                    onPressOut={() => {
+                        setPressB2(!pressB2);
+                    }}
+                    onPress={() => router.replace("/(pages)/onboard/3")}
+                    disabled={value >= instances.length ? true : false}
+                    hitSlop={{
+                        top: -10,
+                        left: -100,
+                        bottom: -10,
+                        right: -100,
+                    }}
                 >
-                    <Text style={styles.skipText}>Skip Intro</Text>
-                </Link>
+                    <Text
+                        style={[
+                            styles.skipText,
+                            {
+                                backgroundColor: pressB2
+                                    ? color.black
+                                    : undefined,
+                                color: pressB2 ? color.white : undefined,
+                                opacity: pressB2 ? 0.75 : 1,
+                                display:
+                                    value >= 1 && value < instances.length
+                                        ? "flex"
+                                        : "none",
+                            },
+                        ]}
+                    >
+                        Skip Intro
+                    </Text>
+                    <Text
+                        style={[
+                            styles.skipText,
+                            {
+                                display:
+                                    value >= 1 && value < instances.length
+                                        ? "none"
+                                        : "flex",
+                            },
+                        ]}
+                    >
+                        &nbsp;
+                    </Text>
+                </Pressable>
             </View>
         </View>
     );
@@ -139,7 +187,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         backgroundColor: color.lavender,
         paddingHorizontal: 20,
-        paddingVertical: 40,
+        paddingBottom: 40,
     },
     top: {
         flex: 1,
@@ -214,7 +262,11 @@ const styles = StyleSheet.create({
     skipText: {
         justifyContent: "center",
         alignSelf: "center",
+        textAlign: "center",
         fontFamily: "NotoSansSemiBold",
         fontSize: 14,
+        borderRadius: 20,
+        paddingHorizontal: 20,
+        paddingVertical: 8,
     },
 });

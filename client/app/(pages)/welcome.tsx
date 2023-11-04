@@ -1,6 +1,6 @@
 import Icon from "@expo/vector-icons/AntDesign";
 import { useRouter } from "expo-router";
-// import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 import Logo from "../../assets/images/wc1.svg";
@@ -58,7 +58,7 @@ const WelcomeScreen = () => {
                     iconStyle={styles.rightIcon}
                     borderRadius={20}
                     name="arrowright"
-                    onPress={() => router.push("/onboard/1")}
+                    onPress={() => router.push("/onboard/0")}
                 >
                     <Text
                         style={[
