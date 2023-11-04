@@ -150,27 +150,12 @@ const OnboardScreen = () => {
                                     : undefined,
                                 color: pressB2 ? color.white : undefined,
                                 opacity: pressB2 ? 0.75 : 1,
-                                display:
-                                    value >= 1 && value < instances.length
-                                        ? "flex"
-                                        : "none",
                             },
                         ]}
                     >
-                        Skip Intro
-                    </Text>
-                    <Text
-                        style={[
-                            styles.skipText,
-                            {
-                                display:
-                                    value >= 1 && value < instances.length
-                                        ? "none"
-                                        : "flex",
-                            },
-                        ]}
-                    >
-                        &nbsp;
+                        {value >= 1 && value < instances.length
+                            ? "Skip Intro"
+                            : " "}
                     </Text>
                 </Pressable>
             </View>
