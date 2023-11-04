@@ -86,6 +86,46 @@ function RootLayoutNav() {
                         headerShown: false,
                     }}
                 />
+                <Stack.Screen
+                    name="(pages)/login"
+                    options={{
+                        title: "Login Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(pages)/forgotPassword"
+                    options={{
+                        title: "Forgot Password Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(pages)/newPassword"
+                    options={{
+                        title: "New Password Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(pages)/register"
+                    options={{
+                        title: "Register Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(pages)/verification"
+                    options={{
+                        title: "Verification Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
             </Stack>
         </ThemeProvider>
     );

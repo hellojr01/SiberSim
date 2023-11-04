@@ -58,7 +58,7 @@ const WelcomeScreen = () => {
                     iconStyle={styles.rightIcon}
                     borderRadius={20}
                     name="arrowright"
-                    onPress={() => router.push("/onboard/0")}
+                    onPress={() => router.push("/login")}
                 >
                     <Text
                         style={[

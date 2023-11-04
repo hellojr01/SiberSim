@@ -67,7 +67,7 @@ const OnboardScreen = () => {
                     onPress={() => {
                         if (value >= 1 && value < instances.length)
                             router.replace(`/onboard/${value + 1}`);
-                        else router.replace("/welcome");
+                        else router.replace("/register");
                     }}
                     hitSlop={{ top: -10, left: -100, bottom: -10, right: -100 }}
                 >
@@ -132,7 +132,7 @@ const OnboardScreen = () => {
                     onPressOut={() => {
                         setPressB2(!pressB2);
                     }}
-                    onPress={() => router.replace("/(pages)/onboard/3")}
+                    onPress={() => router.replace("/register")}
                     disabled={value >= instances.length ? true : false}
                     hitSlop={{
                         top: -10,
