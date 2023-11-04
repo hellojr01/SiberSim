@@ -14,11 +14,15 @@ const WelcomeScreen = () => {
         <View style={styles.base}>
             {/* <StatusBar translucent={false} /> */}
             <View style={styles.top}>
-                <Text style={[styles.header, styles.common]}>Welcome To</Text>
-                <Text style={[styles.header, styles.common]}>SiberSim</Text>
+                <Text style={{ ...styles.header, ...styles.common }}>
+                    Welcome To
+                </Text>
+                <Text style={{ ...styles.header, ...styles.common }}>
+                    SiberSim
+                </Text>
             </View>
             <View style={styles.middle}>
-                <Logo style={[styles.customSvg, styles.common]} />
+                <Logo style={{ ...styles.customSvg, ...styles.common }} />
                 <Text style={styles.subheader}>
                     Your One Stop Solution To Protect Your Precious from Online
                     Fraud
@@ -30,24 +34,18 @@ const WelcomeScreen = () => {
                     backgroundColor="transparent"
                     underlayColor="tranparent"
                     activeOpacity={0.75}
-                    style={Object.assign(
-                        {},
-                        styles.buttonOne,
-                        styles.baseButton
-                    )}
+                    style={{ ...styles.buttonOne, ...styles.baseButton }}
                     iconStyle={styles.rightIcon}
                     borderRadius={20}
                     name="arrowright"
                     onPress={() => router.push("/onboard/1")}
                 >
                     <Text
-                        style={[
-                            styles.buttonText,
-                            {
-                                color: color.white,
-                                width: windowWidth > 640 ? 300 : "100%",
-                            },
-                        ]}
+                        style={{
+                            color: color.white,
+                            width: windowWidth > 640 ? 300 : "100%",
+                            ...styles.buttonText,
+                        }}
                     >
                         Get Started
                     </Text>
@@ -57,24 +55,18 @@ const WelcomeScreen = () => {
                     backgroundColor="transparent"
                     underlayColor="tranparent"
                     activeOpacity={0.75}
-                    style={Object.assign(
-                        {},
-                        styles.buttonTwo,
-                        styles.baseButton
-                    )}
+                    style={{ ...styles.buttonTwo, ...styles.baseButton }}
                     iconStyle={styles.rightIcon}
                     borderRadius={20}
                     name="arrowright"
                     onPress={() => router.push("/login")}
                 >
                     <Text
-                        style={[
-                            styles.buttonText,
-                            {
-                                color: color.americanBlue,
-                                width: windowWidth > 640 ? 300 : "100%",
-                            },
-                        ]}
+                        style={{
+                            color: color.americanBlue,
+                            width: windowWidth > 640 ? 300 : "100%",
+                            ...styles.buttonText,
+                        }}
                     >
                         Login
                     </Text>

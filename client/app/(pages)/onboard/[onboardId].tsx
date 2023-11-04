@@ -44,16 +44,21 @@ const OnboardScreen = () => {
         <View style={styles.base}>
             <StatusBar translucent={false} />
             <View style={styles.top}>
-                <Text style={[styles.header, styles.common]}>
-                    {onboardPage ? onboardPage.header : "Title Not Found!"}
+                <Text style={{ ...styles.header, ...styles.common }}>
+                    {onboardPage
+                        ? onboardPage.header
+                        : "Unknown: Title Not Found!"}
                 </Text>
             </View>
             <View style={styles.middle}>
-                <Logo width="100%" style={[styles.customSvg, styles.common]} />
+                <Logo
+                    width="100%"
+                    style={{ ...styles.customSvg, ...styles.common }}
+                />
                 <Text style={styles.subheader}>
                     {onboardPage
                         ? onboardPage.subheader
-                        : "Description Not Found!"}
+                        : "Unknown: Description Not Found!"}
                 </Text>
             </View>
             <View style={styles.bottom}>
@@ -72,57 +77,41 @@ const OnboardScreen = () => {
                 >
                     <Icon
                         name="arrowright"
-                        style={[
-                            styles.icon,
-                            {
-                                opacity: pressB1 ? 0.75 : 1,
-                            },
-                        ]}
+                        style={{
+                            opacity: pressB1 ? 0.75 : 1,
+                            ...styles.icon,
+                        }}
                     />
                 </Pressable>
                 <View
-                    style={[
-                        styles.common,
-                        {
-                            flexDirection: "row",
-                            marginTop: 20,
-                            marginBottom: 10,
-                        },
-                    ]}
+                    style={{
+                        flexDirection: "row",
+                        marginTop: 20,
+                        marginBottom: 10,
+                        ...styles.common,
+                    }}
                 >
                     <Text
-                        style={[
-                            styles.emptyBorder,
-                            {
-                                backgroundColor:
-                                    value >= 1
-                                        ? color.americanBlue
-                                        : color.white,
-                            },
-                        ]}
-                    ></Text>
+                        style={{
+                            backgroundColor:
+                                value >= 1 ? color.americanBlue : color.white,
+                            ...styles.emptyBorder,
+                        }}
+                    />
                     <Text
-                        style={[
-                            styles.emptyBorder,
-                            {
-                                backgroundColor:
-                                    value >= 2
-                                        ? color.americanBlue
-                                        : color.white,
-                            },
-                        ]}
-                    ></Text>
+                        style={{
+                            backgroundColor:
+                                value >= 2 ? color.americanBlue : color.white,
+                            ...styles.emptyBorder,
+                        }}
+                    />
                     <Text
-                        style={[
-                            styles.emptyBorder,
-                            {
-                                backgroundColor:
-                                    value >= 3
-                                        ? color.americanBlue
-                                        : color.white,
-                            },
-                        ]}
-                    ></Text>
+                        style={{
+                            backgroundColor:
+                                value >= 3 ? color.americanBlue : color.white,
+                            ...styles.emptyBorder,
+                        }}
+                    />
                 </View>
                 <Pressable
                     onPressIn={() => {
@@ -135,16 +124,12 @@ const OnboardScreen = () => {
                     disabled={value >= instances.length ? true : false}
                 >
                     <Text
-                        style={[
-                            styles.skipText,
-                            {
-                                backgroundColor: pressB2
-                                    ? color.black
-                                    : undefined,
-                                color: pressB2 ? color.white : undefined,
-                                opacity: pressB2 ? 0.75 : 1,
-                            },
-                        ]}
+                        style={{
+                            backgroundColor: pressB2 ? color.black : undefined,
+                            color: pressB2 ? color.white : undefined,
+                            opacity: pressB2 ? 0.75 : 1,
+                            ...styles.skipText,
+                        }}
                     >
                         {value >= 1 && value < instances.length
                             ? "Skip Intro"
