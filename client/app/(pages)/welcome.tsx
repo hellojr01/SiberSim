@@ -6,10 +6,9 @@ import { Dimensions, StyleSheet, Text, View } from "react-native";
 import Logo from "../../assets/images/wc1.svg";
 import { color } from "../../constants/Colors";
 
-const windowWidth = Dimensions.get("window").width;
-
 const WelcomeScreen = () => {
     const router = useRouter();
+    const windowWidth = Dimensions.get("window").width;
 
     return (
         <View style={styles.base}>
@@ -41,7 +40,15 @@ const WelcomeScreen = () => {
                     name="arrowright"
                     onPress={() => router.push("/onboard/1")}
                 >
-                    <Text style={[styles.buttonText, { color: color.white }]}>
+                    <Text
+                        style={[
+                            styles.buttonText,
+                            {
+                                color: color.white,
+                                width: windowWidth > 640 ? 300 : "100%",
+                            },
+                        ]}
+                    >
                         Get Started
                     </Text>
                 </Icon.Button>
@@ -63,7 +70,10 @@ const WelcomeScreen = () => {
                     <Text
                         style={[
                             styles.buttonText,
-                            { color: color.americanBlue },
+                            {
+                                color: color.americanBlue,
+                                width: windowWidth > 640 ? 300 : "100%",
+                            },
                         ]}
                     >
                         Login
@@ -88,6 +98,7 @@ const styles = StyleSheet.create({
     top: {
         flex: 1,
         justifyContent: "flex-end",
+        alignItems: "center",
     },
     middle: {
         flex: 2,
@@ -98,6 +109,7 @@ const styles = StyleSheet.create({
     bottom: {
         flex: 1,
         justifyContent: "flex-start",
+        alignItems: "center",
     },
     common: {
         alignSelf: "center",
@@ -137,9 +149,7 @@ const styles = StyleSheet.create({
     baseButton: {
         justifyContent: "center",
         alignSelf: "center",
-        alignItems: "center",
         marginVertical: 10,
-        width: windowWidth > 640 ? 280 : "75%",
         maxWidth: "80%",
     },
     buttonOne: {
@@ -157,5 +167,6 @@ const styles = StyleSheet.create({
     buttonText: {
         fontFamily: "NotoSansSemiBold",
         fontSize: 16,
+        textAlign: "center",
     },
 });

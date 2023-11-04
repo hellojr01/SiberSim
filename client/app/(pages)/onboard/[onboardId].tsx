@@ -69,7 +69,6 @@ const OnboardScreen = () => {
                             router.replace(`/onboard/${value + 1}`);
                         else router.replace("/register");
                     }}
-                    hitSlop={{ top: -10, left: -100, bottom: -10, right: -100 }}
                 >
                     <Icon
                         name="arrowright"
@@ -134,12 +133,6 @@ const OnboardScreen = () => {
                     }}
                     onPress={() => router.replace("/register")}
                     disabled={value >= instances.length ? true : false}
-                    hitSlop={{
-                        top: -10,
-                        left: -100,
-                        bottom: -10,
-                        right: -100,
-                    }}
                 >
                     <Text
                         style={[
@@ -177,6 +170,7 @@ const styles = StyleSheet.create({
     top: {
         flex: 1,
         justifyContent: "center",
+        alignItems: "center",
     },
     middle: {
         flex: 2,
@@ -187,6 +181,7 @@ const styles = StyleSheet.create({
     bottom: {
         flex: 1,
         justifyContent: "center",
+        alignItems: "center",
     },
     common: {
         alignSelf: "center",
@@ -213,8 +208,7 @@ const styles = StyleSheet.create({
         color: color.americanBlue,
         textAlign: "center",
         paddingHorizontal: 25,
-        marginBottom: 15,
-        marginTop: 15,
+        marginVertical: 15,
         flex: 1,
         flexBasis: 100,
         flexGrow: 1,
