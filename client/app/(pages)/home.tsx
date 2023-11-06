@@ -33,16 +33,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: color.lavender,
   },
-  headerText: {
-    fontSize: 20,
-    fontFamily: 'NotoSansBold',
-    color: color.americanBlue,
-    marginLeft: 10,
-    marginBottom: 16,
-  },
-  header: {
-    color: '#666',
-  },
   sectionContainer: {
     marginVertical: 10
   },
