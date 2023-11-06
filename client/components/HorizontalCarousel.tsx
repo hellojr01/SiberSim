@@ -48,8 +48,10 @@ const SimulationCarousel = ({ carouselDesign }: Props) => {
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {scammers.map((scammer) => (
                         <View key={scammer.id} style={styles.scammer}>
-                            <Image source={scammer.image} style={styles.image} />
-                            <Text style={styles.title}>{scammer.title}</Text>
+                            <Image source={scammer.image} style={styles.scamImage} />
+                            <Text style={styles.scamNumber}>{scammer.number}</Text>
+                            <Text style={styles.scamTitle}>{scammer.title}</Text>
+                            <Text style={styles.scamRecent}>{scammer.recent}</Text>
                         </View>
                     ))}
                 </ScrollView>
@@ -91,7 +93,6 @@ const styles = StyleSheet.create({
     scammer: {
         alignItems: 'center',
         marginHorizontal: 10,
-        width: 80,
     },
     simImage: {
         width: 80,
@@ -100,18 +101,30 @@ const styles = StyleSheet.create({
     },
     blogImage: {
         width: 110,
-        height: 110,
         resizeMode: 'contain',
     },
-    image: {
-        width: 80,
-        height: 80,
+    scamImage: {
+        width: 50,
+        height: 50,
         resizeMode: 'contain',
     },
     title: {
         fontSize: 12,
         fontFamily: "NotoSansBold", 
         marginTop: 10,
+    },
+    scamTitle: {
+        fontSize: 12,
+        fontFamily: "NotoSansBold", 
+        color: color.purple,
+    },
+    scamNumber: {
+        fontSize: 12,
+        fontFamily: "NotoSansBold", 
+    },
+    scamRecent: {
+        fontSize: 8,
+        color: '#rgba(69, 60, 103, 0.80)',
     },
     blogTitle: {
         fontSize: 12,
