@@ -12,12 +12,18 @@ const Home = () => {
     <SafeAreaView style={styles.container}>
       <Header title="Home" />
       <Advertisement />
-      <SectionHeading title="Simulation Available" viewAllButton={true}/>
-      <Carousel carouselDesign='simulation' />
-      <SectionHeading title="Trending Cyberblogs" viewAllButton={true}/>
-      <Carousel carouselDesign='cyberblog' />
-      <SectionHeading title="Trending Reported Scammers" viewAllButton={true}/>
-      <Carousel carouselDesign='scammer' />
+      <View style={styles.sectionContainer}>
+        <SectionHeading title="Simulation Available" viewAllButton={true}/>
+        <Carousel carouselDesign='simulation' />
+      </View>
+      <View style={styles.sectionContainer}>
+        <SectionHeading title="Trending Cyberblogs" viewAllButton={true}/>
+        <Carousel carouselDesign='cyberblog' />
+      </View>
+      <View style={styles.sectionContainer}>
+        <SectionHeading title="Trending Reported Scammers" viewAllButton={true}/>
+        <Carousel carouselDesign='scammer' />
+      </View>
     </SafeAreaView>
   );
 }
@@ -36,5 +42,8 @@ const styles = StyleSheet.create({
   },
   header: {
     color: '#666',
+  },
+  sectionContainer: {
+    marginVertical: 10
   },
 });
