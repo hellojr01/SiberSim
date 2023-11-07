@@ -89,6 +89,38 @@ function RootLayoutNav() {
                     }}
                 />
                 <Stack.Screen
+                    name="(pages)/blog/index"
+                    options={{
+                        title: "Cyberblog Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(pages)/home"
+                    options={{
+                        title: "Home Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(pages)/scammer/index"
+                    options={{
+                        title: "Scammer Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(pages)/Simulation/index"
+                    options={{
+                        title: "Simulation Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
                     name="(pages)/login"
                     options={{
                         title: "Login Page",
