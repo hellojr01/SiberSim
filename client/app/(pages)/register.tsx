@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import {
     View,
+    SafeAreaView,
     Text,
     TextInput,
     TouchableOpacity,
     StyleSheet,
+    Dimensions,
 } from "react-native";
 import { color } from "../../constants/Colors";
+import { router } from "expo-router";
 
 const registerScreen = () => {
+    const windowWidth = Dimensions.get("window").width;
     const [isChecked, setChecked] = useState(false);
 
     const toggleCheckbox = () => {
@@ -16,65 +20,94 @@ const registerScreen = () => {
     };
 
     return (
-        <View style={styles.base}>
-            <Text style={styles.title}>Create New Account</Text>
-
-            <View style={styles.labelInputContainer}>
-                <Text style={styles.label}>Full Name</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your name as per NRIC"
-                />
-            </View>
-
-            <View style={styles.labelInputContainer}>
-                <Text style={styles.label}>Phone Number</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your phone number"
-                />
-            </View>
-
-            <View style={styles.labelInputContainer}>
-                <Text style={styles.label}>E-mail</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your email"
-                />
-            </View>
-
-            <View style={styles.labelInputContainer}>
-                <Text style={styles.label}>Password</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your password"
-                />
-            </View>
-
-            <View style={styles.checkboxContainer}>
-                <TouchableOpacity
-                    onPress={toggleCheckbox}
-                    style={styles.checkbox}
-                >
-                    {isChecked && <Text style={styles.checkboxTick}>✓</Text>}
-                </TouchableOpacity>
-                <Text style={styles.checkboxText}>
-                    By continuing you accept our{" "}
-                    <Text style={styles.linkText}>Privacy Policy</Text>
-                    {" and "}
-                    <Text style={styles.linkText}>Terms of Use</Text>
+        <SafeAreaView style={styles.base}>
+            <View style={styles.top}>
+                <Text style={{ ...styles.title, textAlign: "center" }}>
+                    Create New Account
                 </Text>
             </View>
 
-            <TouchableOpacity style={styles.registerButton}>
-                <Text style={styles.registerButtonText}>Register</Text>
-            </TouchableOpacity>
+            <View
+                style={{
+                    ...styles.middle,
+                    width: windowWidth > 480 ? 300 : windowWidth * 0.8,
+                }}
+            >
+                <View
+                    style={{
+                        ...styles.labelInputContainer,
+                        width: windowWidth > 480 ? 300 : windowWidth * 0.8,
+                    }}
+                >
+                    <Text style={styles.label}>Full Name</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your name as per NRIC"
+                    />
+                </View>
 
-            <Text style={styles.registerText}>
-                Already have an account?{" "}
-                <Text style={styles.registerLink}>Login Now</Text>
-            </Text>
-        </View>
+                <View style={styles.labelInputContainer}>
+                    <Text style={styles.label}>Phone Number</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your phone number"
+                    />
+                </View>
+
+                <View style={styles.labelInputContainer}>
+                    <Text style={styles.label}>E-mail</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your email"
+                    />
+                </View>
+
+                <View style={styles.labelInputContainer}>
+                    <Text style={styles.label}>Password</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your password"
+                    />
+                </View>
+
+                <View style={styles.checkboxContainer}>
+                    <TouchableOpacity
+                        onPress={toggleCheckbox}
+                        style={styles.checkbox}
+                    >
+                        {isChecked && (
+                            <Text style={styles.checkboxTick}>✓</Text>
+                        )}
+                    </TouchableOpacity>
+                    <Text style={{ ...styles.text, marginBottom: 16 }}>
+                        By continuing you accept our{" "}
+                        <Text style={styles.textLink}>Privacy Policy</Text>
+                        {" and "}
+                        <Text style={styles.textLink}>Terms of Use</Text>
+                    </Text>
+                </View>
+            </View>
+
+            <View style={styles.bottom}>
+                <TouchableOpacity style={styles.registerButton}>
+                    <Text
+                        style={{
+                            ...styles.registerButtonText,
+                            width: windowWidth > 480 ? 300 : windowWidth * 0.7,
+                        }}
+                    >
+                        Register
+                    </Text>
+                </TouchableOpacity>
+
+                <Text style={styles.text}>
+                    Already have an account?{" "}
+                    <TouchableOpacity onPress={() => router.push("/login")}>
+                        <Text style={styles.textLink}>Login Now</Text>
+                    </TouchableOpacity>
+                </Text>
+            </View>
+        </SafeAreaView>
     );
 };
 
@@ -83,100 +116,106 @@ export default registerScreen;
 const styles = StyleSheet.create({
     base: {
         flex: 1,
+        flexShrink: 1,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: color.lavender,
-        padding: 16,
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        paddingBottom: 20,
+    },
+    top: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    middle: {
+        flex: 6,
+        flexShrink: 1,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        paddingVertical: 20,
+    },
+    bottom: {
+        flex: 1.5,
+        flexShrink: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
     title: {
-        fontFamily: "NotoSans",
-        color: color.americanBlue,
+        fontFamily: "NotoSansBold",
         fontSize: 30,
-        fontWeight: "700",
+        color: color.americanBlue,
         marginBottom: 16,
     },
     labelInputContainer: {
-        flexDirection: "column",
         width: "100%",
-        height: "10%",
+        flexDirection: "column",
         alignItems: "flex-start",
         marginBottom: 16,
     },
     label: {
-        fontSize: 16,
+        fontFamily: "NotoSansMedium",
+        fontSize: 14,
         marginBottom: 8,
     },
     input: {
-        flex: 1,
         width: "100%",
-        color: "#453C67",
-        fontFamily: "Roboto",
+        fontFamily: "NotoSans",
         fontSize: 14,
-        fontStyle: "normal",
-        fontWeight: "500",
+        minHeight: 50,
         lineHeight: 20,
+        color: color.americanBlue,
+        backgroundColor: color.white,
         borderWidth: 1,
         borderColor: "rgba(0, 0, 0, 0.10)",
         borderRadius: 6,
         paddingHorizontal: 10,
-        backgroundColor: "#FFF",
     },
     checkboxContainer: {
         flexDirection: "row",
-        alignItems: "center",
-        marginBottom: 16,
+        alignItems: "flex-start",
     },
     checkbox: {
         width: 20,
         height: 20,
         backgroundColor: color.white,
+        borderColor: color.americanBlue,
         borderWidth: 1,
-        borderColor: "#453C67",
         borderRadius: 4,
         marginRight: 8,
-        marginBottom: 150,
     },
     checkboxTick: {
-        color: color.mediumSlateBlue,
-        fontSize: 14,
         alignSelf: "center",
-    },
-    checkboxText: {
         fontSize: 14,
-        color: "#453C67",
-        fontFamily: "Roboto",
-        marginBottom: 150,
+        color: color.mediumSlateBlue,
     },
-    linkText: {
+    text: {
+        fontFamily: "NotoSans",
+        fontSize: 14,
+        color: color.americanBlue,
+    },
+    textLink: {
+        fontFamily: "NotoSansMedium",
+        fontSize: 14,
         color: color.purple,
     },
     registerButton: {
         backgroundColor: color.americanBlue,
-        width: 312,
         paddingVertical: 12,
         paddingHorizontal: 24,
-        borderRadius: 8,
-        shadowColor: "rgba(0, 0, 0, 0.25)",
+        borderRadius: 20,
+        shadowColor: color.black,
         shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 1,
+        shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 4,
+        marginBottom: 10,
     },
     registerButtonText: {
-        color: color.white,
-        fontFamily: "Roboto",
+        fontFamily: "NotoSansSemiBold",
         fontSize: 16,
-        fontWeight: "500",
+        color: color.white,
         textAlign: "center",
-    },
-    registerText: {
-        marginTop: 16,
-        fontSize: 14,
-        color: color.deepBlue,
-        fontFamily: "NotoSans",
-        fontWeight: "500",
-    },
-    registerLink: {
-        color: color.purple,
     },
 });

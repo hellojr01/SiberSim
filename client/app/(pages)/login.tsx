@@ -1,12 +1,12 @@
 import React from "react";
 import {
     View,
+    SafeAreaView,
     Text,
     TextInput,
     TouchableOpacity,
     StyleSheet,
     Dimensions,
-    SafeAreaView,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { color } from "../../constants/Colors";
@@ -18,10 +18,17 @@ const LoginScreen = () => {
     return (
         <SafeAreaView style={styles.base}>
             <View style={styles.top}>
-                <Text style={styles.title}>Login</Text>
+                <Text style={{ ...styles.title, textAlign: "center" }}>
+                    Login
+                </Text>
             </View>
 
-            <View style={styles.middle}>
+            <View
+                style={{
+                    ...styles.middle,
+                    width: windowWidth > 480 ? 300 : windowWidth * 0.8,
+                }}
+            >
                 <FontAwesome
                     name="user-circle"
                     size={windowWidth > 640 ? 200 : windowWidth * 0.4}
@@ -29,12 +36,7 @@ const LoginScreen = () => {
                     style={{ marginVertical: 20 }}
                 />
 
-                <View
-                    style={{
-                        ...styles.labelInputContainer,
-                        width: windowWidth > 480 ? 300 : windowWidth * 0.7,
-                    }}
-                >
+                <View style={styles.labelInputContainer}>
                     <Text style={styles.label}>E-mail</Text>
                     <TextInput
                         style={styles.input}
@@ -42,12 +44,7 @@ const LoginScreen = () => {
                     />
                 </View>
 
-                <View
-                    style={{
-                        ...styles.labelInputContainer,
-                        width: windowWidth > 480 ? 300 : windowWidth * 0.7,
-                    }}
-                >
+                <View style={styles.labelInputContainer}>
                     <Text style={styles.label}>Password</Text>
                     <TextInput
                         style={styles.input}
@@ -83,13 +80,7 @@ const LoginScreen = () => {
                         Don't have an account yet?{" "}
                     </Text>
                     <TouchableOpacity onPress={() => router.push("/register")}>
-                        <Text
-                            style={{
-                                ...styles.registerText,
-                                color: color.purple,
-                                fontFamily: "NotoSansSemiBold",
-                            }}
-                        >
+                        <Text style={styles.registerTextLink}>
                             Register Now
                         </Text>
                     </TouchableOpacity>
@@ -104,8 +95,8 @@ export default LoginScreen;
 const styles = StyleSheet.create({
     base: {
         flex: 1,
-        alignItems: "center",
         justifyContent: "center",
+        alignItems: "center",
         backgroundColor: color.lavender,
         paddingHorizontal: 20,
         paddingTop: 20,
@@ -119,53 +110,53 @@ const styles = StyleSheet.create({
     middle: {
         flex: 6,
         flexShrink: 1,
-        justifyContent: "space-around",
+        justifyContent: "flex-start",
         alignItems: "center",
         paddingVertical: 20,
     },
     bottom: {
-        flex: 1,
+        flex: 1.5,
         flexShrink: 1,
-        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
     },
     title: {
         fontFamily: "NotoSansBold",
-        color: color.americanBlue,
         fontSize: 30,
+        color: color.americanBlue,
         marginBottom: 16,
     },
     labelInputContainer: {
+        width: "100%",
         flexDirection: "column",
         alignItems: "flex-start",
         marginBottom: 16,
     },
     label: {
-        fontFamily: "NotoSansSemiBold",
+        fontFamily: "NotoSansMedium",
         fontSize: 14,
         marginBottom: 8,
     },
     input: {
         width: "100%",
-        color: color.americanBlue,
         fontFamily: "NotoSans",
         fontSize: 14,
         minHeight: 50,
         lineHeight: 20,
+        color: color.americanBlue,
+        backgroundColor: color.white,
         borderWidth: 1,
         borderColor: "rgba(0, 0, 0, 0.10)",
         borderRadius: 6,
         paddingHorizontal: 10,
-        backgroundColor: color.white,
     },
     forgotPassword: {
         alignSelf: "flex-end",
-        marginBottom: 129,
     },
     forgotText: {
-        fontFamily: "NotoSansSemiBold",
-        color: color.purple,
+        fontFamily: "NotoSansMedium",
         fontSize: 14,
+        color: color.purple,
     },
     loginButton: {
         backgroundColor: color.americanBlue,
@@ -186,8 +177,13 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     registerText: {
-        color: color.deepBlue,
         fontFamily: "NotoSans",
         fontSize: 14,
+        color: color.americanBlue,
+    },
+    registerTextLink: {
+        fontFamily: "NotoSansMedium",
+        fontSize: 14,
+        color: color.purple,
     },
 });

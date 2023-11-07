@@ -4,7 +4,6 @@ const tintColorDark = '#fff';
 export const color = {
   americanBlue: '#453C67',
   mediumSlateBlue: '#6D67E4',
-  deepBlue: '#0F2851',
   seaSerpeant: '#46C2CB',
   purple: '#7B49BA',
   lavender: '#E7EBFF',

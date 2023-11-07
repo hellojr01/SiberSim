@@ -15,6 +15,11 @@ const OnboardScreen = () => {
     const [pressB1, setPressB1] = useState(false);
     const [pressB2, setPressB2] = useState(false);
 
+    const togglePress = (button: String) => {
+        if (button === "B1") setPressB1(!pressB1);
+        else if (button === "B2") setPressB2(!pressB2);
+    };
+
     const { onboardId } = useLocalSearchParams();
     let value = 404;
     if (onboardId !== undefined)
@@ -60,12 +65,8 @@ const OnboardScreen = () => {
             </View>
             <View style={styles.bottom}>
                 <Pressable
-                    onPressIn={() => {
-                        setPressB1(!pressB1);
-                    }}
-                    onPressOut={() => {
-                        setPressB1(!pressB1);
-                    }}
+                    onPressIn={() => togglePress("B1")}
+                    onPressOut={() => togglePress("B1")}
                     onPress={() => {
                         if (value >= 1 && value < instances.length)
                             router.replace(`/onboard/${value + 1}`);
@@ -117,12 +118,8 @@ const OnboardScreen = () => {
                     </Text>
                 </View>
                 <Pressable
-                    onPressIn={() => {
-                        setPressB2(!pressB2);
-                    }}
-                    onPressOut={() => {
-                        setPressB2(!pressB2);
-                    }}
+                    onPressIn={() => togglePress("B2")}
+                    onPressOut={() => togglePress("B2")}
                     onPress={() => router.replace("/register")}
                     disabled={
                         value >= 1 && value < instances.length ? false : true

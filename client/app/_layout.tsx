@@ -26,11 +26,13 @@ export default function RootLayout() {
     const [loaded, error] = useFonts({
         SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
         NotoSans: require("../assets/fonts/NotoSans-Regular.ttf"),
-        NotoSansBold: require("../assets/fonts/NotoSans-Bold.ttf"),
+        NotoSansMedium: require("../assets/fonts/NotoSans-Medium.ttf"),
         NotoSansSemiBold: require("../assets/fonts/NotoSans-SemiBold.ttf"),
+        NotoSansBold: require("../assets/fonts/NotoSans-Bold.ttf"),
         NotoSansItalic: require("../assets/fonts/NotoSans-Italic.ttf"),
-        NotoSansBoldItalic: require("../assets/fonts/NotoSans-BoldItalic.ttf"),
+        NotoSansMediumItalic: require("../assets/fonts/NotoSans-MediumItalic.ttf"),
         NotoSansSemiBoldItalic: require("../assets/fonts/NotoSans-SemiBoldItalic.ttf"),
+        NotoSansBoldItalic: require("../assets/fonts/NotoSans-BoldItalic.ttf"),
         ...FontAwesome.font,
     });
 
