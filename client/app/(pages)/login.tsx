@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     View,
     SafeAreaView,
@@ -14,13 +14,13 @@ import { router } from "expo-router";
 
 const LoginScreen = () => {
     const windowWidth = Dimensions.get("window").width;
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     return (
         <SafeAreaView style={styles.base}>
             <View style={styles.top}>
-                <Text style={{ ...styles.title, textAlign: "center" }}>
-                    Login
-                </Text>
+                <Text style={styles.title}>Login</Text>
             </View>
 
             <View
@@ -39,21 +39,29 @@ const LoginScreen = () => {
                 <View style={styles.labelInputContainer}>
                     <Text style={styles.label}>E-mail</Text>
                     <TextInput
+                        value={username}
                         style={styles.input}
                         placeholder="Enter your e-mail"
+                        autoCapitalize="none"
+                        onChangeText={(text) => setUsername(text)}
                     />
                 </View>
 
                 <View style={styles.labelInputContainer}>
                     <Text style={styles.label}>Password</Text>
                     <TextInput
+                        value={password}
                         style={styles.input}
                         placeholder="Enter your password"
                         secureTextEntry
+                        onChangeText={(text) => setPassword(text)}
                     />
                 </View>
 
-                <TouchableOpacity style={styles.forgotPassword}>
+                <TouchableOpacity
+                    style={styles.forgotPassword}
+                    onPress={() => router.push("/forgotpassword/1")}
+                >
                     <Text style={styles.forgotText}>Forgot Password?</Text>
                 </TouchableOpacity>
             </View>
@@ -70,12 +78,7 @@ const LoginScreen = () => {
                     </Text>
                 </TouchableOpacity>
 
-                <View
-                    style={{
-                        flexDirection: "row",
-                        alignItems: "baseline",
-                    }}
-                >
+                <View style={styles.registerContainer}>
                     <Text style={styles.registerText}>
                         Don't have an account yet?{" "}
                     </Text>
@@ -103,26 +106,22 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     top: {
-        flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignItems: "center",
     },
     middle: {
-        flex: 6,
-        flexShrink: 1,
-        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
         paddingVertical: 20,
     },
     bottom: {
-        flex: 1.5,
-        flexShrink: 1,
-        justifyContent: "center",
+        justifyContent: "flex-end",
         alignItems: "center",
     },
     title: {
         fontFamily: "NotoSansBold",
         fontSize: 30,
+        textAlign: "center",
         color: color.americanBlue,
         marginBottom: 16,
     },
@@ -152,6 +151,7 @@ const styles = StyleSheet.create({
     },
     forgotPassword: {
         alignSelf: "flex-end",
+        marginBottom: 16,
     },
     forgotText: {
         fontFamily: "NotoSansMedium",
@@ -175,6 +175,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: color.white,
         textAlign: "center",
+    },
+    registerContainer: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "baseline",
+        flexWrap: "wrap",
     },
     registerText: {
         fontFamily: "NotoSans",

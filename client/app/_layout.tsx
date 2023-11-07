@@ -105,7 +105,7 @@ function RootLayoutNav() {
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/forgotpassword/forgotPassword"
+                    name="(pages)/forgotpassword/[forgotPassword]"
                     options={{
                         title: "Forgot Password Page",
                         presentation: "modal",

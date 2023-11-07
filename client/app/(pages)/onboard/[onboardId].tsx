@@ -174,8 +174,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     customSvg: {
-        flex: 3,
-        flexGrow: 3,
         flexShrink: 1,
         minHeight: "35%",
         maxHeight: "60%",
@@ -189,8 +187,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
     },
     subheader: {
-        flex: 1,
-        flexGrow: 1,
         flexShrink: 1,
         fontFamily: "NotoSans",
         fontSize: 16,

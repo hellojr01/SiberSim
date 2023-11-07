@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { color } from "../../constants/Colors";
 import { router } from "expo-router";
+import { hide } from "expo-splash-screen";
 
 const registerScreen = () => {
     const windowWidth = Dimensions.get("window").width;
@@ -22,23 +23,15 @@ const registerScreen = () => {
     return (
         <SafeAreaView style={styles.base}>
             <View style={styles.top}>
-                <Text style={{ ...styles.title, textAlign: "center" }}>
-                    Create New Account
-                </Text>
+                <Text style={styles.title}>Create New Account</Text>
             </View>
-
             <View
                 style={{
                     ...styles.middle,
                     width: windowWidth > 480 ? 300 : windowWidth * 0.8,
                 }}
             >
-                <View
-                    style={{
-                        ...styles.labelInputContainer,
-                        width: windowWidth > 480 ? 300 : windowWidth * 0.8,
-                    }}
-                >
+                <View style={styles.labelInputContainer}>
                     <Text style={styles.label}>Full Name</Text>
                     <TextInput
                         style={styles.input}
@@ -100,12 +93,14 @@ const registerScreen = () => {
                     </Text>
                 </TouchableOpacity>
 
-                <Text style={styles.text}>
-                    Already have an account?{" "}
+                <View style={styles.loginContainer}>
+                    <Text style={styles.text}>
+                        Already have an account?&nbsp;
+                    </Text>
                     <TouchableOpacity onPress={() => router.push("/login")}>
                         <Text style={styles.textLink}>Login Now</Text>
                     </TouchableOpacity>
-                </Text>
+                </View>
             </View>
         </SafeAreaView>
     );
@@ -116,7 +111,6 @@ export default registerScreen;
 const styles = StyleSheet.create({
     base: {
         flex: 1,
-        flexShrink: 1,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: color.lavender,
@@ -125,26 +119,22 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     top: {
-        flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignItems: "center",
     },
     middle: {
-        flex: 6,
-        flexShrink: 1,
-        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
         paddingVertical: 20,
     },
     bottom: {
-        flex: 1.5,
-        flexShrink: 1,
-        justifyContent: "center",
+        justifyContent: "flex-end",
         alignItems: "center",
     },
     title: {
         fontFamily: "NotoSansBold",
         fontSize: 30,
+        textAlign: "center",
         color: color.americanBlue,
         marginBottom: 16,
     },
@@ -217,5 +207,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: color.white,
         textAlign: "center",
+    },
+    loginContainer: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "baseline",
+        flexWrap: "wrap",
     },
 });
