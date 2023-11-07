@@ -8,84 +8,100 @@ import {
     StyleSheet,
     Dimensions,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
 import { color } from "../../constants/Colors";
 import { router } from "expo-router";
+import { hide } from "expo-splash-screen";
 
-const LoginScreen = () => {
+const registerScreen = () => {
     const windowWidth = Dimensions.get("window").width;
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [isChecked, setChecked] = useState(false);
+
+    const toggleCheckbox = () => {
+        setChecked(!isChecked);
+    };
 
     return (
         <SafeAreaView style={styles.base}>
             <View style={styles.top}>
-                <Text style={styles.title}>Login</Text>
+                <Text style={styles.title}>Create New Account</Text>
             </View>
-
             <View
                 style={{
                     ...styles.middle,
                     width: windowWidth > 480 ? 300 : windowWidth * 0.8,
                 }}
             >
-                <FontAwesome
-                    name="user-circle"
-                    size={windowWidth > 640 ? 200 : windowWidth * 0.4}
-                    color={color.americanBlue}
-                    style={{ marginVertical: 20 }}
-                />
+                <View style={styles.labelInputContainer}>
+                    <Text style={styles.label}>Full Name</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your name as per NRIC"
+                    />
+                </View>
+
+                <View style={styles.labelInputContainer}>
+                    <Text style={styles.label}>Phone Number</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your phone number"
+                    />
+                </View>
 
                 <View style={styles.labelInputContainer}>
                     <Text style={styles.label}>E-mail</Text>
                     <TextInput
-                        value={username}
                         style={styles.input}
-                        placeholder="Enter your e-mail"
-                        autoCapitalize="none"
-                        onChangeText={(text) => setUsername(text)}
+                        placeholder="Enter your email"
                     />
                 </View>
 
                 <View style={styles.labelInputContainer}>
                     <Text style={styles.label}>Password</Text>
                     <TextInput
-                        value={password}
                         style={styles.input}
                         placeholder="Enter your password"
-                        secureTextEntry
-                        onChangeText={(text) => setPassword(text)}
                     />
                 </View>
 
-                <TouchableOpacity
-                    style={styles.forgotPassword}
-                    onPress={() => router.push("/forgotpassword/1")}
-                >
-                    <Text style={styles.forgotText}>Forgot Password?</Text>
-                </TouchableOpacity>
+                <View style={styles.checkboxContainer}>
+                    <TouchableOpacity
+                        onPress={toggleCheckbox}
+                        style={styles.checkbox}
+                    >
+                        {isChecked && (
+                            <Text style={styles.checkboxTick}>✓</Text>
+                        )}
+                    </TouchableOpacity>
+                    <Text style={{ ...styles.text, marginBottom: 16 }}>
+                        By continuing you accept our{" "}
+                        <Text style={styles.textLink}>Privacy Policy</Text>
+                        {" and "}
+                        <Text style={styles.textLink}>Terms of Use</Text>
+                    </Text>
+                </View>
             </View>
 
             <View style={styles.bottom}>
-                <TouchableOpacity style={styles.loginButton}>
+                <TouchableOpacity
+                    style={styles.registerButton}
+                    onPress={() => router.push("/login")}
+                >
                     <Text
                         style={{
-                            ...styles.loginButtonText,
+                            ...styles.registerButtonText,
                             width: windowWidth > 480 ? 300 : windowWidth * 0.7,
                         }}
                     >
-                        Log in
+                        Register
                     </Text>
                 </TouchableOpacity>
 
-                <View style={styles.registerContainer}>
-                    <Text style={styles.registerText}>
-                        Don't have an account yet?{" "}
+                <View style={styles.loginContainer}>
+                    <Text style={styles.text}>
+                        Already have an account?&nbsp;
                     </Text>
-                    <TouchableOpacity onPress={() => router.push("/register")}>
-                        <Text style={styles.registerTextLink}>
-                            Register Now
-                        </Text>
+                    <TouchableOpacity onPress={() => router.push("/login")}>
+                        <Text style={styles.textLink}>Login Now</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -93,7 +109,7 @@ const LoginScreen = () => {
     );
 };
 
-export default LoginScreen;
+export default registerScreen;
 
 const styles = StyleSheet.create({
     base: {
@@ -149,16 +165,35 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         paddingHorizontal: 10,
     },
-    forgotPassword: {
-        alignSelf: "flex-end",
-        marginBottom: 16,
+    checkboxContainer: {
+        flexDirection: "row",
+        alignItems: "flex-start",
     },
-    forgotText: {
+    checkbox: {
+        width: 20,
+        height: 20,
+        backgroundColor: color.white,
+        borderColor: color.americanBlue,
+        borderWidth: 1,
+        borderRadius: 4,
+        marginRight: 8,
+    },
+    checkboxTick: {
+        alignSelf: "center",
+        fontSize: 14,
+        color: color.mediumSlateBlue,
+    },
+    text: {
+        fontFamily: "NotoSans",
+        fontSize: 14,
+        color: color.americanBlue,
+    },
+    textLink: {
         fontFamily: "NotoSansMedium",
         fontSize: 14,
         color: color.purple,
     },
-    loginButton: {
+    registerButton: {
         backgroundColor: color.americanBlue,
         paddingVertical: 12,
         paddingHorizontal: 24,
@@ -170,26 +205,16 @@ const styles = StyleSheet.create({
         elevation: 4,
         marginBottom: 10,
     },
-    loginButtonText: {
+    registerButtonText: {
         fontFamily: "NotoSansSemiBold",
         fontSize: 16,
         color: color.white,
         textAlign: "center",
     },
-    registerContainer: {
+    loginContainer: {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "baseline",
         flexWrap: "wrap",
-    },
-    registerText: {
-        fontFamily: "NotoSans",
-        fontSize: 14,
-        color: color.americanBlue,
-    },
-    registerTextLink: {
-        fontFamily: "NotoSansMedium",
-        fontSize: 14,
-        color: color.purple,
     },
 });

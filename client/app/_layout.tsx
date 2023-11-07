@@ -8,6 +8,8 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
+import "react-native-gesture-handler";
+import { color } from "../constants/Colors";
 
 export {
     // Catch any errors thrown by the Layout component.
@@ -61,27 +63,31 @@ function RootLayoutNav() {
         <ThemeProvider
             value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
-            <Stack initialRouteName="index">
+            <Stack initialRouteName="(main)/welcome">
                 <Stack.Screen name="index" options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="(drawer)"
+                    options={{ headerShown: false }}
+                />
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen name="sidenav" options={{ headerShown: false }} />
                 <Stack.Screen
                     name="modal"
                     options={{ presentation: "modal" }}
                 />
                 <Stack.Screen
-                    name="(pages)/welcome"
+                    name="(main)/welcome"
                     options={{
                         title: "Welcome Page",
-                        presentation: "modal",
                         headerShown: false,
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/onboard/index"
+                    name="(main)/onboard/index"
                     options={{ headerShown: false }}
                 />
                 <Stack.Screen
-                    name="(pages)/onboard/[onboardId]"
+                    name="(main)/onboard/[onboardId]"
                     options={{
                         title: "Onboard Page",
                         presentation: "modal",
@@ -89,39 +95,7 @@ function RootLayoutNav() {
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/blog/index"
-                    options={{
-                        title: "Cyberblog Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(pages)/home"
-                    options={{
-                        title: "Home Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(pages)/scammer/index"
-                    options={{
-                        title: "Scammer Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(pages)/Simulation/index"
-                    options={{
-                        title: "Simulation Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(pages)/login"
+                    name="(main)/login"
                     options={{
                         title: "Login Page",
                         presentation: "modal",
@@ -129,7 +103,7 @@ function RootLayoutNav() {
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/register"
+                    name="(main)/register"
                     options={{
                         title: "Register Page",
                         presentation: "modal",
@@ -137,14 +111,17 @@ function RootLayoutNav() {
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/forgotpassword/[forgotPassword]"
+                    name="(main)/forgotpassword/[forgotPassword]"
                     options={{
                         title: "Forgot Password Page",
                         presentation: "modal",
                         headerShown: false,
                     }}
                 />
-                <Stack.Screen
+
+                {
+                    //Commenting, might use back later who knows?
+                    /* <Stack.Screen
                     name="(pages)/forgotpassword/newPassword"
                     options={{
                         title: "New Password Page",
@@ -159,7 +136,8 @@ function RootLayoutNav() {
                         presentation: "modal",
                         headerShown: false,
                     }}
-                />
+                /> */
+                }
             </Stack>
         </ThemeProvider>
     );
