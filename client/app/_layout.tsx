@@ -95,22 +95,6 @@ function RootLayoutNav() {
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/forgotPassword"
-                    options={{
-                        title: "Forgot Password Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(pages)/newPassword"
-                    options={{
-                        title: "New Password Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
                     name="(pages)/register"
                     options={{
                         title: "Register Page",
@@ -119,7 +103,23 @@ function RootLayoutNav() {
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/verification"
+                    name="(pages)/forgotpassword/forgotPassword"
+                    options={{
+                        title: "Forgot Password Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(pages)/forgotpassword/newPassword"
+                    options={{
+                        title: "New Password Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="(pages)/forgotpassword/verification"
                     options={{
                         title: "Verification Page",
                         presentation: "modal",

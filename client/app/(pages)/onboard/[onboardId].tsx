@@ -1,8 +1,8 @@
-import Icon from "@expo/vector-icons/AntDesign";
-import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { Redirect, useLocalSearchParams, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import Icon from "@expo/vector-icons/AntDesign";
 import Logo1 from "../../../assets/images/wc2.svg";
 import Logo2 from "../../../assets/images/wc3.svg";
 import Logo3 from "../../../assets/images/wc4.svg";
@@ -16,15 +16,12 @@ const OnboardScreen = () => {
     const [pressB2, setPressB2] = useState(false);
 
     const { onboardId } = useLocalSearchParams();
-    let value = 1;
+    let value = 404;
     if (onboardId !== undefined)
-        if (Array.isArray(onboardId)) {
-            value = parseInt(onboardId.join());
-        } else {
-            value = parseInt(onboardId);
-        }
+        if (!Array.isArray(onboardId))
+            if (!Boolean((value = Number(onboardId))))
+                return <Redirect href="/onboard" />;
 
-    // if (value < 1 || value > instances.length);
     let Logo = Logo404;
     switch (value) {
         case 1:
@@ -41,7 +38,7 @@ const OnboardScreen = () => {
     const onboardPage = instances.find((instance) => instance.id == value);
 
     return (
-        <View style={styles.base}>
+        <SafeAreaView style={styles.base}>
             <StatusBar translucent={false} />
             <View style={styles.top}>
                 <Text style={{ ...styles.header, ...styles.common }}>
@@ -79,7 +76,7 @@ const OnboardScreen = () => {
                         name="arrowright"
                         style={{
                             opacity: pressB1 ? 0.75 : 1,
-                            ...styles.icon,
+                            ...styles.iconButton,
                         }}
                     />
                 </Pressable>
@@ -97,21 +94,27 @@ const OnboardScreen = () => {
                                 value >= 1 ? color.americanBlue : color.white,
                             ...styles.emptyBorder,
                         }}
-                    />
+                    >
+                        {" "}
+                    </Text>
                     <Text
                         style={{
                             backgroundColor:
                                 value >= 2 ? color.americanBlue : color.white,
                             ...styles.emptyBorder,
                         }}
-                    />
+                    >
+                        {" "}
+                    </Text>
                     <Text
                         style={{
                             backgroundColor:
                                 value >= 3 ? color.americanBlue : color.white,
                             ...styles.emptyBorder,
                         }}
-                    />
+                    >
+                        {" "}
+                    </Text>
                 </View>
                 <Pressable
                     onPressIn={() => {
@@ -121,7 +124,9 @@ const OnboardScreen = () => {
                         setPressB2(!pressB2);
                     }}
                     onPress={() => router.replace("/register")}
-                    disabled={value >= instances.length ? true : false}
+                    disabled={
+                        value >= 1 && value < instances.length ? false : true
+                    }
                 >
                     <Text
                         style={{
@@ -137,7 +142,7 @@ const OnboardScreen = () => {
                     </Text>
                 </Pressable>
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 
@@ -146,8 +151,8 @@ export default OnboardScreen;
 const styles = StyleSheet.create({
     base: {
         flex: 1,
-        alignContent: "center",
         justifyContent: "space-between",
+        aligntems: "center",
         backgroundColor: color.lavender,
         paddingHorizontal: 20,
         paddingBottom: 40,
@@ -172,64 +177,62 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     customSvg: {
+        flex: 3,
+        flexGrow: 3,
+        flexShrink: 1,
         minHeight: "35%",
         maxHeight: "60%",
         marginVertical: 10,
-        flex: 3,
-        flexBasis: 300,
-        flexGrow: 1,
-        flexShrink: 0,
     },
     header: {
         fontFamily: "NotoSansBold",
         fontSize: 30,
-        color: color.americanBlue,
         textAlign: "center",
+        color: color.americanBlue,
         paddingHorizontal: 15,
     },
     subheader: {
+        flex: 1,
+        flexGrow: 1,
+        flexShrink: 1,
         fontFamily: "NotoSans",
         fontSize: 16,
-        color: color.americanBlue,
         textAlign: "center",
+        color: color.americanBlue,
         paddingHorizontal: 25,
         marginVertical: 15,
-        flex: 1,
-        flexBasis: 100,
-        flexGrow: 1,
-        flexShrink: 0,
     },
-    icon: {
-        backgroundColor: color.americanBlue,
-        borderRadius: 20,
-        borderWidth: 3,
-        borderColor: color.americanBlue,
+    iconButton: {
         justifyContent: "center",
         alignSelf: "center",
-        width: 100,
-        lineHeight: 100,
-        aspectRatio: 1,
-        textAlign: "center",
+        backgroundColor: color.americanBlue,
+        borderColor: color.americanBlue,
+        borderRadius: 20,
+        borderWidth: 3,
         fontSize: 40,
+        textAlign: "center",
         color: color.white,
+        width: 100,
+        aspectRatio: 1,
+        lineHeight: 100,
     },
     emptyBorder: {
+        justifyContent: "center",
+        alignSelf: "center",
         borderRadius: 20,
         borderWidth: 1,
         borderColor: color.americanBlue,
-        justifyContent: "center",
-        alignSelf: "center",
+        fontSize: 4,
         marginHorizontal: 5,
         width: 60,
-        fontSize: 4,
     },
     skipText: {
         justifyContent: "center",
         alignSelf: "center",
-        textAlign: "center",
+        borderRadius: 20,
         fontFamily: "NotoSansSemiBold",
         fontSize: 14,
-        borderRadius: 20,
+        textAlign: "center",
         paddingHorizontal: 20,
         paddingVertical: 8,
     },

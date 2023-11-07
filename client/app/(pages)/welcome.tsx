@@ -1,8 +1,8 @@
-import Icon from "@expo/vector-icons/AntDesign";
+import React from "react";
+import { Dimensions, StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import Icon from "@expo/vector-icons/AntDesign";
 import Logo from "../../assets/images/wc1.svg";
 import { color } from "../../constants/Colors";
 
@@ -11,8 +11,8 @@ const WelcomeScreen = () => {
     const windowWidth = Dimensions.get("window").width;
 
     return (
-        <View style={styles.base}>
-            {/* <StatusBar translucent={false} /> */}
+        <SafeAreaView style={styles.base}>
+            <StatusBar translucent={false} />
             <View style={styles.top}>
                 <Text style={{ ...styles.header, ...styles.common }}>
                     Welcome To
@@ -43,7 +43,7 @@ const WelcomeScreen = () => {
                     <Text
                         style={{
                             color: color.white,
-                            width: windowWidth > 640 ? 300 : "100%",
+                            width: windowWidth > 480 ? 300 : windowWidth * 0.7,
                             ...styles.buttonText,
                         }}
                     >
@@ -64,7 +64,7 @@ const WelcomeScreen = () => {
                     <Text
                         style={{
                             color: color.americanBlue,
-                            width: windowWidth > 640 ? 300 : "100%",
+                            width: windowWidth > 480 ? 300 : windowWidth * 0.7,
                             ...styles.buttonText,
                         }}
                     >
@@ -72,7 +72,7 @@ const WelcomeScreen = () => {
                     </Text>
                 </Icon.Button>
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 
@@ -81,8 +81,8 @@ export default WelcomeScreen;
 const styles = StyleSheet.create({
     base: {
         flex: 1,
-        alignContent: "center",
         justifyContent: "space-between",
+        alignItems: "center",
         backgroundColor: color.lavender,
         paddingHorizontal: 20,
         paddingBottom: 20,
@@ -107,32 +107,30 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     customSvg: {
+        flex: 3,
+        flexGrow: 3,
+        flexShrink: 1,
         minHeight: "40%",
         maxHeight: "65%",
         marginVertical: 10,
-        flex: 3,
-        flexBasis: 300,
-        flexGrow: 1,
-        flexShrink: 0,
     },
     header: {
         fontFamily: "NotoSansBold",
         fontSize: 36,
-        color: color.americanBlue,
         textAlign: "center",
+        color: color.americanBlue,
         marginTop: -5,
     },
     subheader: {
+        flex: 1,
+        flexGrow: 1,
+        flexShrink: 1,
         fontFamily: "NotoSans",
         fontSize: 18,
-        color: color.americanBlue,
         textAlign: "center",
-        paddingHorizontal: 50,
+        color: color.americanBlue,
+        paddingHorizontal: 40,
         marginTop: 20,
-        flex: 1,
-        flexBasis: 100,
-        flexGrow: 1,
-        flexShrink: 0,
     },
     rightIcon: {
         right: 5,
@@ -142,19 +140,18 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignSelf: "center",
         marginVertical: 10,
-        maxWidth: "80%",
     },
     buttonOne: {
         color: color.white,
         backgroundColor: color.americanBlue,
-        borderWidth: 3,
         borderColor: color.americanBlue,
+        borderWidth: 3,
     },
     buttonTwo: {
         color: color.americanBlue,
         backgroundColor: color.white,
-        borderWidth: 3,
         borderColor: color.americanBlue,
+        borderWidth: 3,
     },
     buttonText: {
         fontFamily: "NotoSansSemiBold",

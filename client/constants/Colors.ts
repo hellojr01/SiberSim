@@ -7,7 +7,6 @@ export const color = {
   deepBlue: '#0F2851',
   seaSerpeant: '#46C2CB',
   purple: '#7B49BA',
-  purplePlum: '#585CE5',
   lavender: '#E7EBFF',
   sunglow: '#FFCC33',
   pastelOrange: '#FFB756',
