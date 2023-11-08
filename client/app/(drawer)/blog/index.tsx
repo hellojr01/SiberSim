@@ -1,32 +1,63 @@
 import React from 'react';
-import { StyleSheet, Text, SafeAreaView, View } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, View, ScrollView } from 'react-native';
 import { color } from '../../../constants/Colors';
 import Icon from "@expo/vector-icons/AntDesign";
 import Header from '../../../components/Header';
-import Advertisement from '../../../components/Advertisement';
 import SectionHeading from '../../../components/SectionHeading';
 import Carousel from '../../../components/HorizontalCarousel';
 import SearchComponent from '../../../components/SearchComponent';
+import { useState } from 'react';
+import ButtonFilter from '../../../components/ButtonFilter';
+import VerticalCarousel from '../../../components/VerticalCarousel';
+import { FAB } from "@rneui/base";
 
 const Blog = () => {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const filters = ['All', 'Scam Alert', 'Security Tips', 'User Story'];
+
+  const handleFilterChange = (filter:string) => {
+    setActiveFilter(filter);
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Header title="Cyberblog" />
       <SearchComponent />
-      <View style={styles.sectionContainer}>
-        <SectionHeading title="Trending Now" viewAllButton={false}/>
-        <Carousel carouselDesign='cyberblog' />
-      </View>
-    </SafeAreaView>
+      <ScrollView style={styles.contentContainer}>
+        <View style={styles.sectionContainer}>
+          <SectionHeading title="Trending Now" viewAllButton={false}/>
+          <Carousel carouselDesign='cyberblog' />
+        </View>
+        <View style={styles.sectionContainer}>
+          <ButtonFilter activeFilter={activeFilter} filters={filters} onFilterChange={handleFilterChange} />
+          <VerticalCarousel carouselDesign='cyberblog' />
+        </View>
+      </ScrollView>
+      <FAB
+        icon={{ name: 'add', color: 'white' }}
+        color="purple"
+        style={styles.fab}
+      />
+    </View>
   );
 }
+
 export default Blog;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: color.lavender,
   },
+  contentContainer: {
+    flex: 1,
+  },
   sectionContainer: {
-    marginVertical: 10
+    marginVertical: 10,
+  },
+  fab: {
+    position: 'absolute',
+    bottom: 20, // Adjust the bottom position as needed
+    right: 20,  // Adjust the right position as needed
   },
 });
