@@ -5,14 +5,8 @@ import { color } from "../constants/Colors";
 
 type SearchBarComponentProps = {};
 
-const SearchComponent: React.FunctionComponent<
-    SearchBarComponentProps
-> = () => {
+const SearchComponent: React.FunctionComponent<SearchBarComponentProps> = () => {
     const [search, setSearch] = useState("");
-
-    const updateSearch = (search: string) => {
-        setSearch(search);
-    };
 
     return (
         <View style={styles.view}>
