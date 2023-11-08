@@ -8,6 +8,8 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
+import "react-native-gesture-handler";
+import { color } from "../constants/Colors";
 
 export {
     // Catch any errors thrown by the Layout component.
@@ -26,11 +28,13 @@ export default function RootLayout() {
     const [loaded, error] = useFonts({
         SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
         NotoSans: require("../assets/fonts/NotoSans-Regular.ttf"),
-        NotoSansBold: require("../assets/fonts/NotoSans-Bold.ttf"),
+        NotoSansMedium: require("../assets/fonts/NotoSans-Medium.ttf"),
         NotoSansSemiBold: require("../assets/fonts/NotoSans-SemiBold.ttf"),
+        NotoSansBold: require("../assets/fonts/NotoSans-Bold.ttf"),
         NotoSansItalic: require("../assets/fonts/NotoSans-Italic.ttf"),
-        NotoSansBoldItalic: require("../assets/fonts/NotoSans-BoldItalic.ttf"),
+        NotoSansMediumItalic: require("../assets/fonts/NotoSans-MediumItalic.ttf"),
         NotoSansSemiBoldItalic: require("../assets/fonts/NotoSans-SemiBoldItalic.ttf"),
+        NotoSansBoldItalic: require("../assets/fonts/NotoSans-BoldItalic.ttf"),
         ...FontAwesome.font,
     });
 
@@ -59,27 +63,31 @@ function RootLayoutNav() {
         <ThemeProvider
             value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
-            <Stack initialRouteName="index">
+            <Stack initialRouteName="(main)/welcome">
                 <Stack.Screen name="index" options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="(drawer)"
+                    options={{ headerShown: false }}
+                />
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen name="sidenav" options={{ headerShown: false }} />
                 <Stack.Screen
                     name="modal"
                     options={{ presentation: "modal" }}
                 />
                 <Stack.Screen
-                    name="(pages)/welcome"
+                    name="(main)/welcome"
                     options={{
                         title: "Welcome Page",
-                        presentation: "modal",
                         headerShown: false,
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/onboard/index"
+                    name="(main)/onboard/index"
                     options={{ headerShown: false }}
                 />
                 <Stack.Screen
-                    name="(pages)/onboard/[onboardId]"
+                    name="(main)/onboard/[onboardId]"
                     options={{
                         title: "Onboard Page",
                         presentation: "modal",
@@ -87,37 +95,49 @@ function RootLayoutNav() {
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/blog/index"
+                    name="(main)/login"
                     options={{
-                        title: "Cyberblog Page",
+                        title: "Login Page",
                         presentation: "modal",
                         headerShown: false,
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/home"
+                    name="(main)/register"
                     options={{
-                        title: "Home Page",
+                        title: "Register Page",
                         presentation: "modal",
                         headerShown: false,
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/scammer/index"
+                    name="(main)/forgotpassword/[forgotPassword]"
                     options={{
-                        title: "Scammer Page",
+                        title: "Forgot Password Page",
+                        presentation: "modal",
+                        headerShown: false,
+                    }}
+                />
+
+                {
+                    //Commenting, might use back later who knows?
+                    /* <Stack.Screen
+                    name="(pages)/forgotpassword/newPassword"
+                    options={{
+                        title: "New Password Page",
                         presentation: "modal",
                         headerShown: false,
                     }}
                 />
                 <Stack.Screen
-                    name="(pages)/Simulation/index"
+                    name="(pages)/forgotpassword/verification"
                     options={{
-                        title: "Simulation Page",
+                        title: "Verification Page",
                         presentation: "modal",
                         headerShown: false,
                     }}
-                />
+                /> */
+                }
             </Stack>
         </ThemeProvider>
     );
