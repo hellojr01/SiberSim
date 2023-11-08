@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, SafeAreaView, View, ScrollView } from 'react-native';
 import { color } from '../../../constants/Colors';
-import Icon from "@expo/vector-icons/AntDesign";
-import Header from '../../../components/Header';
 import SectionHeading from '../../../components/SectionHeading';
 import Carousel from '../../../components/HorizontalCarousel';
 import SearchComponent from '../../../components/SearchComponent';
@@ -21,7 +19,6 @@ const Blog = () => {
 
   return (
     <View style={styles.container}>
-      <Header title="Cyberblog" />
       <SearchComponent />
       <ScrollView style={styles.contentContainer}>
         <View style={styles.sectionContainer}>
