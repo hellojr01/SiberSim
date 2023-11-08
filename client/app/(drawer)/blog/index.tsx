@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, SafeAreaView, View, ScrollView } from "react-native";
+import { StyleSheet, Text, SafeAreaView, TouchableOpacity, View, ScrollView } from "react-native";
 import { color } from "../../../constants/Colors";
 import SectionHeading from "../../../components/SectionHeading";
 import Carousel from "../../../components/HorizontalCarousel";
@@ -8,6 +8,7 @@ import { useState } from "react";
 import ButtonFilter from "../../../components/ButtonFilter";
 import VerticalCarousel from "../../../components/VerticalCarousel";
 import { FAB } from "@rneui/base";
+import { router } from "expo-router";
 
 const Blog = () => {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -37,11 +38,15 @@ const Blog = () => {
                     <VerticalCarousel carouselDesign="cyberblog" />
                 </View>
             </ScrollView>
-            <FAB
-                icon={{ name: "add", color: "white" }}
-                color="purple"
-                style={styles.fab}
-            />
+            <TouchableOpacity
+                    onPress={() => router.push("/addBlog")}
+                >
+                    <FAB
+                        icon={{ name: "add", color: "white" }}
+                        color="purple"
+                        style={styles.fab}
+                    />
+            </TouchableOpacity>
         </View>
     );
 };
