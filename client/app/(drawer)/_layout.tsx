@@ -8,8 +8,6 @@ import { Drawer } from "expo-router/drawer";
 import { color } from "../../constants/Colors";
 import { View } from "../../components/Themed";
 
-const windowWidth = Dimensions.get("window").width;
-
 type props = {
     color: ColorValue | undefined;
     focused: Boolean;
@@ -31,6 +29,10 @@ function DisplayText({ color, focused, title }: props) {
 }
 
 export default function DrawerLayout() {
+    const windowWidth = Dimensions.get("window").width;
+    const smallIcon = windowWidth * (0.11 - windowWidth * 0.00005);
+    const bigIcon = windowWidth * (0.16 - windowWidth * 0.000075);
+
     return (
         <Drawer
             initialRouteName="(pages)/home"
@@ -64,20 +66,10 @@ export default function DrawerLayout() {
                     drawerIcon: ({ focused, color }) => (
                         <FontAwesome
                             name="home"
-                            size={
-                                focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005)
-                            }
+                            size={focused ? bigIcon : smallIcon}
                             color={color}
                             style={{
-                                width: focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005),
+                                width: focused ? bigIcon : smallIcon,
                                 aspectRatio: 1,
                             }}
                         />
@@ -85,7 +77,7 @@ export default function DrawerLayout() {
                 }}
             />
             <Drawer.Screen
-                name="simulation/index" // This is the name of the page and must match the url from root
+                name="simulation" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: ({ focused, color }) =>
                         DisplayText({
@@ -96,20 +88,10 @@ export default function DrawerLayout() {
                     drawerIcon: ({ focused, color }) => (
                         <MaterialCommunityIcons
                             name="cards-playing-spade-multiple"
-                            size={
-                                focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005)
-                            }
+                            size={focused ? bigIcon : smallIcon}
                             color={color}
                             style={{
-                                width: focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005),
+                                width: focused ? bigIcon : smallIcon,
                                 aspectRatio: 1,
                             }}
                         />
@@ -118,40 +100,30 @@ export default function DrawerLayout() {
                 }}
             />
             <Drawer.Screen
-                name="scammer/index" // This is the name of the page and must match the url from root
+                name="scammer" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: ({ focused, color }) =>
                         DisplayText({
                             color: color,
                             focused: focused,
-                            title: "Identify",
+                            title: "Spot Scam",
                         }),
                     drawerIcon: ({ focused, color }) => (
                         <MaterialCommunityIcons
                             name="magnify-scan"
-                            size={
-                                focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005)
-                            }
+                            size={focused ? bigIcon : smallIcon}
                             color={color}
                             style={{
-                                width: focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005),
+                                width: focused ? bigIcon : smallIcon,
                                 aspectRatio: 1,
                             }}
                         />
                     ),
-                    title: "Identify Scammer & Report",
+                    title: "Identify Scammers & Report",
                 }}
             />
             <Drawer.Screen
-                name="blog/index" // This is the name of the page and must match the url from root
+                name="blog" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: ({ focused, color }) =>
                         DisplayText({
@@ -162,20 +134,10 @@ export default function DrawerLayout() {
                     drawerIcon: ({ focused, color }) => (
                         <FontAwesome
                             name="quote-left"
-                            size={
-                                focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005)
-                            }
+                            size={focused ? bigIcon : smallIcon}
                             color={color}
                             style={{
-                                width: focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005),
+                                width: focused ? bigIcon : smallIcon,
                                 aspectRatio: 1,
                             }}
                         />
@@ -183,7 +145,6 @@ export default function DrawerLayout() {
                     title: "Cyber Blog",
                 }}
             />
-            {/* 
             <Drawer.Screen
                 name="profile" // This is the name of the page and must match the url from root
                 options={{
@@ -193,24 +154,13 @@ export default function DrawerLayout() {
                             focused: focused,
                             title: "Profile",
                         }),
-                    ),
                     drawerIcon: ({ focused, color }) => (
                         <FontAwesome
                             name="user"
-                            size={
-                                focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005)
-                            }
+                            size={focused ? bigIcon : smallIcon}
                             color={color}
                             style={{
-                                width: focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005),
+                                width: focused ? bigIcon : smallIcon,
                                 aspectRatio: 1,
                             }}
                         />
@@ -218,6 +168,7 @@ export default function DrawerLayout() {
                     title: "Profile Page",
                 }}
             />
+            {/* 
             <Drawer.Screen
                 name="learn" // This is the name of the page and must match the url from root
                 options={{
@@ -227,24 +178,13 @@ export default function DrawerLayout() {
                             focused: focused,
                             title: "Learn",
                         }),
-                    ),
                     drawerIcon: ({ focused, color }) => (
                         <FontAwesome
                             name="user"
-                            size={
-                                focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005)
-                            }
+                            size={focused ? bigIcon : smallIcon}
                             color={color}
                             style={{
-                                width: focused
-                                    ? windowWidth *
-                                      (0.16 - windowWidth * 0.000075)
-                                    : windowWidth *
-                                      (0.11 - windowWidth * 0.00005),
+                                width: focused ? bigIcon : smallIcon,
                                 aspectRatio: 1,
                             }}
                         />
@@ -252,30 +192,34 @@ export default function DrawerLayout() {
                     title: "Learn",
                 }}
             />
+             */}
             <Drawer.Screen
                 name="logout" // This is the name of the page and must match the url from root
                 options={{
-                    drawerLabel: ({ focused, color }) =>
+                    drawerLabel: () =>
                         DisplayText({
                             color: color.white,
                             focused: false,
                             title: "Log Out",
                         }),
-                    ),
                     drawerIcon: () => (
                         <MaterialCommunityIcons
                             name="logout"
-                            size={windowWidth *(0.11 - windowWidth * 0.00005)}
+                            size={smallIcon}
                             color={color.white}
                             style={{
-                                width: windowWidth * (0.11 - windowWidth * 0.00005),
+                                width: smallIcon,
                                 aspectRatio: 1,
                             }}
                         />
                     ),
+                    drawerItemStyle: {
+                        backgroundColor: color.purple,
+                        marginTop: 50,
+                    },
                     title: "Log Out",
                 }}
-            /> */}
+            />
         </Drawer>
     );
 }
