@@ -10,10 +10,6 @@ const SearchComponent: React.FunctionComponent<
 > = () => {
     const [search, setSearch] = useState("");
 
-    const updateSearch = (search: string) => {
-        setSearch(search);
-    };
-
     return (
         <View style={styles.view}>
             <SearchBar

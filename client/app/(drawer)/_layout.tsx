@@ -8,13 +8,13 @@ import { Drawer } from "expo-router/drawer";
 import { color } from "../../constants/Colors";
 import { View } from "../../components/Themed";
 
-type props = {
+type textProps = {
     color: ColorValue | undefined;
     focused: Boolean;
     title: String;
 };
 
-function DisplayText({ color, focused, title }: props) {
+function DisplayText({ color, focused, title }: textProps) {
     return (
         <Text
             style={{
@@ -50,7 +50,9 @@ export default function DrawerLayout() {
                 headerTintColor: color.white,
                 headerTitleStyle: {
                     fontFamily: "NotoSansSemiBold",
+                    fontSize: 20,
                 },
+                drawerType: "slide",
             }}
         >
             <Drawer.Screen

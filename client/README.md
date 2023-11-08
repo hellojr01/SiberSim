@@ -8,4 +8,4 @@ Error encountered:
 
 Run this command:
 
-`git apply --ignore-whitespace patches/react-native-reanimated+3.3.0.patch`
+    git apply --ignore-whitespace patches/react-native-reanimated+3.3.0.patch
