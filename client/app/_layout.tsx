@@ -34,7 +34,6 @@ export default function RootLayout() {
         NotoSansItalic: require("../assets/fonts/NotoSans-Italic.ttf"),
         NotoSansMediumItalic: require("../assets/fonts/NotoSans-MediumItalic.ttf"),
         NotoSansSemiBoldItalic: require("../assets/fonts/NotoSans-SemiBoldItalic.ttf"),
-        NotoSansBoldItalic: require("../assets/fonts/NotoSans-BoldItalic.ttf"),
         ...FontAwesome.font,
     });
 
@@ -118,9 +117,7 @@ function RootLayoutNav() {
                         headerShown: false,
                     }}
                 />
-
-                {
-                    //Commenting, might use back later who knows?
+                    {/* //Commenting, might use back later who knows?
                     /* <Stack.Screen
                     name="(pages)/forgotpassword/newPassword"
                     options={{
@@ -136,8 +133,7 @@ function RootLayoutNav() {
                         presentation: "modal",
                         headerShown: false,
                     }}
-                /> */
-                }
+                />  */}
             </Stack>
         </ThemeProvider>
     );
