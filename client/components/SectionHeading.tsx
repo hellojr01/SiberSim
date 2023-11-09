@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { color } from "../constants/Colors";
-import { Link } from "expo-router";
+import { Link, Route, router } from "expo-router";
 interface Props {
   title: string;
   viewAllButton?: boolean;
@@ -12,7 +12,8 @@ interface Props {
 }
 
 const SectionHeading: React.FC<Props> = ({
-    title,
+    title, 
+    path,
     viewAllButton = false,
     onPress = () => undefined,
     narrowPadding = false,
@@ -21,7 +22,7 @@ const SectionHeading: React.FC<Props> = ({
         <View style={narrowPadding ? styles.narrowContainer : styles.container}>
             <Text style={styles.title}>{title}</Text>
             {viewAllButton && (
-                <TouchableOpacity onPress={onPress}>
+                <Link href={path as any}>
                     <View style={styles.buttonContainer}>
                         <Text style={styles.textButton}>View All</Text>
                         <View>
@@ -32,7 +33,7 @@ const SectionHeading: React.FC<Props> = ({
                             />
                         </View>
                     </View>
-                </TouchableOpacity>
+                </Link>
             )}
         </View>
     );
