@@ -1,18 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, SafeAreaView, View } from "react-native";
+import { StyleSheet, Text, SafeAreaView, ScrollView, View } from "react-native";
 import { color } from "../../constants/Colors";
 import Icon from "@expo/vector-icons/AntDesign";
-import Header from "../../components/Header";
 import Advertisement from "../../components/Advertisement";
 import SectionHeading from "../../components/SectionHeading";
 import Carousel from "../../components/HorizontalCarousel";
-import Header from "../../components/Header";
-import { color } from "../../constants/Colors";
 
 const Home = () => {
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false}>
                 <Advertisement />
                 <View style={styles.sectionContainer}>
                     <SectionHeading
@@ -39,7 +35,6 @@ const Home = () => {
                     <Carousel carouselDesign="scammer" />
                 </View>
             </ScrollView>
-        </ScrollView>
     );
 };
 export default Home;
