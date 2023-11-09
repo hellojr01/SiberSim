@@ -49,8 +49,7 @@ const BlogPost = () => {
           path={""}
           narrowPadding={true}
       />
-      <VerticalCarousel carouselDesign="cyberblog" 
-          narrowPadding={true} />
+      <VerticalCarousel carouselDesign="cyberblog" />
       </View>
     </ScrollView>
   );

@@ -7,7 +7,7 @@ import {
     ScrollView,
     TouchableOpacity,
 } from "react-native";
-import { router } from "expo-router";
+import { Link } from "expo-router";
 import { FAB } from "@rneui/base";
 import SectionHeading from "../../../components/SectionHeading";
 import SearchComponent from "../../../components/SearchComponent";
@@ -49,16 +49,15 @@ const Blog = () => {
                     <VerticalCarousel carouselDesign="cyberblog" />
                 </View>
             </ScrollView>
-            <TouchableOpacity onPress={() => router.push("/blog/addBlog")}>
                 <View>
+                    <Link href="/blog/addBlog" asChild>
                     <FAB
                         icon={{ name: "add", color: "white" }}
                         color="purple"
                         style={styles.fab}
                     />
+                    </Link>
                 </View>
-            </TouchableOpacity>
-        </View>
         </SafeAreaView>
     );
 };

@@ -19,7 +19,7 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
                         {simulations.map((simulation) => (
                             <View key={simulation.id} style={styles.simulation}>
                                 <Image source={simulation.image} style={styles.simImage} />
-                                <Text style={styles.title}>{simulation.title}</Text>
+                                <Text style={styles.simTitle}>{simulation.title}</Text>
                             </View>
                         ))}
                     </ScrollView>
@@ -34,19 +34,18 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
                 >
                     {blogs.map((blog) => (
                         <View style={styles.blogContainer}>
-                        <Link href={blog.path as any}>
-                            <View key={blog.id} style={styles.blog}>
-                                    <Image source={blog.image} style={styles.blogImage} />
-                                    <View style={styles.blogDetails}>
-                                        <View style={styles.labelContainer}>
-                                            <Text style={styles.blogLabel}>{blog.category}</Text>
+                            <Link href={blog.path as any}>
+                                <View key={blog.id} style={styles.blog}>
+                                        <Image source={blog.image} style={styles.blogImage} />
+                                        <View style={styles.blogDetails}>
+                                            <View style={styles.labelContainer}>
+                                                <Text style={styles.blogLabel}>{blog.category}</Text>
+                                            </View>
+                                            <Text style={styles.blogTitle}>{blog.title}</Text>
+                                            <Text style={styles.blogDate}>{blog.date}</Text>
                                         </View>
-                                        <Text style={styles.blogTitle}>{blog.title}</Text>
-                                        <Text style={styles.blogDate}>{blog.date}</Text>
-                                    </View>
-                              </Link>
-                            </View>
-                        </Link>
+                                </View>
+                            </Link>
                         </View>
                     ))}
                 </ScrollView>
