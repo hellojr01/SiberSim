@@ -1,28 +1,42 @@
-import React from 'react';
-import { View, Text, Image, Button, ScrollView, StyleSheet } from 'react-native';
-import { simulations } from '../constants/simulationData';
-import { blogs } from '../constants/blogData';
-import { color } from '../constants/Colors';
-import { scammers } from '../constants/scammerData';
-import { Link } from 'expo-router';
+import React from "react";
+import {
+    View,
+    Text,
+    Image,
+    Button,
+    ScrollView,
+    StyleSheet,
+} from "react-native";
+import { simulations } from "../constants/simulationData";
+import { blogs } from "../constants/blogData";
+import { color } from "../constants/Colors";
+import { scammers } from "../constants/scammerData";
+import { Link } from "expo-router";
 
 type Props = {
     carouselDesign: "simulation" | "cyberblog" | "scammer";
 };
 
-
 const HorizontalCarousel = ({ carouselDesign }: Props) => {
-    if (carouselDesign === 'simulation') {
+    if (carouselDesign === "simulation") {
         return (
             <View style={styles.container}>
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                        {simulations.map((simulation) => (
-                            <View key={simulation.id} style={styles.simulation}>
-                                <Image source={simulation.image} style={styles.simImage} />
-                                <Text style={styles.simTitle}>{simulation.title}</Text>
-                            </View>
-                        ))}
-                    </ScrollView>
+                <ScrollView
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                >
+                    {simulations.map((simulation) => (
+                        <View key={simulation.id} style={styles.simulation}>
+                            <Image
+                                source={simulation.image}
+                                style={styles.simImage}
+                            />
+                            <Text style={styles.simTitle}>
+                                {simulation.title}
+                            </Text>
+                        </View>
+                    ))}
+                </ScrollView>
             </View>
         );
     } else if (carouselDesign === "cyberblog") {
@@ -33,17 +47,26 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
                     showsHorizontalScrollIndicator={false}
                 >
                     {blogs.map((blog) => (
-                        <View style={styles.blogContainer}>
+                        <View key={blog.id} style={styles.blogContainer}>
                             <Link href={blog.path as any}>
-                                <View key={blog.id} style={styles.blog}>
-                                        <Image source={blog.image} style={styles.blogImage} />
-                                        <View style={styles.blogDetails}>
-                                            <View style={styles.labelContainer}>
-                                                <Text style={styles.blogLabel}>{blog.category}</Text>
-                                            </View>
-                                            <Text style={styles.blogTitle}>{blog.title}</Text>
-                                            <Text style={styles.blogDate}>{blog.date}</Text>
+                                <View style={styles.blog}>
+                                    <Image
+                                        source={blog.image}
+                                        style={styles.blogImage}
+                                    />
+                                    <View style={styles.blogDetails}>
+                                        <View style={styles.labelContainer}>
+                                            <Text style={styles.blogLabel}>
+                                                {blog.category}
+                                            </Text>
                                         </View>
+                                        <Text style={styles.blogTitle}>
+                                            {blog.title}
+                                        </Text>
+                                        <Text style={styles.blogDate}>
+                                            {blog.date}
+                                        </Text>
+                                    </View>
                                 </View>
                             </Link>
                         </View>
