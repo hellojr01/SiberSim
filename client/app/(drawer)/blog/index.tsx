@@ -7,15 +7,15 @@ import {
     ScrollView,
     TouchableOpacity,
 } from "react-native";
-import { Link } from "expo-router";
+import { router } from "expo-router";
 import { FAB } from "@rneui/base";
 import SectionHeading from "../../../components/SectionHeading";
 import SearchComponent from "../../../components/SearchComponent";
 import ButtonFilter from "../../../components/ButtonFilter";
+import HCarousel from "../../../components/HorizontalCarousel";
+import VCarousel from "../../../components/VerticalCarousel";
 import { color } from "../../../constants/Colors";
 import Icon from "@expo/vector-icons/AntDesign";
-import VerticalCarousel from "../../../components/VerticalCarousel";
-import Carousel from "../../../components/HorizontalCarousel";
 
 const Blog = () => {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -36,9 +36,8 @@ const Blog = () => {
                     <SectionHeading
                         title="Trending Now"
                         viewAllButton={false}
-                        path={""}
                     />
-                    <Carousel carouselDesign="cyberblog" />
+                    <HCarousel carouselDesign="cyberblog" />
                 </View>
                 <View style={styles.sectionContainer}>
                     <ButtonFilter
@@ -46,18 +45,15 @@ const Blog = () => {
                         filters={filters}
                         onFilterChange={handleFilterChange}
                     />
-                    <VerticalCarousel carouselDesign="cyberblog" />
+                    <VCarousel carouselDesign="cyberblog" />
                 </View>
             </ScrollView>
-                <View>
-                    <Link href="/blog/addBlog" asChild>
-                    <FAB
-                        icon={{ name: "add", color: "white" }}
-                        color="purple"
-                        style={styles.fab}
-                    />
-                    </Link>
-                </View>
+            <FAB
+                icon={{ name: "add", color: "white" }}
+                color={color.purple}
+                style={styles.fab}
+                onPress={() => router.push("/blog/addBlog")}
+            />
         </SafeAreaView>
     );
 };
