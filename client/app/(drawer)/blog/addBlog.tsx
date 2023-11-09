@@ -22,6 +22,7 @@ const AddBlog = () => {
 
   const closeModal = () => {
     setModalVisible(false);
+    
   };
 
   return (

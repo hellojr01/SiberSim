@@ -6,7 +6,6 @@ import {
 } from "@expo/vector-icons";
 import { Drawer } from "expo-router/drawer";
 import { color } from "../../constants/Colors";
-import { View } from "../../components/Themed";
 
 type textProps = {
     color: ColorValue | undefined;
@@ -35,7 +34,7 @@ export default function DrawerLayout() {
 
     return (
         <Drawer
-            initialRouteName="(pages)/home"
+            initialRouteName="home"
             screenOptions={{
                 drawerActiveTintColor: color.americanBlue,
                 drawerInactiveTintColor: color.white,

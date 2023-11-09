@@ -1,8 +1,10 @@
 import { Stack } from "expo-router";
 
 export default function BlogLayout() {
+    //Please add new screens/pages under Stack.Screen, copy the line above the make addition
     return (
         <Stack
+            initialRouteName="index"
             screenOptions={{
                 title: "Cyber Blog",
                 headerShown: false,
@@ -19,7 +21,7 @@ export default function BlogLayout() {
                     title: "Add Blog",
                     presentation: "modal",
                     headerShown: false,
-                }}
+                }}  
             />
             <Stack.Screen
                 name="[id]"

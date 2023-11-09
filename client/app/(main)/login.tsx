@@ -69,7 +69,7 @@ const LoginScreen = () => {
             <View style={styles.bottom}>
                 <TouchableOpacity
                     style={styles.loginButton}
-                    onPress={() => router.push("/(drawer)/home")}
+                    onPress={() => router.push("/home")}
                 >
                     <Text
                         style={{

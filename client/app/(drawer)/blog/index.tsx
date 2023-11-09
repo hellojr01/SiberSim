@@ -1,14 +1,19 @@
-import React from "react";
-import { StyleSheet, Text, SafeAreaView, TouchableOpacity, View, ScrollView } from "react-native";
-import { color } from "../../../constants/Colors";
+import React, { useState } from "react";
+import {
+    StyleSheet,
+    Text,
+    SafeAreaView,
+    View,
+    ScrollView,
+    TouchableOpacity,
+} from "react-native";
+import { router } from "expo-router";
+import { FAB } from "@rneui/base";
 import SectionHeading from "../../../components/SectionHeading";
-import Carousel from "../../../components/HorizontalCarousel";
 import SearchComponent from "../../../components/SearchComponent";
-import { useState } from "react";
 import ButtonFilter from "../../../components/ButtonFilter";
 import VerticalCarousel from "../../../components/VerticalCarousel";
-import { FAB } from "@rneui/base";
-import { Link } from "expo-router";
+import Carousel from "../../../components/HorizontalCarousel";
 
 const Blog = () => {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -39,13 +44,16 @@ const Blog = () => {
                     <VerticalCarousel carouselDesign="cyberblog" />
                 </View>
             </ScrollView>
+            <TouchableOpacity onPress={() => router.push("/blog/addBlog")}>
+                <View>
             <Link href={"/blog/addBlog"} asChild>
                     <FAB
                         icon={{ name: "add", color: "white" }}
                         color="purple"
                         style={styles.fab}
                     />
-            </Link>
+                </View>
+            </TouchableOpacity>
         </View>
     );
 };

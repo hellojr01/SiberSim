@@ -10,35 +10,39 @@ const SearchComponent: React.FunctionComponent<
 > = () => {
     const [search, setSearch] = useState("");
 
+    const updateSearch = (search: string) => {
+        setSearch(search);
+    };
+
     return (
         <View style={styles.view}>
             <SearchBar
                 platform="android"
                 placeholder="Search..."
-                placeholderTextColor="#6D67E4"
+                onChangeText={updateSearch}
+                placeholderTextColor={color.mediumSlateBlue}
                 containerStyle={{
-                    backgroundColor: "#F5F5F5",
+                    backgroundColor: color.white,
                     borderRadius: 10,
-                    padding: 0,
                 }}
                 inputStyle={{
-                    fontSize: 15,
+                    fontSize: 16,
                     paddingLeft: 10,
-                    color: color.purple,
+                    color: color.mediumSlateBlue,
                     fontFamily: "NotoSansBold",
                 }}
                 inputContainerStyle={{
-                    borderColor: color.purple,
+                    borderColor: color.mediumSlateBlue,
                     borderRadius: 10,
                 }}
                 searchIcon={{
-                    color: color.purple,
+                    color: color.mediumSlateBlue,
                 }}
                 cancelIcon={{
-                    color: color.purple,
+                    color: color.mediumSlateBlue,
                 }}
                 clearIcon={{
-                    color: color.purple,
+                    color: color.mediumSlateBlue,
                 }}
             />
         </View>
