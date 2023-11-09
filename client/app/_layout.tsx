@@ -18,7 +18,7 @@ export {
 
 export const unstable_settings = {
     // Ensure that reloading on `/modal` keeps a back button present.
-    initialRouteName: "(drawer)",
+    initialRouteName: "index",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -63,80 +63,13 @@ function RootLayoutNav() {
         <ThemeProvider
             value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
-            <Stack>
+            <Stack initialRouteName="index">
                 <Stack.Screen name="index" options={{ headerShown: false }} />
                 <Stack.Screen
                     name="(drawer)"
                     options={{ headerShown: false }}
                 />
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                <Stack.Screen
-                    name="modal"
-                    options={{ presentation: "modal" }}
-                />
-                <Stack.Screen
-                    name="(main)/welcome"
-                    options={{
-                        title: "Welcome Page",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(main)/onboard/index"
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="(main)/onboard/[onboardId]"
-                    options={{
-                        title: "Onboard Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(main)/login"
-                    options={{
-                        title: "Login Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(main)/register"
-                    options={{
-                        title: "Register Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(main)/forgotpassword/[forgotPassword]"
-                    options={{
-                        title: "Forgot Password Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-
-                {
-                    //Commenting, might use back later who knows?
-                    /* <Stack.Screen
-                    name="(pages)/forgotpassword/newPassword"
-                    options={{
-                        title: "New Password Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="(pages)/forgotpassword/verification"
-                    options={{
-                        title: "Verification Page",
-                        presentation: "modal",
-                        headerShown: false,
-                    }}
-                /> */
-                }
+                <Stack.Screen name="(main)" options={{ headerShown: false }} />
             </Stack>
         </ThemeProvider>
     );

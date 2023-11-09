@@ -34,7 +34,7 @@ export default function DrawerLayout() {
 
     return (
         <Drawer
-            initialRouteName="(pages)/home"
+            initialRouteName="home"
             screenOptions={{
                 drawerActiveTintColor: color.americanBlue,
                 drawerInactiveTintColor: color.white,

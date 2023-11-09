@@ -12,6 +12,7 @@ export const color = {
   pastelOrange: '#FFB756',
   darkGreen: '#006400',
   red: '#FF0000',
+  charcoal: '454545',
   gray: '#D9D9D9',
   white:'#fff',
   black:'#000',

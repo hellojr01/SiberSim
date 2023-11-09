@@ -17,6 +17,7 @@
         "@expo/vector-icons": "^13.0.0",
         "@react-navigation/drawer": "^6.6.6",
         "@react-navigation/native": "^6.0.2",
+        "@react-native-picker/picker": "2.4.10",
         "@rneui/base": "^0.0.0-edge.2",
         "@rneui/themed": "^0.0.0-edge.2",
         "expo": "^49.0.16",

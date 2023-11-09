@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, SafeAreaView, View, ScrollView, TouchableOpacity } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    SafeAreaView,
+    View,
+    ScrollView,
+    TouchableOpacity,
+} from "react-native";
 import { router } from "expo-router";
 import { FAB } from "@rneui/base";
 import SectionHeading from "../../../components/SectionHeading";
@@ -37,14 +44,17 @@ const Blog = () => {
                     <VCarousel carouselDesign="cyberblog" />
                 </View>
             </ScrollView>
-            <TouchableOpacity
-                    onPress={() => router.push("/addBlog")}
-                >
+            <TouchableOpacity onPress={() => router.push("/blog/addBlog")}>
+                <View>
                     <FAB
                         icon={{ name: "add", color: "white" }}
                         color="purple"
                         style={styles.fab}
                     />
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.push("/blog/addBlog")}>
+                <Text>Test Button</Text>
             </TouchableOpacity>
         </View>
     );
