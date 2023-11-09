@@ -1,14 +1,13 @@
-import React from "react";
-import { StyleSheet, Text, SafeAreaView, TouchableOpacity, View, ScrollView } from "react-native";
-import { color } from "../../../constants/Colors";
-import SectionHeading from "../../../components/SectionHeading";
-import Carousel from "../../../components/HorizontalCarousel";
-import SearchComponent from "../../../components/SearchComponent";
-import { useState } from "react";
-import ButtonFilter from "../../../components/ButtonFilter";
-import VerticalCarousel from "../../../components/VerticalCarousel";
-import { FAB } from "@rneui/base";
+import React, { useState } from "react";
+import { StyleSheet, Text, SafeAreaView, View, ScrollView, TouchableOpacity } from "react-native";
 import { router } from "expo-router";
+import { FAB } from "@rneui/base";
+import SectionHeading from "../../../components/SectionHeading";
+import SearchComponent from "../../../components/SearchComponent";
+import ButtonFilter from "../../../components/ButtonFilter";
+import HCarousel from "../../../components/HorizontalCarousel";
+import VCarousel from "../../../components/VerticalCarousel";
+import { color } from "../../../constants/Colors";
 
 const Blog = () => {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -27,7 +26,7 @@ const Blog = () => {
                         title="Trending Now"
                         viewAllButton={false}
                     />
-                    <Carousel carouselDesign="cyberblog" />
+                    <HCarousel carouselDesign="cyberblog" />
                 </View>
                 <View style={styles.sectionContainer}>
                     <ButtonFilter
@@ -35,7 +34,7 @@ const Blog = () => {
                         filters={filters}
                         onFilterChange={handleFilterChange}
                     />
-                    <VerticalCarousel carouselDesign="cyberblog" />
+                    <VCarousel carouselDesign="cyberblog" />
                 </View>
             </ScrollView>
             <TouchableOpacity

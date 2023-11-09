@@ -5,6 +5,7 @@ export const color = {
   americanBlue: '#453C67',
   mediumSlateBlue: '#6D67E4',
   seaSerpeant: '#46C2CB',
+  darkBlueMagenta: '#453C67',
   purple: '#7B49BA',
   lavender: '#E7EBFF',
   sunglow: '#FFCC33',

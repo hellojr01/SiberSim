@@ -2,8 +2,8 @@ import React from "react";
 import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
 import { simulations } from "../constants/simulationData";
 import { blogs } from "../constants/blogData";
-import { color } from "../constants/Colors";
 import { scammers } from "../constants/scammerData";
+import { color } from "../constants/Colors";
 
 type Props = {
     carouselDesign: "simulation" | "cyberblog" | "scammer";
@@ -60,53 +60,70 @@ const VerticalCarousel = ({ carouselDesign }: Props) => {
 };
 
 const styles = StyleSheet.create({
-    labelContainer: {
-        backgroundColor: color.purple,
-        borderRadius: 10,
-        paddingHorizontal: 5,
-        alignSelf: "flex-start",
+    leftContent: {
+        marginRight: 10, // Space between the image and text
     },
-    blogDetails: {
-        alignItems: "flex-start",
-    },
-    blogLabel: {
-        fontSize: 8,
-        color: color.white,
+    rightContent: {
+        flex: 1, // Expand to fill available horizontal space
+        justifyContent: "center",
+        height: 100,
     },
     simulation: {
         alignItems: "center",
         marginBottom: 10,
         width: 80,
     },
-    blog: {
-        flexDirection: "row", // Horizontal layout
-        alignItems: "center", // Vertically centered
-        marginBottom: 10,
-        paddingHorizontal: 10, // Add some horizontal padding
-    },
-    leftContent: {
-        marginRight: 10, // Space between the image and text
-    },
-    rightContent: {
-        flex: 1, // Expand to fill available horizontal space
-    },
-    blogDate: {
-        fontSize: 8,
-        color: "rgba(69, 60, 103, 0.80)",
-    },
-    scammer: {
-        alignItems: "center",
-        marginBottom: 10,
-    },
     simImage: {
         width: 80,
         height: 80,
         resizeMode: "contain",
     },
+    blog: {
+        flexDirection: "row", // Horizontal layout
+        alignItems: "center", // Vertically centered
+        marginVertical: 5,
+        paddingHorizontal: 10, // Add some horizontal padding
+    },
     blogImage: {
-        width: 110,
-        height: 110,
+        width: 120,
+        height: 120,
         resizeMode: "contain",
+    },
+    labelContainer: {
+        backgroundColor: color.purple,
+        borderRadius: 10,
+        paddingHorizontal: 8,
+        paddingVertical: 2,
+        alignSelf: "flex-start",
+        marginBottom: 2,
+    },
+    blogLabel: {
+        fontSize: 11,
+        color: color.white,
+    },
+    blogTitle: {
+        fontSize: 15,
+        fontFamily: "NotoSansBold",
+        color: color.americanBlue,
+    },
+    blogDesc: {
+        fontSize: 12,
+        fontFamily: "NotoSansSemiBold",
+        color: color.purple,
+        marginBottom: 8,
+        overflow: "hidden",
+        flexShrink: 1,
+    },
+    blogDate: {
+        fontSize: 11,
+        color: color.darkBlueMagenta,
+    },
+    blogDetails: {
+        alignItems: "flex-start",
+    },
+    scammer: {
+        alignItems: "center",
+        marginBottom: 10,
     },
     scamImage: {
         width: 50,
@@ -118,28 +135,18 @@ const styles = StyleSheet.create({
         fontFamily: "NotoSansBold",
         marginTop: 10,
     },
+    scamNumber: {
+        fontSize: 12,
+        fontFamily: "NotoSansBold",
+    },
     scamTitle: {
         fontSize: 12,
         fontFamily: "NotoSansBold",
         color: color.purple,
     },
-    scamNumber: {
-        fontSize: 12,
-        fontFamily: "NotoSansBold",
-    },
     scamRecent: {
         fontSize: 8,
-        color: "rgba(69, 60, 103, 0.80)",
-    },
-    blogTitle: {
-        fontSize: 15,
-        fontFamily: "NotoSansBold",
-        color: color.americanBlue,
-    },
-    blogDesc: {
-        fontSize: 10,
-        fontFamily: "NotoSansSemiBold",
-        color: color.purple,
+        color: color.darkBlueMagenta,
     },
 });
 
