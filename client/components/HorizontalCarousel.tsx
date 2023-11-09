@@ -62,7 +62,7 @@ const HorizontalCarousel = ({
                                         : router.push("/blog");
                                     setTimeout(
                                         () => router.push(blog.path as any),
-                                        50
+                                        5
                                     );
                                 }}
                                 underlayColor="transparent"
