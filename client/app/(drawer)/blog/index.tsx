@@ -12,10 +12,10 @@ import { FAB } from "@rneui/base";
 import SectionHeading from "../../../components/SectionHeading";
 import SearchComponent from "../../../components/SearchComponent";
 import ButtonFilter from "../../../components/ButtonFilter";
-import HCarousel from "../../../components/HorizontalCarousel";
-import VCarousel from "../../../components/VerticalCarousel";
 import { color } from "../../../constants/Colors";
 import Icon from "@expo/vector-icons/AntDesign";
+import VerticalCarousel from "../../../components/VerticalCarousel";
+import Carousel from "../../../components/HorizontalCarousel";
 
 const Blog = () => {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -36,8 +36,9 @@ const Blog = () => {
                     <SectionHeading
                         title="Trending Now"
                         viewAllButton={false}
+                        path={""}
                     />
-                    <HCarousel carouselDesign="cyberblog" />
+                    <Carousel carouselDesign="cyberblog" />
                 </View>
                 <View style={styles.sectionContainer}>
                     <ButtonFilter
@@ -45,15 +46,19 @@ const Blog = () => {
                         filters={filters}
                         onFilterChange={handleFilterChange}
                     />
-                    <VCarousel carouselDesign="cyberblog" />
+                    <VerticalCarousel carouselDesign="cyberblog" />
                 </View>
             </ScrollView>
-            <FAB
-                icon={{ name: "add", color: "white" }}
-                color={color.purple}
-                style={styles.fab}
-                onPress={() => router.push("/blog/addBlog")}
-            />
+            <TouchableOpacity onPress={() => router.push("/blog/addBlog")}>
+                <View>
+                    <FAB
+                        icon={{ name: "add", color: "white" }}
+                        color="purple"
+                        style={styles.fab}
+                    />
+                </View>
+            </TouchableOpacity>
+        </View>
         </SafeAreaView>
     );
 };

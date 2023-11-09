@@ -8,10 +8,29 @@ export default function BlogLayout() {
             screenOptions={{
                 title: "Cyber Blog",
                 headerShown: false,
+            }}>
+            <Stack.Screen
+            name="index"
+            options={{
+                title: "Home",
             }}
-        >
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="addBlog" options={{ headerShown: false }} />
+            />
+            <Stack.Screen
+                name="addBlog"
+                options={{
+                    title: "Add Blog",
+                    presentation: "modal",
+                    headerShown: false,
+                }}  
+            />
+            <Stack.Screen
+                name="[id]"
+                options={{
+                    title: "Back to Cyberblog",
+                    presentation: "modal",
+                    headerShown: true,
+                }}
+            />
         </Stack>
     );
 }

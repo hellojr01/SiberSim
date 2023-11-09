@@ -2,20 +2,23 @@ import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { color } from "../constants/Colors";
-
+import { Link } from "expo-router";
 interface Props {
-    title: string;
-    viewAllButton?: boolean;
-    onPress?: () => void;
+  title: string;
+  viewAllButton?: boolean;
+  path: string;
+  narrowPadding?: boolean;
+  onPress?: () => void;
 }
 
 const SectionHeading: React.FC<Props> = ({
     title,
     viewAllButton = false,
     onPress = () => undefined,
+    narrowPadding = false,
 }) => {
     return (
-        <View style={styles.container}>
+        <View style={narrowPadding ? styles.narrowContainer : styles.container}>
             <Text style={styles.title}>{title}</Text>
             {viewAllButton && (
                 <TouchableOpacity onPress={onPress}>
@@ -43,6 +46,12 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         paddingHorizontal: 16,
     },
+    narrowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
     title: {
         fontFamily: "NotoSansBold",
         fontSize: 16,

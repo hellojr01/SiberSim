@@ -3,13 +3,14 @@ import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
 import { simulations } from "../constants/simulationData";
 import { blogs } from "../constants/blogData";
 import { scammers } from "../constants/scammerData";
+import { Link } from 'expo-router';
 import { color } from "../constants/Colors";
 
 type Props = {
     carouselDesign: "simulation" | "cyberblog" | "scammer";
 };
 
-const VerticalCarousel = ({ carouselDesign }: Props) => {
+const VerticalCarousel = ({ carouselDesign}: Props) => {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             {carouselDesign === "simulation" &&
@@ -24,6 +25,8 @@ const VerticalCarousel = ({ carouselDesign }: Props) => {
                 ))}
             {carouselDesign === "cyberblog" &&
                 blogs.map((blog) => (
+                    <View style={styles.blogContainer}>
+                    <Link href={blog.path as any}>
                     <View key={blog.id} style={styles.blog}>
                         <View style={styles.leftContent}>
                             <Image
@@ -41,6 +44,8 @@ const VerticalCarousel = ({ carouselDesign }: Props) => {
                             <Text style={styles.blogDesc}>{blog.desc}</Text>
                             <Text style={styles.blogDate}>{blog.date}</Text>
                         </View>
+                    </View>
+                    </Link>
                     </View>
                 ))}
             {carouselDesign === "scammer" &&
@@ -60,6 +65,12 @@ const VerticalCarousel = ({ carouselDesign }: Props) => {
 };
 
 const styles = StyleSheet.create({
+    narrowPadding: {
+        fontSize: 200
+    },
+    blogContainer: {
+        marginHorizontal: 10,
+    },
     leftContent: {
         marginRight: 10, // Space between the image and text
     },
