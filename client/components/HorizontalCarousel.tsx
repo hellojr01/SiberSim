@@ -4,23 +4,24 @@ import { simulations } from '../constants/simulationData';
 import { blogs } from '../constants/blogData';
 import { color } from '../constants/Colors';
 import { scammers } from '../constants/scammerData';
+import { Link } from 'expo-router';
 
 type Props = {
     carouselDesign: 'simulation' | 'cyberblog' | 'scammer';
 };
 
-const SimulationCarousel = ({ carouselDesign }: Props) => {
+const HorizontalCarousel = ({ carouselDesign }: Props) => {
     if (carouselDesign === 'simulation') {
         return (
             <View style={styles.container}>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {simulations.map((simulation) => (
-                        <View key={simulation.id} style={styles.simulation}>
-                            <Image source={simulation.image} style={styles.simImage} />
-                            <Text style={styles.title}>{simulation.title}</Text>
-                        </View>
-                    ))}
-                </ScrollView>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        {simulations.map((simulation) => (
+                            <View key={simulation.id} style={styles.simulation}>
+                                <Image source={simulation.image} style={styles.simImage} />
+                                <Text style={styles.title}>{simulation.title}</Text>
+                            </View>
+                        ))}
+                    </ScrollView>
             </View>
         );
     } else if(carouselDesign === 'cyberblog') {
@@ -28,15 +29,19 @@ const SimulationCarousel = ({ carouselDesign }: Props) => {
             <View style={styles.container}>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {blogs.map((blog) => (
-                        <View key={blog.id} style={styles.blog}>
-                            <Image source={blog.image} style={styles.blogImage} />
-                            <View style={styles.blogDetails}>
-                                <View style={styles.labelContainer}>
-                                    <Text style={styles.blogLabel}>{blog.category}</Text>
-                                </View>
-                                <Text style={styles.blogTitle}>{blog.title}</Text>
-                                <Text style={styles.blogDate}>{blog.date}</Text>
+                        <View style={styles.blogContainer}>
+                        <Link href={blog.path as any}>
+                            <View key={blog.id} style={styles.blog}>
+                                    <Image source={blog.image} style={styles.blogImage} />
+                                    <View style={styles.blogDetails}>
+                                        <View style={styles.labelContainer}>
+                                            <Text style={styles.blogLabel}>{blog.category}</Text>
+                                        </View>
+                                        <Text style={styles.blogTitle}>{blog.title}</Text>
+                                        <Text style={styles.blogDate}>{blog.date}</Text>
+                                    </View>
                             </View>
+                        </Link>
                         </View>
                     ))}
                 </ScrollView>
@@ -64,6 +69,9 @@ const styles = StyleSheet.create({
     container: {
         paddingBottom: 10 
     },
+    blogContainer: {
+        marginHorizontal: 10,
+    },
     labelContainer: {
         backgroundColor: color.purple,
         borderRadius: 10,
@@ -83,7 +91,7 @@ const styles = StyleSheet.create({
     },
     blog: {
         alignItems: 'center',
-        marginHorizontal: 10,
+        marginHorizontal: 20,
         width: 110,
     },
     blogDate: {
@@ -132,4 +140,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SimulationCarousel;
+export default HorizontalCarousel;

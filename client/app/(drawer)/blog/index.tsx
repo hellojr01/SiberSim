@@ -8,7 +8,7 @@ import { useState } from "react";
 import ButtonFilter from "../../../components/ButtonFilter";
 import VerticalCarousel from "../../../components/VerticalCarousel";
 import { FAB } from "@rneui/base";
-import { router } from "expo-router";
+import { Link } from "expo-router";
 
 const Blog = () => {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -26,6 +26,7 @@ const Blog = () => {
                     <SectionHeading
                         title="Trending Now"
                         viewAllButton={false}
+                        path={""}
                     />
                     <Carousel carouselDesign="cyberblog" />
                 </View>
@@ -38,15 +39,13 @@ const Blog = () => {
                     <VerticalCarousel carouselDesign="cyberblog" />
                 </View>
             </ScrollView>
-            <TouchableOpacity
-                    onPress={() => router.push("/addBlog")}
-                >
+            <Link href={"/blog/addBlog"} asChild>
                     <FAB
                         icon={{ name: "add", color: "white" }}
                         color="purple"
                         style={styles.fab}
                     />
-            </TouchableOpacity>
+            </Link>
         </View>
     );
 };
