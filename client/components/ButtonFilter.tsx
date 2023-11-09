@@ -16,7 +16,7 @@ const ButtonFilter: React.FC<ButtonFilterProps> = ({
 }) => {
     return (
         <ScrollView
-            horizontal
+            horizontal={true}
             contentContainerStyle={styles.container}
             showsHorizontalScrollIndicator={false}
         >
@@ -31,8 +31,11 @@ const ButtonFilter: React.FC<ButtonFilterProps> = ({
                     onPress={() => onFilterChange(filter)}
                     labelStyle={
                         activeFilter === filter
-                            ? styles.activeButtonText
-                            : styles.buttonText
+                            ? {
+                                  ...styles.baseButtonText,
+                                  ...styles.activeButtonText,
+                              }
+                            : styles.baseButtonText
                     }
                 >
                     {filter}
@@ -47,31 +50,26 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         marginVertical: 10,
-        marginHorizontal: 10,
-        alignSelf: "flex-start",
+        paddingHorizontal: 10,
     },
     button: {
-        marginRight: 10,
+        marginHorizontal: 5,
         backgroundColor: color.white,
-        height: 30,
-        marginL: 0,
     },
-    buttonText: {
+    baseButtonText: {
         color: color.americanBlue,
         fontFamily: "NotoSansMedium",
         fontSize: 12,
         marginVertical: 0,
-        padding: 5,
+        marginHorizontal: 0,
+        paddingVertical: 5,
+        paddingHorizontal: 10,
     },
     activeButton: {
         backgroundColor: color.americanBlue, // Active background color
     },
     activeButtonText: {
         color: color.white,
-        fontFamily: "NotoSansMedium",
-        fontSize: 12,
-        marginVertical: 0,
-        padding: 5,
     },
 });
 

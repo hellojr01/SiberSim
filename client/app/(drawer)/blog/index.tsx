@@ -12,6 +12,8 @@ import { FAB } from "@rneui/base";
 import SectionHeading from "../../../components/SectionHeading";
 import SearchComponent from "../../../components/SearchComponent";
 import ButtonFilter from "../../../components/ButtonFilter";
+import { color } from "../../../constants/Colors";
+import Icon from "@expo/vector-icons/AntDesign";
 import VerticalCarousel from "../../../components/VerticalCarousel";
 import Carousel from "../../../components/HorizontalCarousel";
 
@@ -24,9 +26,12 @@ const Blog = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <SearchComponent />
-            <ScrollView style={styles.contentContainer}>
+            <ScrollView
+                style={styles.contentContainer}
+                showsVerticalScrollIndicator={false}
+            >
                 <View style={styles.sectionContainer}>
                     <SectionHeading
                         title="Trending Now"
@@ -46,7 +51,6 @@ const Blog = () => {
             </ScrollView>
             <TouchableOpacity onPress={() => router.push("/blog/addBlog")}>
                 <View>
-            <Link href={"/blog/addBlog"} asChild>
                     <FAB
                         icon={{ name: "add", color: "white" }}
                         color="purple"
@@ -55,6 +59,7 @@ const Blog = () => {
                 </View>
             </TouchableOpacity>
         </View>
+        </SafeAreaView>
     );
 };
 

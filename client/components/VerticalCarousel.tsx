@@ -20,7 +20,7 @@ const VerticalCarousel = ({ carouselDesign}: Props) => {
                             source={simulation.image}
                             style={styles.simImage}
                         />
-                        <Text style={styles.title}>{simulation.title}</Text>
+                        <Text style={styles.simtitle}>{simulation.title}</Text>
                     </View>
                 ))}
             {carouselDesign === "cyberblog" &&
@@ -35,7 +35,7 @@ const VerticalCarousel = ({ carouselDesign}: Props) => {
                             />
                         </View>
                         <View style={styles.rightContent}>
-                            <View style={styles.labelContainer}>
+                            <View style={styles.rightLabelContainer}>
                                 <Text style={styles.blogLabel}>
                                     {blog.category}
                                 </Text>
@@ -79,6 +79,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         height: 100,
     },
+    rightLabelContainer: {
+        backgroundColor: color.purple,
+        borderRadius: 10,
+        paddingHorizontal: 8,
+        paddingVertical: 2,
+        alignSelf: "flex-start",
+        marginBottom: 2,
+    },
     simulation: {
         alignItems: "center",
         marginBottom: 10,
@@ -88,6 +96,11 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80,
         resizeMode: "contain",
+    },
+    simtitle: {
+        fontSize: 14,
+        fontFamily: "NotoSansBold",
+        marginTop: 10,
     },
     blog: {
         flexDirection: "row", // Horizontal layout
@@ -100,37 +113,26 @@ const styles = StyleSheet.create({
         height: 120,
         resizeMode: "contain",
     },
-    labelContainer: {
-        backgroundColor: color.purple,
-        borderRadius: 10,
-        paddingHorizontal: 8,
-        paddingVertical: 2,
-        alignSelf: "flex-start",
-        marginBottom: 2,
-    },
     blogLabel: {
         fontSize: 11,
         color: color.white,
     },
     blogTitle: {
-        fontSize: 15,
+        fontSize: 14,
         fontFamily: "NotoSansBold",
         color: color.americanBlue,
     },
     blogDesc: {
+        flexShrink: 1,
+        overflow: "hidden",
         fontSize: 12,
         fontFamily: "NotoSansSemiBold",
         color: color.purple,
         marginBottom: 8,
-        overflow: "hidden",
-        flexShrink: 1,
     },
     blogDate: {
         fontSize: 11,
         color: color.darkBlueMagenta,
-    },
-    blogDetails: {
-        alignItems: "flex-start",
     },
     scammer: {
         alignItems: "center",
@@ -141,13 +143,8 @@ const styles = StyleSheet.create({
         height: 50,
         resizeMode: "contain",
     },
-    title: {
-        fontSize: 12,
-        fontFamily: "NotoSansBold",
-        marginTop: 10,
-    },
     scamNumber: {
-        fontSize: 12,
+        fontSize: 14,
         fontFamily: "NotoSansBold",
     },
     scamTitle: {
@@ -156,7 +153,7 @@ const styles = StyleSheet.create({
         color: color.purple,
     },
     scamRecent: {
-        fontSize: 8,
+        fontSize: 11,
         color: color.darkBlueMagenta,
     },
 });

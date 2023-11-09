@@ -7,8 +7,9 @@ import { scammers } from '../constants/scammerData';
 import { Link } from 'expo-router';
 
 type Props = {
-    carouselDesign: 'simulation' | 'cyberblog' | 'scammer';
+    carouselDesign: "simulation" | "cyberblog" | "scammer";
 };
+
 
 const HorizontalCarousel = ({ carouselDesign }: Props) => {
     if (carouselDesign === 'simulation') {
@@ -24,10 +25,13 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
                     </ScrollView>
             </View>
         );
-    } else if(carouselDesign === 'cyberblog') {
+    } else if (carouselDesign === "cyberblog") {
         return (
             <View style={styles.container}>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                <ScrollView
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                >
                     {blogs.map((blog) => (
                         <View style={styles.blogContainer}>
                         <Link href={blog.path as any}>
@@ -40,6 +44,7 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
                                         <Text style={styles.blogTitle}>{blog.title}</Text>
                                         <Text style={styles.blogDate}>{blog.date}</Text>
                                     </View>
+                              </Link>
                             </View>
                         </Link>
                         </View>
@@ -47,16 +52,28 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
                 </ScrollView>
             </View>
         );
-    } else if(carouselDesign === 'scammer') {
+    } else if (carouselDesign === "scammer") {
         return (
             <View style={styles.container}>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                <ScrollView
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                >
                     {scammers.map((scammer) => (
                         <View key={scammer.id} style={styles.scammer}>
-                            <Image source={scammer.image} style={styles.scamImage} />
-                            <Text style={styles.scamNumber}>{scammer.number}</Text>
-                            <Text style={styles.scamTitle}>{scammer.title}</Text>
-                            <Text style={styles.scamRecent}>{scammer.recent}</Text>
+                            <Image
+                                source={scammer.image}
+                                style={styles.scamImage}
+                            />
+                            <Text style={styles.scamNumber}>
+                                {scammer.number}
+                            </Text>
+                            <Text style={styles.scamTitle}>
+                                {scammer.title}
+                            </Text>
+                            <Text style={styles.scamRecent}>
+                                {scammer.recent}
+                            </Text>
                         </View>
                     ))}
                 </ScrollView>
@@ -67,7 +84,7 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingBottom: 10 
+        paddingBottom: 10,
     },
     blogContainer: {
         marginHorizontal: 10,
@@ -75,68 +92,84 @@ const styles = StyleSheet.create({
     labelContainer: {
         backgroundColor: color.purple,
         borderRadius: 10,
-        paddingHorizontal: 5,
-    },
-    blogDetails: {
-        alignItems: 'flex-start',
-    },
-    blogLabel: {
-        fontSize: 8,
-        color: color.white,
+        paddingHorizontal: 8,
+        paddingVertical: 2,
     },
     simulation: {
-        alignItems: 'center',
+        alignItems: "center",
         marginHorizontal: 10,
         width: 80,
-    },
-    blog: {
-        alignItems: 'center',
-        marginHorizontal: 20,
-        width: 110,
-    },
-    blogDate: {
-        fontSize: 8,
-        color: '#rgba(69, 60, 103, 0.60)',
-    },
-    scammer: {
-        alignItems: 'center',
-        marginHorizontal: 10,
     },
     simImage: {
         width: 80,
         height: 80,
-        resizeMode: 'contain',
+        resizeMode: "contain",
+    },
+    simTitle: {
+        fontSize: 12,
+        fontFamily: "NotoSansBold",
+        marginTop: 2,
+        alignSelf: "center",
+        textAlign: "center",
+    },
+    blog: {
+        alignItems: "flex-start",
+        marginHorizontal: 10,
+        width: 120,
     },
     blogImage: {
-        width: 110,
-        resizeMode: 'contain',
+        width: 120,
+        height: 120,
+        resizeMode: "contain",
+        marginBottom: 10,
+    },
+    blogLabel: {
+        fontSize: 11,
+        color: color.white,
+    },
+    blogTitle: {
+        flexShrink: 1,
+        overflow: "hidden",
+        fontFamily: "NotoSansBold",
+        fontSize: 14,
+        marginVertical: 5,
+    },
+    blogDetails: {
+        alignItems: "flex-start",
+        paddingHorizontal: 2,
+        height: 100,
+    },
+    blogDate: {
+        fontSize: 11,
+        color: color.charcoal,
+    },
+    scammer: {
+        flex: 1,
+        alignItems: "center",
+        marginHorizontal: 10,
+        width: 90,
+        height: 140,
     },
     scamImage: {
         width: 50,
         height: 50,
-        resizeMode: 'contain',
+        resizeMode: "contain",
     },
-    title: {
-        fontSize: 12,
-        fontFamily: "NotoSansBold", 
-        marginTop: 10,
+    scamNumber: {
+        fontSize: 14,
+        fontFamily: "NotoSansBold",
+        marginVertical: 2,
     },
     scamTitle: {
         fontSize: 12,
-        fontFamily: "NotoSansBold", 
+        fontFamily: "NotoSansBold",
         color: color.purple,
-    },
-    scamNumber: {
-        fontSize: 12,
-        fontFamily: "NotoSansBold", 
+        overflow: "hidden",
+        flexShrink: 1,
     },
     scamRecent: {
-        fontSize: 8,
-        color: '#rgba(69, 60, 103, 0.80)',
-    },
-    blogTitle: {
-        fontSize: 12,
-        fontFamily: "NotoSansBold",
+        fontSize: 11,
+        color: color.charcoal,
     },
 });
 
