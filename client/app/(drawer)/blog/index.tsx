@@ -15,6 +15,7 @@ import ButtonFilter from "../../../components/ButtonFilter";
 import HCarousel from "../../../components/HorizontalCarousel";
 import VCarousel from "../../../components/VerticalCarousel";
 import { color } from "../../../constants/Colors";
+import Icon from "@expo/vector-icons/AntDesign";
 
 const Blog = () => {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -25,9 +26,12 @@ const Blog = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <SearchComponent />
-            <ScrollView style={styles.contentContainer}>
+            <ScrollView
+                style={styles.contentContainer}
+                showsVerticalScrollIndicator={false}
+            >
                 <View style={styles.sectionContainer}>
                     <SectionHeading
                         title="Trending Now"
@@ -44,19 +48,13 @@ const Blog = () => {
                     <VCarousel carouselDesign="cyberblog" />
                 </View>
             </ScrollView>
-            <TouchableOpacity onPress={() => router.push("/blog/addBlog")}>
-                <View>
-                    <FAB
-                        icon={{ name: "add", color: "white" }}
-                        color="purple"
-                        style={styles.fab}
-                    />
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => router.push("/blog/addBlog")}>
-                <Text>Test Button</Text>
-            </TouchableOpacity>
-        </View>
+            <FAB
+                icon={{ name: "add", color: "white" }}
+                color={color.purple}
+                style={styles.fab}
+                onPress={() => router.push("/blog/addBlog")}
+            />
+        </SafeAreaView>
     );
 };
 
