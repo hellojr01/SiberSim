@@ -1,21 +1,22 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { color } from "../constants/Colors";
-
+import { Link } from "expo-router";
 interface Props {
   title: string;
   viewAllButton?: boolean;
-  // onPress: () => void;
+  path: string;
+  narrowPadding?: boolean;
 }
 
-const SectionHeading: React.FC<Props> = ({ title, viewAllButton = false, /*onPress*/ }) => {
+const SectionHeading: React.FC<Props> = ({ title, narrowPadding=false, viewAllButton = false, path }) => {
   return (
-    <View style={styles.container}>
+    <View style={narrowPadding ? styles.narrowContainer : styles.container}>
       <Text style={styles.title}>{title}</Text>
       {viewAllButton && (
-        // <TouchableOpacity onPress={onPress}>
+        <Link href={path as any}>
           <Text style={styles.button}>View All</Text>
-        // </TouchableOpacity>
+        </Link>
       )}
     </View>
   );
@@ -28,6 +29,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
     paddingHorizontal: 16,
+  },
+  narrowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
   },
   title: {
     fontSize: 15,

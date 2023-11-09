@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, SafeAreaView, View } from "react-native";
+import { StyleSheet, Text, ScrollView, View } from "react-native";
 import { color } from "../../constants/Colors";
 import Icon from "@expo/vector-icons/AntDesign";
 import Header from "../../components/Header";
@@ -9,12 +9,13 @@ import Carousel from "../../components/HorizontalCarousel";
 
 const Home = () => {
     return (
-        <SafeAreaView style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
             <Advertisement />
             <View style={styles.sectionContainer}>
                 <SectionHeading
                     title="Simulation Available"
                     viewAllButton={true}
+                    path={'/simulation'}
                 />
                 <Carousel carouselDesign="simulation" />
             </View>
@@ -22,6 +23,7 @@ const Home = () => {
                 <SectionHeading
                     title="Trending Cyberblogs"
                     viewAllButton={true}
+                    path={'/blog'}
                 />
                 <Carousel carouselDesign="cyberblog" />
             </View>
@@ -29,10 +31,11 @@ const Home = () => {
                 <SectionHeading
                     title="Trending Reported Scammers"
                     viewAllButton={true}
+                    path={'/scammer'}
                 />
                 <Carousel carouselDesign="scammer" />
             </View>
-        </SafeAreaView>
+        </ScrollView>
     );
 };
 export default Home;
