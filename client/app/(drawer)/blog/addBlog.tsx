@@ -5,7 +5,7 @@ import {Picker} from '@react-native-picker/picker';
 import { color } from '../../../constants/Colors';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Redirect } from 'expo-router';
+import { Link } from 'expo-router';
 
 const AddBlog = () => {
   const [title, setTitle] = useState('');
@@ -13,14 +13,15 @@ const AddBlog = () => {
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
-
+  const isSubmitDisabled = !title || !description || !content || !category;
   const handleSubmit = () => {
-    setModalVisible(true);
+    if (!isSubmitDisabled) {
+      setModalVisible(true);
+    }
   };
 
   const closeModal = () => {
     setModalVisible(false);
-    
   };
 
   return (
@@ -64,13 +65,15 @@ const AddBlog = () => {
       <View style={styles.square}>
         <Text style={styles.plus}>+</Text>
       </View>
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+      <TouchableOpacity style={[styles.button, isSubmitDisabled ? styles.disabledButton : styles.button]} onPress={handleSubmit} disabled={isSubmitDisabled}>
         <Text style={styles.buttonText}>Submit A Blog</Text>
       </TouchableOpacity>
       <Modal isVisible={isModalVisible} style={styles.modal}>
         <View style={styles.modalContent}>
           <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
-            <Text style={styles.closeButtonText}>X</Text>
+            <Link href="/blog">
+              <Text style={styles.closeButtonText}>X</Text>
+            </Link>
           </TouchableOpacity>
           <Text style={styles.modalText}>Blog Submitted. Awaiting For Approval</Text>
           <Icon name="check" style={styles.icon} size={150} color="green" />
@@ -98,6 +101,9 @@ const styles = StyleSheet.create({
     fontFamily: "NotoSansBold",
     fontSize: 16,
     marginBottom: 10,
+  },
+  disabledButton: {
+    backgroundColor: 'gray'
   },
   input: {
     borderWidth: 1,
