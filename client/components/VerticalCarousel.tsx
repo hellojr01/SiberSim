@@ -48,18 +48,6 @@ const VerticalCarousel = ({ carouselDesign}: Props) => {
                     </Link>
                     </View>
                 ))}
-            {carouselDesign === "scammer" &&
-                scammers.map((scammer) => (
-                    <View key={scammer.id} style={styles.scammer}>
-                        <Image
-                            source={scammer.image}
-                            style={styles.scamImage}
-                        />
-                        <Text style={styles.scamNumber}>{scammer.number}</Text>
-                        <Text style={styles.scamTitle}>{scammer.title}</Text>
-                        <Text style={styles.scamRecent}>{scammer.recent}</Text>
-                    </View>
-                ))}
         </ScrollView>
     );
 };
@@ -104,9 +92,9 @@ const styles = StyleSheet.create({
     },
     blog: {
         flexDirection: "row", // Horizontal layout
-        alignItems: "center", // Vertically centered
+        alignItems: "center", 
         marginVertical: 5,
-        paddingHorizontal: 10, // Add some horizontal padding
+        paddingHorizontal: 10,
     },
     blogImage: {
         width: 120,
@@ -133,29 +121,7 @@ const styles = StyleSheet.create({
     blogDate: {
         fontSize: 11,
         color: color.darkBlueMagenta,
-    },
-    scammer: {
-        alignItems: "center",
-        marginBottom: 10,
-    },
-    scamImage: {
-        width: 50,
-        height: 50,
-        resizeMode: "contain",
-    },
-    scamNumber: {
-        fontSize: 14,
-        fontFamily: "NotoSansBold",
-    },
-    scamTitle: {
-        fontSize: 12,
-        fontFamily: "NotoSansBold",
-        color: color.purple,
-    },
-    scamRecent: {
-        fontSize: 11,
-        color: color.darkBlueMagenta,
-    },
+    }
 });
 
 export default VerticalCarousel;

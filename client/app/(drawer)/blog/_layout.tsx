@@ -1,19 +1,13 @@
 import { Stack } from "expo-router";
 
 export default function BlogLayout() {
-    //Please add new screens/pages under Stack.Screen, copy the line above the make addition
     return (
-        <Stack
-            initialRouteName="index"
-            screenOptions={{
-                title: "Cyber Blog",
-                headerShown: false,
-            }}>
+        <Stack>
             <Stack.Screen
             name="index"
             options={{
-                title: "Home",
-            }}
+                headerShown: false,
+            }}  
             />
             <Stack.Screen
                 name="addBlog"

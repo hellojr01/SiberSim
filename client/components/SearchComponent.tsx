@@ -7,19 +7,19 @@ type SearchBarComponentProps = {};
 
 const SearchComponent: React.FunctionComponent<
     SearchBarComponentProps
-> = () => {
+> = ({ }) => {
     const [search, setSearch] = useState("");
 
-    const updateSearch = (search: string) => {
-        setSearch(search);
+    const updateSearch = (search :any) => {
+    setSearch(search);
     };
-
     return (
         <View style={styles.view}>
             <SearchBar
                 platform="android"
                 placeholder="Search..."
                 onChangeText={updateSearch}
+                value={search}
                 placeholderTextColor={color.mediumSlateBlue}
                 containerStyle={{
                     backgroundColor: color.white,

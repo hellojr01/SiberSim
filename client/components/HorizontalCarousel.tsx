@@ -71,7 +71,7 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
                                 {scammer.title}
                             </Text>
                             <Text style={styles.scamRecent}>
-                                {scammer.recent}
+                                {scammer.recent} Recent Report
                             </Text>
                         </View>
                     ))}
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         marginHorizontal: 10,
-        width: 90,
+        width: 100,
         height: 140,
     },
     scamImage: {

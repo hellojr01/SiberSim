@@ -1,50 +1,98 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet,Image, Text, ScrollView, View } from "react-native";
+import SearchComponent from "../../../components/SearchComponent";
+import { color } from "../../../constants/Colors";
+import SectionHeading from "../../../components/SectionHeading";
+import HorizontalCarousel from "../../../components/HorizontalCarousel";
+import { scammers } from "../../../constants/scammerData";
+import { Link } from 'expo-router';
 
 export default function ScammerPage() {
+    const sortedScammers = scammers.sort((a, b) => a.title.localeCompare(b.title));
+    const letters = new Set(sortedScammers.map(scammer => scammer.title[0].toUpperCase()));
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Scammer Database</Text>
-            <Text style={styles.subtitle}>Search for known scammers:</Text>
-            <View style={styles.searchContainer}>
-                {/* Add search bar component here */}
-            </View>
-            <View style={styles.resultContainer}>
-                {/* Add list of search results here */}
-            </View>
-        </View>
+        <ScrollView style={styles.container}>
+            <SearchComponent />
+            {Array.from(letters).map(letter => (
+                <View key={letter} style={styles.sectionContainer}>
+                    <View style={styles.sectionHeading}>
+                        <SectionHeading
+                            title={`${letter}`}
+                            viewAllButton={false}
+                            path={""}
+                        />
+                    </View>
+                    {sortedScammers.filter(scammer => scammer.title[0].toUpperCase() === letter).map(scammer => (
+                        <View key={scammer.id} style={styles.scammer}>
+                            <Link href={`/scammer/${scammer.id}`}>
+                                <View style={styles.leftContent}>
+                                    <Image
+                                        source={scammer.image}
+                                        style={styles.scamImage}
+                                    />
+                                </View>
+                                <View style={styles.rightContent}>
+                                    <Text style={styles.scamNumber}>{scammer.number}</Text>
+                                    <Text style={styles.scamTitle}>{scammer.title}</Text>
+                                    <Text style={styles.scamRecent}>{scammer.recent} Recent Reports</Text>
+                                </View>
+                            </Link>
+                        </View>
+                    ))}
+                </View>
+            ))}
+        </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
+    sectionHeading:{
+        borderBottomColor: color.americanBlue,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        marginBottom: 5
+    },
     container: {
         flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
+        backgroundColor: color.lavender,
     },
-    title: {
-        fontSize: 24,
-        fontWeight: "bold",
+    contentContainer: {
+        flex: 1,
+    },
+    sectionContainer: {
+        paddingHorizontal: 20,
+    },
+    scammer: {
+        flexDirection: "row", // Horizontal layout
+        alignItems: "center",
         marginBottom: 10,
     },
-    subtitle: {
-        fontSize: 18,
-        marginBottom: 20,
+    scamImage: {
+        width: 50,
+        height: 50,
+        resizeMode: "contain",
     },
-    searchContainer: {
-        width: "80%",
-        marginBottom: 20,
-        borderWidth: 1,
-        borderColor: "#ccc",
-        borderRadius: 5,
-        padding: 10,
+    scamNumber: {
+        fontSize: 14,
+        fontFamily: "NotoSansBold",
     },
-    resultContainer: {
-        width: "80%",
-        borderWidth: 1,
-        borderColor: "#ccc",
-        borderRadius: 5,
-        padding: 10,
+    scamTitle: {
+        fontSize: 12,
+        fontFamily: "NotoSansBold",
+        color: color.purple,
+    },
+    scamRecent: {
+        fontSize: 11,
+        fontFamily: "NotoSansBold",
+        color: color.darkBlueMagenta,
+    },
+    leftContent: {
+        marginRight: 10, // Space between the image and text
+        justifyContent: "center",
+    },
+    rightContent: {
+        flex: 1, // Expand to fill available horizontal space
+        justifyContent: "center",
+        height: 60,
+        marginLeft: 10,
     },
 });
