@@ -9,25 +9,19 @@ export default function MainLayout() {
                 headerShown: false,
             }}
         >
-            <Stack.Screen
-                name="welcome"
-                options={{ title: "Welcome Page", headerShown: false }}
-            />
+            <Stack.Screen name="welcome" options={{ title: "Welcome Page" }} />
             <Stack.Screen
                 name="onboard/index"
-                options={{ title: "Onboard Page", headerShown: false }}
+                options={{ title: "Onboard Page" }}
             />
-            <Stack.Screen
-                name="login"
-                options={{ title: "Login Page", headerShown: false }}
-            />
+            <Stack.Screen name="login" options={{ title: "Login Page" }} />
             <Stack.Screen
                 name="register"
-                options={{ title: "Register Page", headerShown: false }}
+                options={{ title: "Register Page" }}
             />
             <Stack.Screen
                 name="forgotpassword/index"
-                options={{ headerShown: false }}
+                options={{ title: "Forgot Password" }}
             />
             {/*
             <Stack.Screen

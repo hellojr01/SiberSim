@@ -32,7 +32,6 @@ export default function BlogLayout() {
                 getId={({ params }) => String(Date.now())}
                 options={{
                     title: "Back to Cyberblog",
-                    // presentation: "transparentModal",
                     headerShown: true,
                 }}
             />
