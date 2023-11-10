@@ -1,11 +1,24 @@
-import React from "react";
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import React, { useRef } from "react";
+import {
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    ScrollView,
+    RefreshControl,
+} from "react-native";
+import { useScrollToTop } from "@react-navigation/native";
 import { Redirect, useLocalSearchParams, useRouter } from "expo-router";
 import SectionHeading from "../../../components/SectionHeading";
 import VerticalCarousel from "../../../components/VerticalCarousel";
 import { color } from "../../../constants/Colors";
 import { blogs } from "../../../constants/blogData";
 import Logo from "../../../assets/images/missing404.svg";
+
+export const unstable_settings = {
+    // Ensure that reloading on a page keeps a back button present.
+    initialRouteName: "index",
+};
 
 const BlogPost = () => {
     const { id } = useLocalSearchParams();
@@ -67,7 +80,7 @@ const BlogPost = () => {
             </View>
             <View style={styles.botContainer}>
                 <SectionHeading title="Recommended News" />
-                <VerticalCarousel carouselDesign="cyberblog" />
+                <VerticalCarousel carouselDesign="cyberblog" redirect={true} />
             </View>
         </ScrollView>
     );

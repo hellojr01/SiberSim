@@ -6,18 +6,25 @@ import {
     Button,
     ScrollView,
     StyleSheet,
+    TouchableHighlight,
 } from "react-native";
 import { simulations } from "../constants/simulationData";
 import { blogs } from "../constants/blogData";
 import { color } from "../constants/Colors";
 import { scammers } from "../constants/scammerData";
-import { Link } from "expo-router";
+import { Redirect, router } from "expo-router";
 
 type Props = {
     carouselDesign: "simulation" | "cyberblog" | "scammer";
+    baseSection?: boolean;
+    redirect?: boolean;
 };
 
-const HorizontalCarousel = ({ carouselDesign }: Props) => {
+const HorizontalCarousel = ({
+    carouselDesign,
+    redirect,
+    baseSection,
+}: Props) => {
     if (carouselDesign === "simulation") {
         return (
             <View style={styles.container}>
@@ -47,8 +54,19 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
                     showsHorizontalScrollIndicator={false}
                 >
                     {blogs.map((blog) => (
-                        <View key={blog.id} style={styles.blogContainer}>
-                            <Link href={blog.path as any}>
+                        <View key={blog.id}>
+                            <TouchableHighlight
+                                onPress={() => {
+                                    baseSection
+                                        ? router.push(blog.path as any)
+                                        : router.push("/blog");
+                                    setTimeout(
+                                        () => router.push(blog.path as any),
+                                        50
+                                    );
+                                }}
+                                underlayColor="transparent"
+                            >
                                 <View style={styles.blog}>
                                     <Image
                                         source={blog.image}
@@ -68,7 +86,7 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
                                         </Text>
                                     </View>
                                 </View>
-                            </Link>
+                            </TouchableHighlight>
                         </View>
                     ))}
                 </ScrollView>
@@ -107,9 +125,6 @@ const HorizontalCarousel = ({ carouselDesign }: Props) => {
 const styles = StyleSheet.create({
     container: {
         paddingBottom: 10,
-    },
-    blogContainer: {
-        marginHorizontal: 10,
     },
     labelContainer: {
         backgroundColor: color.purple,

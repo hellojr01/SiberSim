@@ -5,6 +5,7 @@ import {
     MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import { Drawer } from "expo-router/drawer";
+import { Stack } from "expo-router";
 import { color } from "../../constants/Colors";
 
 type textProps = {

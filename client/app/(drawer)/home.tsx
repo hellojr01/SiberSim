@@ -5,7 +5,7 @@ import SectionHeading from "../../components/SectionHeading";
 import Carousel from "../../components/HorizontalCarousel";
 import Header from "../../components/Header";
 import { color } from "../../constants/Colors";
-import { useRouter } from "expo-router";
+import { useRouter, Redirect } from "expo-router";
 
 const Home = () => {
     const router = useRouter();
@@ -24,7 +24,10 @@ const Home = () => {
                     <SectionHeading
                         title="Trending Cyberblogs"
                         viewAllButton={true}
-                        onPress={() => router.push("/blog/1")}
+                        onPress={() => {
+                            router.push("/blog");
+                            setTimeout(() => router.push("/blog/1"), 50);
+                        }}
                     />
                     <Carousel carouselDesign="cyberblog" />
                 </View>

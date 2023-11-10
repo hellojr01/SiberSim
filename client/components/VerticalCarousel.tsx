@@ -1,16 +1,25 @@
 import React from "react";
-import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
+import {
+    View,
+    Text,
+    Image,
+    ScrollView,
+    StyleSheet,
+    TouchableHighlight,
+} from "react-native";
 import { simulations } from "../constants/simulationData";
 import { blogs } from "../constants/blogData";
 import { scammers } from "../constants/scammerData";
-import { Link } from "expo-router";
+import { router, Redirect } from "expo-router";
 import { color } from "../constants/Colors";
+import { StackActions } from "@react-navigation/native";
 
 type Props = {
     carouselDesign: "simulation" | "cyberblog" | "scammer";
+    redirect?: boolean;
 };
 
-const VerticalCarousel = ({ carouselDesign }: Props) => {
+const VerticalCarousel = ({ carouselDesign, redirect }: Props) => {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             {carouselDesign === "simulation" &&
@@ -25,8 +34,15 @@ const VerticalCarousel = ({ carouselDesign }: Props) => {
                 ))}
             {carouselDesign === "cyberblog" &&
                 blogs.map((blog) => (
-                    <View key={blog.id} style={styles.blogContainer}>
-                        <Link href={blog.path as any}>
+                    <View key={blog.id}>
+                        <TouchableHighlight
+                            onPress={() => {
+                                redirect
+                                    ? router.replace(blog.path as any)
+                                    : router.push(blog.path as any);
+                            }}
+                            underlayColor="transparent"
+                        >
                             <View style={styles.blog}>
                                 <View style={styles.leftContent}>
                                     <Image
@@ -51,7 +67,7 @@ const VerticalCarousel = ({ carouselDesign }: Props) => {
                                     </Text>
                                 </View>
                             </View>
-                        </Link>
+                        </TouchableHighlight>
                     </View>
                 ))}
         </ScrollView>
@@ -59,12 +75,6 @@ const VerticalCarousel = ({ carouselDesign }: Props) => {
 };
 
 const styles = StyleSheet.create({
-    narrowPadding: {
-        fontSize: 200,
-    },
-    blogContainer: {
-        marginHorizontal: 10,
-    },
     leftContent: {
         marginRight: 10, // Space between the image and text
     },

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { Image } from "expo-image";
 
 const Advertisement = () => {
     const [currentAd, setCurrentAd] = useState(0);
@@ -31,7 +32,11 @@ const Advertisement = () => {
 
     return (
         <View style={styles.container}>
-            <Image source={ads[currentAd].image} style={styles.image} />
+            <Image
+                source={ads[currentAd].image}
+                style={styles.image}
+                transition={1000}
+            />
         </View>
     );
 };
