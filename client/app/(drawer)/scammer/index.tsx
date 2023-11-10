@@ -1,44 +1,72 @@
 import React from "react";
-import { StyleSheet,Image, Text, ScrollView, View } from "react-native";
+import {
+    StyleSheet,
+    Image,
+    Text,
+    ScrollView,
+    View,
+    TouchableHighlight,
+} from "react-native";
 import SearchComponent from "../../../components/SearchComponent";
 import { color } from "../../../constants/Colors";
 import SectionHeading from "../../../components/SectionHeading";
 import HorizontalCarousel from "../../../components/HorizontalCarousel";
 import { scammers } from "../../../constants/scammerData";
-import { Link } from 'expo-router';
+import { router } from "expo-router";
 
 export default function ScammerPage() {
-    const sortedScammers = scammers.sort((a, b) => a.title.localeCompare(b.title));
-    const letters = new Set(sortedScammers.map(scammer => scammer.title[0].toUpperCase()));
+    const sortedScammers = scammers.sort((a, b) =>
+        a.title.localeCompare(b.title)
+    );
+    const letters = new Set(
+        sortedScammers.map((scammer) => scammer.title[0].toUpperCase())
+    );
     return (
         <ScrollView style={styles.container}>
             <SearchComponent />
-            {Array.from(letters).map(letter => (
+            {Array.from(letters).map((letter) => (
                 <View key={letter} style={styles.sectionContainer}>
                     <View style={styles.sectionHeading}>
                         <SectionHeading
                             title={`${letter}`}
                             viewAllButton={false}
-                            path={""}
                         />
                     </View>
-                    {sortedScammers.filter(scammer => scammer.title[0].toUpperCase() === letter).map(scammer => (
-                        <View key={scammer.id} style={styles.scammer}>
-                            <Link href={`/scammer/${scammer.id}`}>
-                                <View style={styles.leftContent}>
-                                    <Image
-                                        source={scammer.image}
-                                        style={styles.scamImage}
-                                    />
-                                </View>
-                                <View style={styles.rightContent}>
-                                    <Text style={styles.scamNumber}>{scammer.number}</Text>
-                                    <Text style={styles.scamTitle}>{scammer.title}</Text>
-                                    <Text style={styles.scamRecent}>{scammer.recent} Recent Reports</Text>
-                                </View>
-                            </Link>
-                        </View>
-                    ))}
+                    {sortedScammers
+                        .filter(
+                            (scammer) =>
+                                scammer.title[0].toUpperCase() === letter
+                        )
+                        .map((scammer) => (
+                            <View key={scammer.id}>
+                                <TouchableHighlight
+                                    onPress={() =>
+                                        router.push(`/scammer/${scammer.id}`)
+                                    }
+                                    underlayColor="transparent"
+                                >
+                                    <View style={styles.scammer}>
+                                        <View style={styles.leftContent}>
+                                            <Image
+                                                source={scammer.image}
+                                                style={styles.scamImage}
+                                            />
+                                        </View>
+                                        <View style={styles.rightContent}>
+                                            <Text style={styles.scamNumber}>
+                                                {scammer.number}
+                                            </Text>
+                                            <Text style={styles.scamTitle}>
+                                                {scammer.title}
+                                            </Text>
+                                            <Text style={styles.scamRecent}>
+                                                {scammer.recent} Recent Reports
+                                            </Text>
+                                        </View>
+                                    </View>
+                                </TouchableHighlight>
+                            </View>
+                        ))}
                 </View>
             ))}
         </ScrollView>
@@ -46,10 +74,10 @@ export default function ScammerPage() {
 }
 
 const styles = StyleSheet.create({
-    sectionHeading:{
+    sectionHeading: {
         borderBottomColor: color.americanBlue,
         borderBottomWidth: StyleSheet.hairlineWidth,
-        marginBottom: 5
+        marginBottom: 5,
     },
     container: {
         flex: 1,
@@ -93,6 +121,5 @@ const styles = StyleSheet.create({
         flex: 1, // Expand to fill available horizontal space
         justifyContent: "center",
         height: 60,
-        marginLeft: 10,
     },
 });
