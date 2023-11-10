@@ -21,3 +21,5 @@ In our current state, only partial front-end part of some features had been impl
 **_\*In order for this project to run properly, it is advisable to run on your own mobile devices/simulator, however, web version is also supported._**
 
 [Link to run the project on Expo](https://docs.expo.dev/get-started/expo-go/)
+
+**Notes: Please cd to the folder "client" to run the npm command.**
