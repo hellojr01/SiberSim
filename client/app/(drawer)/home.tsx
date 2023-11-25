@@ -6,14 +6,11 @@ import Carousel from "../../components/HorizontalCarousel";
 import Header from "../../components/Header";
 import { color } from "../../constants/Colors";
 import { useRouter, Redirect } from "expo-router";
-import LottieView from "lottie-react-native";
-import LoaderItem from "../../components/LoaderItem";
 
 const Home = () => {
     const router = useRouter();
     return (
         <SafeAreaView style={styles.container}>
-            <LoaderItem />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Advertisement />
                 <View style={styles.sectionContainer}>

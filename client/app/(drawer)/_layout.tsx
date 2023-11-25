@@ -5,7 +5,16 @@ import {
     MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import { Drawer } from "expo-router/drawer";
+import {
+    DrawerContentScrollView,
+    DrawerItemList,
+    DrawerItem,
+} from "@react-navigation/drawer";
+import { router } from "expo-router";
 import { color } from "../../constants/Colors";
+import Logout from "./logout";
+import { View } from "../../components/Themed";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 type textProps = {
     color: ColorValue | undefined;
@@ -27,10 +36,64 @@ function DisplayText({ color, focused, title }: textProps) {
     );
 }
 
+const windowWidth = Dimensions.get("window").width;
+const smallIcon = windowWidth * (0.11 - windowWidth * 0.00005);
+const bigIcon = windowWidth * (0.16 - windowWidth * 0.000075);
+
 export default function DrawerLayout() {
-    const windowWidth = Dimensions.get("window").width;
-    const smallIcon = windowWidth * (0.11 - windowWidth * 0.00005);
-    const bigIcon = windowWidth * (0.16 - windowWidth * 0.000075);
+    function CustomDrawerContent(props: any) {
+        return (
+            <View style={{ backgroundColor: color.americanBlue, flex: 1 }}>
+                <DrawerContentScrollView {...props}>
+                    <DrawerItemList {...props} />
+                </DrawerContentScrollView>
+                <View
+                    style={{
+                        bottom: 10,
+                        position: "fixed",
+                        justifyContent: "center",
+                        width: "92%",
+                        margin: 10,
+                        borderRadius: 5,
+                        borderWidth: 2,
+                        borderColor: color.purple,
+                        backgroundColor: color.americanBlue,
+                    }}
+                >
+                    <TouchableHighlight onPress={() => router.push("/logout")}>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                padding: 10,
+                                backgroundColor: color.purple,
+                            }}
+                        >
+                            <MaterialCommunityIcons
+                                name="logout"
+                                size={smallIcon}
+                                color={color.white}
+                                style={{
+                                    width: smallIcon,
+                                    aspectRatio: 1,
+                                }}
+                            />
+                            <Text
+                                style={{
+                                    color: color.white,
+                                    fontFamily: "NotoSans",
+                                    fontSize: 16,
+                                    alignSelf: "center",
+                                    marginLeft: 30,
+                                }}
+                            >
+                                Log Out
+                            </Text>
+                        </View>
+                    </TouchableHighlight>
+                </View>
+            </View>
+        );
+    }
 
     return (
         <Drawer
@@ -53,6 +116,7 @@ export default function DrawerLayout() {
                 },
                 drawerType: "slide",
             }}
+            drawerContent={(props) => <CustomDrawerContent {...props} />}
         >
             <Drawer.Screen
                 name="home" // This is the name of the page and must match the url from root
@@ -86,6 +150,7 @@ export default function DrawerLayout() {
                             focused: focused,
                             title: "Simulations",
                         }),
+                    title: "Simulations",
                     drawerIcon: ({ focused, color }) => (
                         <MaterialCommunityIcons
                             name="cards-playing-spade-multiple"
@@ -97,7 +162,6 @@ export default function DrawerLayout() {
                             }}
                         />
                     ),
-                    title: "Simulations",
                 }}
             />
             <Drawer.Screen
@@ -109,6 +173,7 @@ export default function DrawerLayout() {
                             focused: focused,
                             title: "Spot Scam",
                         }),
+                    title: "Identify Scammers & Report",
                     drawerIcon: ({ focused, color }) => (
                         <MaterialCommunityIcons
                             name="magnify-scan"
@@ -120,7 +185,6 @@ export default function DrawerLayout() {
                             }}
                         />
                     ),
-                    title: "Identify Scammers & Report",
                 }}
             />
             <Drawer.Screen
@@ -132,6 +196,7 @@ export default function DrawerLayout() {
                             focused: focused,
                             title: "Cyblog",
                         }),
+                    title: "Cyber Blog",
                     drawerIcon: ({ focused, color }) => (
                         <FontAwesome
                             name="quote-left"
@@ -143,7 +208,6 @@ export default function DrawerLayout() {
                             }}
                         />
                     ),
-                    title: "Cyber Blog",
                 }}
             />
             <Drawer.Screen
@@ -155,6 +219,7 @@ export default function DrawerLayout() {
                             focused: focused,
                             title: "Profile",
                         }),
+                    title: "Profile Page",
                     drawerIcon: ({ focused, color }) => (
                         <FontAwesome
                             name="user"
@@ -166,7 +231,6 @@ export default function DrawerLayout() {
                             }}
                         />
                     ),
-                    title: "Profile Page",
                 }}
             />
             {/* 
@@ -179,6 +243,7 @@ export default function DrawerLayout() {
                             focused: focused,
                             title: "Learn",
                         }),
+                    title: "Learn",
                     drawerIcon: ({ focused, color }) => (
                         <FontAwesome
                             name="user"
@@ -190,10 +255,21 @@ export default function DrawerLayout() {
                             }}
                         />
                     ),
-                    title: "Learn",
                 }}
             />
              */}
+            <Drawer.Screen
+                name="loadertest" // This is the name of the page and must match the url from root
+                options={{
+                    drawerLabel: ({ focused, color }) =>
+                        DisplayText({
+                            color: color,
+                            focused: focused,
+                            title: "Loader",
+                        }),
+                    title: "Test Loader Page",
+                }}
+            />
             <Drawer.Screen
                 name="logout" // This is the name of the page and must match the url from root
                 options={{
@@ -203,6 +279,7 @@ export default function DrawerLayout() {
                             focused: false,
                             title: "Log Out",
                         }),
+                    title: "Log Out",
                     drawerIcon: () => (
                         <MaterialCommunityIcons
                             name="logout"
@@ -215,13 +292,12 @@ export default function DrawerLayout() {
                         />
                     ),
                     drawerItemStyle: {
-                        bottom: 10,
-                        alignSelf: "center",
-                        position: "fixed",
-                        width: "95%",
-                        backgroundColor: color.purple,
+                        display: "none",
+                        // bottom: 10,
+                        // position: "fixed",
+                        // width: "95%",
+                        // backgroundColor: color.purple,
                     },
-                    title: "Log Out",
                 }}
             />
         </Drawer>

@@ -93,7 +93,6 @@ const ForgotPasswordScreen = () => {
                     <View
                         style={{
                             ...styles.rectangle,
-                            width: "auto",
                             height: "auto",
                         }}
                     >
