@@ -5,7 +5,6 @@ import {
     MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import { Drawer } from "expo-router/drawer";
-import { Stack } from "expo-router";
 import { color } from "../../constants/Colors";
 
 type textProps = {
@@ -216,8 +215,11 @@ export default function DrawerLayout() {
                         />
                     ),
                     drawerItemStyle: {
+                        bottom: 10,
+                        alignSelf: "center",
+                        position: "fixed",
+                        width: "95%",
                         backgroundColor: color.purple,
-                        marginTop: 50,
                     },
                     title: "Log Out",
                 }}
