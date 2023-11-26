@@ -24,7 +24,7 @@ export const blogs = [
     date: '8 November 2023',
     desc: 'Receive real-time alerts about the latest scam threats and how to recognize them. Knowledge is your shield.',
     path: '/blog/2',
-    author: 'John Doe',
+    author: 'Jean Doe',
     content: [
       "Stay Informed, Stay Safe: In the constantly evolving realm of cybersecurity, staying informed is your paramount defense. Cyber threats, like a shape-shifting adversary, adapt and develop new tactics. To protect your digital fortress, staying up-to-date with the latest cybersecurity developments is essential.",
       "Regularly updating your knowledge of the latest threats, security best practices, and emerging technologies empowers you to make informed decisions. It enables you to fortify your digital defenses and respond effectively to the ever-present barrage of cyber threats.",
@@ -42,12 +42,13 @@ export const blogs = [
     desc: 'A first-hand account of defeating a ransomware attack.',
     path: '/blog/3',
     author: 'Jane Doe',
-    content: [ "In an increasingly digital world, the threat of ransomware looms large, ready to strike at any moment. But amidst the stories of loss and despair, there are tales of triumph and resilience. This is one such story.",
-    "Alex Mitchell, a small business owner, found himself in the clutches of a ransomware attack that threatened to dismantle his livelihood. The attack, like many others, encrypted vital files and demanded a hefty ransom in cryptocurrency for their release.",
-    "Rather than succumbing to panic, Alex took a different path. He immediately disconnected his infected computer from the network, preventing the ransomware from spreading further. Then, he reached out to a cybersecurity expert for assistance.",
-    "Working closely with the expert, Alex managed to identify the type of ransomware that had infected his system and found a decryption tool. Though it wasn't an instant solution, it was a glimmer of hope.",
-    "Days turned into weeks as Alex and the expert worked tirelessly to recover his data. Finally, with patience and determination, they succeeded in decrypting the files without paying a single cryptocurrency to the attackers.",
-    "Alex's story is a testament to the power of resilience and expertise in the face of a ransomware attack. He not only saved his business from financial ruin but also gained a wealth of knowledge about online security."  
+    content: [ 
+      "In an increasingly digital world, the threat of ransomware looms large, ready to strike at any moment. But amidst the stories of loss and despair, there are tales of triumph and resilience. This is one such story.",
+      "Alex Mitchell, a small business owner, found himself in the clutches of a ransomware attack that threatened to dismantle his livelihood. The attack, like many others, encrypted vital files and demanded a hefty ransom in cryptocurrency for their release.",
+      "Rather than succumbing to panic, Alex took a different path. He immediately disconnected his infected computer from the network, preventing the ransomware from spreading further. Then, he reached out to a cybersecurity expert for assistance.",
+      "Working closely with the expert, Alex managed to identify the type of ransomware that had infected his system and found a decryption tool. Though it wasn't an instant solution, it was a glimmer of hope.",
+      "Days turned into weeks as Alex and the expert worked tirelessly to recover his data. Finally, with patience and determination, they succeeded in decrypting the files without paying a single cryptocurrency to the attackers.",
+      "Alex's story is a testament to the power of resilience and expertise in the face of a ransomware attack. He not only saved his business from financial ruin but also gained a wealth of knowledge about online security."  
     ]
   },
   {

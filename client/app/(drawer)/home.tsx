@@ -1,11 +1,11 @@
-import React from "react";
 import { StyleSheet, Text, SafeAreaView, View, ScrollView } from "react-native";
+import { useRouter } from "expo-router";
+
+import Header from "../../components/Header";
 import Advertisement from "../../components/Advertisement";
 import SectionHeading from "../../components/SectionHeading";
 import Carousel from "../../components/HorizontalCarousel";
-import Header from "../../components/Header";
 import { color } from "../../constants/Colors";
-import { useRouter, Redirect } from "expo-router";
 
 const Home = () => {
     const router = useRouter();
@@ -24,10 +24,7 @@ const Home = () => {
                     <SectionHeading
                         title="Trending Cyberblogs"
                         viewAllButton={true}
-                        onPress={() => {
-                            router.push("/blog");
-                            setTimeout(() => router.push("/blog/1"), 50);
-                        }}
+                        onPress={() => router.push("/blog")}
                     />
                     <Carousel carouselDesign="cyberblog" />
                 </View>

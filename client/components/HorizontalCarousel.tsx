@@ -16,15 +16,10 @@ import { Redirect, router } from "expo-router";
 
 type Props = {
     carouselDesign: "simulation" | "cyberblog" | "scammer";
-    baseSection?: boolean;
     redirect?: boolean;
 };
 
-const HorizontalCarousel = ({
-    carouselDesign,
-    redirect,
-    baseSection,
-}: Props) => {
+const HorizontalCarousel = ({ carouselDesign, redirect }: Props) => {
     if (carouselDesign === "simulation") {
         return (
             <View style={styles.container}>
@@ -57,9 +52,7 @@ const HorizontalCarousel = ({
                         <View key={blog.id}>
                             <TouchableHighlight
                                 onPress={() => {
-                                    baseSection
-                                        ? router.push(blog.path as any)
-                                        : router.push("/blog");
+                                    router.push("/blog");
                                     setTimeout(
                                         () => router.push(blog.path as any),
                                         5

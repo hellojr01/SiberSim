@@ -24,7 +24,7 @@ export default function MainLayout() {
                 options={{ title: "Forgot Password" }}
             />
             {/*
-            <Stack.Screen
+            <Stack.Screen // This is for the forgot password (verification & new password) might need back later
                 name="(pages)/forgotpassword/newPassword"
                 options={{
                     title: "New Password Page",

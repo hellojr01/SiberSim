@@ -9,13 +9,14 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 import { FAB } from "@rneui/base";
+import Icon from "@expo/vector-icons/AntDesign";
+
 import SectionHeading from "../../../components/SectionHeading";
 import SearchComponent from "../../../components/SearchComponent";
 import ButtonFilter from "../../../components/ButtonFilter";
 import HCarousel from "../../../components/HorizontalCarousel";
 import VCarousel from "../../../components/VerticalCarousel";
 import { color } from "../../../constants/Colors";
-import Icon from "@expo/vector-icons/AntDesign";
 
 const Blog = () => {
     const [activeFilter, setActiveFilter] = useState("All");

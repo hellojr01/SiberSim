@@ -7,8 +7,9 @@ import {
     ScrollView,
     RefreshControl,
 } from "react-native";
-import { useScrollToTop } from "@react-navigation/native";
-import { Redirect, useLocalSearchParams, useRouter } from "expo-router";
+// import { useScrollToTop } from "@react-navigation/native";
+import { Redirect, useLocalSearchParams } from "expo-router";
+
 import SectionHeading from "../../../components/SectionHeading";
 import VerticalCarousel from "../../../components/VerticalCarousel";
 import { color } from "../../../constants/Colors";

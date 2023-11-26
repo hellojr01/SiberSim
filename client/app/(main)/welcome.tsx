@@ -1,8 +1,9 @@
 import React from "react";
 import { Dimensions, StyleSheet, Text, View, SafeAreaView } from "react-native";
-import { useRouter, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { useRouter, Stack } from "expo-router";
 import Icon from "@expo/vector-icons/AntDesign";
+
 import Logo from "../../assets/images/wc1.svg";
 import { color } from "../../constants/Colors";
 

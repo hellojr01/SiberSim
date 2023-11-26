@@ -19,8 +19,6 @@ const Advertisement = () => {
         },
     ];
 
-    // const [ads, setAds] = useState([]);
-
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentAd((currentAd) =>
@@ -44,8 +42,10 @@ const Advertisement = () => {
 const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
-        height: width * 0.5,
+        alignSelf: "center",
+        width: width > 680 ? 600 : width,
+        // height: width * 0.5,
+        aspectRatio: 2,
         borderRadius: 10,
         overflow: "hidden",
         marginVertical: 10,

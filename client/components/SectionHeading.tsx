@@ -1,6 +1,7 @@
 import React from "react";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+
 import { color } from "../constants/Colors";
 
 interface Props {

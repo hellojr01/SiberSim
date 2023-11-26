@@ -1,7 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { color } from "../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
+
+import { color } from "../constants/Colors";
 
 type HeaderProps = {
     title: string;

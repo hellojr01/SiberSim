@@ -1,9 +1,4 @@
-import { ColorValue, Dimensions, Text } from "react-native";
-import {
-    FontAwesome,
-    FontAwesome5,
-    MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { ColorValue, Dimensions, Text, View } from "react-native";
 import { Drawer } from "expo-router/drawer";
 import {
     DrawerContentScrollView,
@@ -11,15 +6,27 @@ import {
     DrawerItem,
 } from "@react-navigation/drawer";
 import { router } from "expo-router";
+import {
+    FontAwesome,
+    FontAwesome5,
+    MaterialCommunityIcons,
+} from "@expo/vector-icons";
+
 import { color } from "../../constants/Colors";
-import Logout from "./logout";
-import { View } from "../../components/Themed";
-import { TouchableHighlight } from "react-native-gesture-handler";
+import { drawerItems } from "../../constants/drawerItemData";
 
 type textProps = {
     color: ColorValue | undefined;
     focused: Boolean;
     title: String;
+};
+
+type iconProps = {
+    color: ColorValue | undefined;
+    focused: Boolean;
+    iconName: String;
+    // Fa = FontAwesome, FA5 = FontAwesome5, MCI = MaterialCommunityIcons,
+    iconType: "FA" | "FA5" | "MCI";
 };
 
 function DisplayText({ color, focused, title }: textProps) {
@@ -36,6 +43,34 @@ function DisplayText({ color, focused, title }: textProps) {
     );
 }
 
+function DisplayIcon({ color, focused, iconName, iconType }: iconProps) {
+    let Icon: any;
+
+    switch (iconType) {
+        case "FA":
+            Icon = FontAwesome;
+            break;
+        case "FA5":
+            Icon = FontAwesome5;
+            break;
+        case "MCI":
+            Icon = MaterialCommunityIcons;
+            break;
+    }
+
+    return (
+        <Icon
+            name={iconName}
+            size={focused ? bigIcon : smallIcon}
+            color={color}
+            style={{
+                width: focused ? bigIcon : smallIcon,
+                aspectRatio: 1,
+            }}
+        />
+    );
+}
+
 const windowWidth = Dimensions.get("window").width;
 const smallIcon = windowWidth * (0.11 - windowWidth * 0.00005);
 const bigIcon = windowWidth * (0.16 - windowWidth * 0.000075);
@@ -47,49 +82,35 @@ export default function DrawerLayout() {
                 <DrawerContentScrollView {...props}>
                     <DrawerItemList {...props} />
                 </DrawerContentScrollView>
+
                 <View
                     style={{
                         bottom: 10,
+                        width: "100%",
                         position: "fixed",
                         justifyContent: "center",
-                        width: "92%",
-                        margin: 10,
-                        borderRadius: 5,
-                        borderWidth: 2,
-                        borderColor: color.purple,
                         backgroundColor: color.americanBlue,
                     }}
                 >
-                    <TouchableHighlight onPress={() => router.push("/logout")}>
-                        <View
-                            style={{
-                                flexDirection: "row",
-                                padding: 10,
-                                backgroundColor: color.purple,
-                            }}
-                        >
-                            <MaterialCommunityIcons
-                                name="logout"
-                                size={smallIcon}
-                                color={color.white}
-                                style={{
-                                    width: smallIcon,
-                                    aspectRatio: 1,
-                                }}
-                            />
-                            <Text
-                                style={{
-                                    color: color.white,
-                                    fontFamily: "NotoSans",
-                                    fontSize: 16,
-                                    alignSelf: "center",
-                                    marginLeft: 30,
-                                }}
-                            >
-                                Log Out
-                            </Text>
-                        </View>
-                    </TouchableHighlight>
+                    <DrawerItem
+                        label={() =>
+                            DisplayText({
+                                color: color.white,
+                                focused: false,
+                                title: "Log Out",
+                            })
+                        }
+                        icon={() =>
+                            DisplayIcon({
+                                color: color.white,
+                                focused: false,
+                                iconName: "logout",
+                                iconType: "MCI",
+                            })
+                        }
+                        inactiveBackgroundColor={color.purple}
+                        onPress={() => router.push("/logout")}
+                    />
                 </View>
             </View>
         );
@@ -128,17 +149,13 @@ export default function DrawerLayout() {
                             title: "Home",
                         }),
                     title: "Home",
-                    drawerIcon: ({ focused, color }) => (
-                        <FontAwesome
-                            name="home"
-                            size={focused ? bigIcon : smallIcon}
-                            color={color}
-                            style={{
-                                width: focused ? bigIcon : smallIcon,
-                                aspectRatio: 1,
-                            }}
-                        />
-                    ),
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "home",
+                            iconType: "FA",
+                        }),
                 }}
             />
             <Drawer.Screen
@@ -151,19 +168,34 @@ export default function DrawerLayout() {
                             title: "Simulations",
                         }),
                     title: "Simulations",
-                    drawerIcon: ({ focused, color }) => (
-                        <MaterialCommunityIcons
-                            name="cards-playing-spade-multiple"
-                            size={focused ? bigIcon : smallIcon}
-                            color={color}
-                            style={{
-                                width: focused ? bigIcon : smallIcon,
-                                aspectRatio: 1,
-                            }}
-                        />
-                    ),
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "cards-playing-spade-multiple",
+                            iconType: "MCI",
+                        }),
                 }}
             />
+            {/* <Drawer.Screen // Learn page, commented out for now
+                name="learn" // This is the name of the page and must match the url from root
+                options={{
+                    drawerLabel: ({ focused, color }) =>
+                        DisplayText({
+                            color: color,
+                            focused: focused,
+                            title: "Learn",
+                        }),
+                    title: "Learn",
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "book",
+                            iconType: "FA5",
+                        }),
+                }}
+            /> */}
             <Drawer.Screen
                 name="scammer" // This is the name of the page and must match the url from root
                 options={{
@@ -174,17 +206,13 @@ export default function DrawerLayout() {
                             title: "Spot Scam",
                         }),
                     title: "Identify Scammers & Report",
-                    drawerIcon: ({ focused, color }) => (
-                        <MaterialCommunityIcons
-                            name="magnify-scan"
-                            size={focused ? bigIcon : smallIcon}
-                            color={color}
-                            style={{
-                                width: focused ? bigIcon : smallIcon,
-                                aspectRatio: 1,
-                            }}
-                        />
-                    ),
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "magnify-scan",
+                            iconType: "MCI",
+                        }),
                 }}
             />
             <Drawer.Screen
@@ -197,17 +225,13 @@ export default function DrawerLayout() {
                             title: "Cyblog",
                         }),
                     title: "Cyber Blog",
-                    drawerIcon: ({ focused, color }) => (
-                        <FontAwesome
-                            name="quote-left"
-                            size={focused ? bigIcon : smallIcon}
-                            color={color}
-                            style={{
-                                width: focused ? bigIcon : smallIcon,
-                                aspectRatio: 1,
-                            }}
-                        />
-                    ),
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "quote-left",
+                            iconType: "FA",
+                        }),
                 }}
             />
             <Drawer.Screen
@@ -220,45 +244,16 @@ export default function DrawerLayout() {
                             title: "Profile",
                         }),
                     title: "Profile Page",
-                    drawerIcon: ({ focused, color }) => (
-                        <FontAwesome
-                            name="user"
-                            size={focused ? bigIcon : smallIcon}
-                            color={color}
-                            style={{
-                                width: focused ? bigIcon : smallIcon,
-                                aspectRatio: 1,
-                            }}
-                        />
-                    ),
-                }}
-            />
-            {/* 
-            <Drawer.Screen
-                name="learn" // This is the name of the page and must match the url from root
-                options={{
-                    drawerLabel: ({ focused, color }) =>
-                        DisplayText({
-                            color: color,
-                            focused: focused,
-                            title: "Learn",
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "user",
+                            iconType: "FA",
                         }),
-                    title: "Learn",
-                    drawerIcon: ({ focused, color }) => (
-                        <FontAwesome
-                            name="user"
-                            size={focused ? bigIcon : smallIcon}
-                            color={color}
-                            style={{
-                                width: focused ? bigIcon : smallIcon,
-                                aspectRatio: 1,
-                            }}
-                        />
-                    ),
                 }}
             />
-             */}
-            <Drawer.Screen
+            <Drawer.Screen // Testing Loader
                 name="loadertest" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: ({ focused, color }) =>
@@ -270,7 +265,7 @@ export default function DrawerLayout() {
                     title: "Test Loader Page",
                 }}
             />
-            <Drawer.Screen
+            <Drawer.Screen // Declared to remove the logout page, in the upcoming update will change the directory of logout page somewhere else, oof!
                 name="logout" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: () =>
@@ -280,17 +275,13 @@ export default function DrawerLayout() {
                             title: "Log Out",
                         }),
                     title: "Log Out",
-                    drawerIcon: () => (
-                        <MaterialCommunityIcons
-                            name="logout"
-                            size={smallIcon}
-                            color={color.white}
-                            style={{
-                                width: smallIcon,
-                                aspectRatio: 1,
-                            }}
-                        />
-                    ),
+                    drawerIcon: () =>
+                        DisplayIcon({
+                            color: color.white,
+                            focused: false,
+                            iconName: "logout",
+                            iconType: "MCI",
+                        }),
                     drawerItemStyle: {
                         display: "none",
                         // bottom: 10,

@@ -1,8 +1,10 @@
 import React from "react";
 import { View } from "react-native";
+
 import LoaderItem from "../../components/LoaderItem";
 import { color } from "../../constants/Colors";
 
+// Intended file for testing purposes only
 function loader() {
     return (
         <View

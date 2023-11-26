@@ -9,6 +9,7 @@ import {
     Dimensions,
 } from "react-native";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
+
 import { color } from "../../../constants/Colors";
 
 const ForgotPasswordScreen = () => {

@@ -8,9 +8,9 @@ import {
     StyleSheet,
     Dimensions,
 } from "react-native";
-import { color } from "../../constants/Colors";
 import { router } from "expo-router";
-import { hide } from "expo-splash-screen";
+
+import { color } from "../../constants/Colors";
 
 const registerScreen = () => {
     const windowWidth = Dimensions.get("window").width;

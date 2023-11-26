@@ -29,7 +29,7 @@ export default function BlogLayout() {
             />
             <Stack.Screen
                 name="[id]"
-                getId={({ params }) => String(Date.now())}
+                // getId={({ params }) => String(Date.now())} // This is just for trying purposes, might remove it later
                 options={{
                     title: "Back to Cyberblog",
                     headerShown: true,

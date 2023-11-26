@@ -3,12 +3,13 @@ import { Pressable, StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { Redirect, useLocalSearchParams, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import Icon from "@expo/vector-icons/AntDesign";
+
 import Logo1 from "../../../assets/images/wc2.svg";
 import Logo2 from "../../../assets/images/wc3.svg";
 import Logo3 from "../../../assets/images/wc4.svg";
 import Logo404 from "../../../assets/images/missing404.svg";
-import { color } from "../../../constants/Colors";
 import { instances } from "../../../constants/onboardData";
+import { color } from "../../../constants/Colors";
 
 const OnboardScreen = () => {
     const router = useRouter();

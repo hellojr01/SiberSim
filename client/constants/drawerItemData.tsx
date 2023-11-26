@@ -1,4 +1,5 @@
-export default [
+//Please update new icons here for drawer items (side nav menu), might eventually make use of it later on
+export const drawerItems = [
     {
         name: "Home",
         iconType: "FontAwesome",
@@ -15,7 +16,7 @@ export default [
         iconName: "calculator-variant",
     },
     {
-        name: "Identify",
+        name: "Identify / Spot Scam",
         iconType: "MaterialCommunityIcons",
         iconName: "magnify-scan",
     },

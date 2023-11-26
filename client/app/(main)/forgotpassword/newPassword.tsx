@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     StyleSheet,
 } from "react-native";
+
 import { color } from "../../../constants/Colors";
 
 const NewPasswordScreen = () => {

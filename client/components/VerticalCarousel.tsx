@@ -7,12 +7,13 @@ import {
     StyleSheet,
     TouchableHighlight,
 } from "react-native";
+import { router, Redirect } from "expo-router";
+import { StackActions } from "@react-navigation/native";
+
 import { simulations } from "../constants/simulationData";
 import { blogs } from "../constants/blogData";
 import { scammers } from "../constants/scammerData";
-import { router, Redirect } from "expo-router";
 import { color } from "../constants/Colors";
-import { StackActions } from "@react-navigation/native";
 
 type Props = {
     carouselDesign: "simulation" | "cyberblog" | "scammer";
@@ -37,9 +38,17 @@ const VerticalCarousel = ({ carouselDesign, redirect }: Props) => {
                     <View key={blog.id}>
                         <TouchableHighlight
                             onPress={() => {
+                                router.push("/blog");
                                 redirect
-                                    ? router.replace(blog.path as any)
-                                    : router.push(blog.path as any);
+                                    ? setTimeout(
+                                          () =>
+                                              router.replace(blog.path as any),
+                                          5
+                                      )
+                                    : setTimeout(
+                                          () => router.push(blog.path as any),
+                                          5
+                                      );
                             }}
                             underlayColor="transparent"
                         >
@@ -108,7 +117,7 @@ const styles = StyleSheet.create({
     },
     blog: {
         flexDirection: "row", // Horizontal layout
-        alignItems: "center", 
+        alignItems: "center",
         marginVertical: 5,
         paddingHorizontal: 10,
     },
@@ -137,7 +146,7 @@ const styles = StyleSheet.create({
     blogDate: {
         fontSize: 11,
         color: color.darkBlueMagenta,
-    }
+    },
 });
 
 export default VerticalCarousel;
