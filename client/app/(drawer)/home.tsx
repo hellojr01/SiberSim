@@ -1,11 +1,11 @@
 import { StyleSheet, Text, SafeAreaView, View, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 
-import Header from "../../components/Header";
-import Advertisement from "../../components/Advertisement";
-import SectionHeading from "../../components/SectionHeading";
-import Carousel from "../../components/HorizontalCarousel";
-import { color } from "../../constants/Colors";
+import Header from "@components/Header";
+import Advertisement from "@components/Advertisement";
+import SectionHeading from "@components/SectionHeading";
+import Carousel from "@components/HorizontalCarousel";
+import { color } from "@constants/Colors";
 
 const Home = () => {
     const router = useRouter();

@@ -11,12 +11,12 @@ import { router } from "expo-router";
 import { FAB } from "@rneui/base";
 import Icon from "@expo/vector-icons/AntDesign";
 
-import SectionHeading from "../../../components/SectionHeading";
-import SearchComponent from "../../../components/SearchComponent";
-import ButtonFilter from "../../../components/ButtonFilter";
-import HCarousel from "../../../components/HorizontalCarousel";
-import VCarousel from "../../../components/VerticalCarousel";
-import { color } from "../../../constants/Colors";
+import SectionHeading from "@components/SectionHeading";
+import SearchComponent from "@components/SearchComponent";
+import ButtonFilter from "@components/ButtonFilter";
+import HCarousel from "@components/HorizontalCarousel";
+import VCarousel from "@components/VerticalCarousel";
+import { color } from "@constants/Colors";
 
 const Blog = () => {
     const [activeFilter, setActiveFilter] = useState("All");

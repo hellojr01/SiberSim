@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import { Button, IconButton } from "react-native-paper";
 
-import { color } from "../constants/Colors";
+import { color } from "@constants/Colors";
 
 interface ButtonFilterProps {
     activeFilter: string;

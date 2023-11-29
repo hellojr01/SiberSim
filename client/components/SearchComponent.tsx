@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { SearchBar } from "@rneui/themed";
 
-import { color } from "../constants/Colors";
+import { color } from "@constants/Colors";
 
 type SearchBarComponentProps = {};
 

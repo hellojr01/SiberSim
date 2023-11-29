@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import { color } from "../constants/Colors";
+import { color } from "@constants/Colors";
 
 interface Props {
     title: string;

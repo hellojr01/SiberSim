@@ -11,7 +11,7 @@ import Modal from "react-native-modal";
 import { Link } from "expo-router";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import { color } from "../../../constants/Colors";
+import { color } from "@constants/Colors";
 
 const AddBlog = () => {
     const [title, setTitle] = useState("");
@@ -105,6 +105,8 @@ const AddBlog = () => {
         </View>
     );
 };
+
+export default AddBlog;
 
 const styles = StyleSheet.create({
     container: {
@@ -205,5 +207,3 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
 });
-
-export default AddBlog;

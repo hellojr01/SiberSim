@@ -5,7 +5,13 @@
     "module": "esnext",
     "jsx": "react-native",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "@app/*": ["./app/*"],
+      "@assets/*": ["./assets/*"],
+      "@components/*": ["./components/*"],
+      "@constants/*": ["./constants/*"],
+    }
   },
   "include": [
     "**/*.ts",

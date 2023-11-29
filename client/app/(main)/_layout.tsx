@@ -23,6 +23,10 @@ export default function MainLayout() {
                 name="forgotpassword/index"
                 options={{ title: "Forgot Password" }}
             />
+            <Stack.Screen
+                name="simulation/testsim"
+                options={{ title: "Test Simulation" }}
+            />
             {/*
             <Stack.Screen // This is for the forgot password (verification & new password) might need back later
                 name="(pages)/forgotpassword/newPassword"

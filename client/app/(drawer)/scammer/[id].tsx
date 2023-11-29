@@ -14,10 +14,10 @@ import {
     MaterialCommunityIcons,
 } from "@expo/vector-icons";
 
-import SectionHeading from "../../../components/SectionHeading";
-import VerticalCarousel from "../../../components/VerticalCarousel";
-import { scammers } from "../../../constants/scammerData";
-import { color } from "../../../constants/Colors";
+import SectionHeading from "@components/SectionHeading";
+import VerticalCarousel from "@components/VerticalCarousel";
+import { scammers } from "@constants/scammerData";
+import { color } from "@constants/Colors";
 
 const ScammerDetails = () => {
     const { id } = useLocalSearchParams();

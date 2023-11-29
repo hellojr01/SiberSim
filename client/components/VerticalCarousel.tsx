@@ -10,10 +10,10 @@ import {
 import { router, Redirect } from "expo-router";
 import { StackActions } from "@react-navigation/native";
 
-import { simulations } from "../constants/simulationData";
-import { blogs } from "../constants/blogData";
-import { scammers } from "../constants/scammerData";
-import { color } from "../constants/Colors";
+import { simulations } from "@constants/simulationData";
+import { blogs } from "@constants/blogData";
+import { scammers } from "@constants/scammerData";
+import { color } from "@constants/Colors";
 
 type Props = {
     carouselDesign: "simulation" | "cyberblog" | "scammer";

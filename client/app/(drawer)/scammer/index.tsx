@@ -7,11 +7,11 @@ import {
     View,
     TouchableHighlight,
 } from "react-native";
-import SearchComponent from "../../../components/SearchComponent";
-import { color } from "../../../constants/Colors";
-import SectionHeading from "../../../components/SectionHeading";
-import HorizontalCarousel from "../../../components/HorizontalCarousel";
-import { scammers } from "../../../constants/scammerData";
+import SearchComponent from "@components/SearchComponent";
+import { color } from "@constants/Colors";
+import SectionHeading from "@components/SectionHeading";
+import HorizontalCarousel from "@components/HorizontalCarousel";
+import { scammers } from "@constants/scammerData";
 import { router } from "expo-router";
 
 export default function ScammerPage() {

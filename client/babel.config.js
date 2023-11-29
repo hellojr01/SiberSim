@@ -7,6 +7,17 @@ module.exports = function (api) {
             "expo-router/babel",
             "@babel/plugin-proposal-export-namespace-from",
             "react-native-reanimated/plugin",
+            [
+                "module-resolver",
+                {
+                    alias: {
+                        "@app": "./app",
+                        "@assets": "./assets",
+                        "@components": "./components",
+                        "@constants": "./constants",
+                    },
+                },
+            ],
         ],
         env: {
             production: {

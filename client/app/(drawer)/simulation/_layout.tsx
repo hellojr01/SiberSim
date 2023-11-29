@@ -7,6 +7,13 @@ export default function SimulationLayout() {
                 title: "Simulation",
                 headerShown: false,
             }}
-        />
+        >
+            <Stack.Screen
+                name="index"
+                options={{
+                    title: "Simulation Home",
+                }}
+            />
+        </Stack>
     );
 }

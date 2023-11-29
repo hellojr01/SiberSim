@@ -17,13 +17,13 @@ export default function BlogLayout() {
             <Stack.Screen
                 name="index"
                 options={{
-                    title: "Home",
+                    title: "CyBlog Home",
                 }}
             />
             <Stack.Screen
                 name="addBlog"
                 options={{
-                    title: "Add Blog",
+                    title: "Add New Blog",
                     headerShown: false,
                 }}
             />

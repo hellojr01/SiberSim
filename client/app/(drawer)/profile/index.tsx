@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, SafeAreaView, View } from "react-native";
 
-import Header from "../../../components/Header";
-import Carousel from "../../../components/HorizontalCarousel";
-import { color } from "../../../constants/Colors";
+import Header from "@components/Header";
+import Carousel from "@components/HorizontalCarousel";
+import { color } from "@constants/Colors";
 
 const Profile = () => {
     return (

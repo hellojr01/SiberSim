@@ -4,8 +4,8 @@ import { StatusBar } from "expo-status-bar";
 import { useRouter, Stack } from "expo-router";
 import Icon from "@expo/vector-icons/AntDesign";
 
-import Logo from "../../assets/images/wc1.svg";
-import { color } from "../../constants/Colors";
+import Logo from "@assets/images/wc1.svg";
+import { color } from "@constants/Colors";
 
 const WelcomeScreen = () => {
     const router = useRouter();
@@ -13,13 +13,6 @@ const WelcomeScreen = () => {
 
     return (
         <SafeAreaView style={styles.base}>
-            <Stack.Screen
-                options={{
-                    title: "Welcome Page",
-                    presentation: "modal",
-                    headerShown: false,
-                }}
-            />
             <StatusBar translucent={false} />
             <View style={styles.top}>
                 <Text style={{ ...styles.header, ...styles.common }}>

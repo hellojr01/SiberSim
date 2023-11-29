@@ -8,10 +8,10 @@ import {
     StyleSheet,
     TouchableHighlight,
 } from "react-native";
-import { simulations } from "../constants/simulationData";
-import { blogs } from "../constants/blogData";
-import { color } from "../constants/Colors";
-import { scammers } from "../constants/scammerData";
+import { simulations } from "@constants/simulationData";
+import { blogs } from "@constants/blogData";
+import { color } from "@constants/Colors";
+import { scammers } from "@constants/scammerData";
 import { Redirect, router } from "expo-router";
 
 type Props = {

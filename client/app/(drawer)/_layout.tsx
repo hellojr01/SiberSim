@@ -12,8 +12,8 @@ import {
     MaterialCommunityIcons,
 } from "@expo/vector-icons";
 
-import { color } from "../../constants/Colors";
-import { drawerItems } from "../../constants/drawerItemData";
+import { color } from "@constants/Colors";
+import { drawerItems } from "@constants/drawerItemData";
 
 type textProps = {
     color: ColorValue | undefined;

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 
-import { color } from "../../../constants/Colors";
+import { color } from "@constants/Colors";
 
 const ForgotPasswordScreen = () => {
     const windowWidth = Dimensions.get("window").width;

@@ -10,11 +10,11 @@ import {
 // import { useScrollToTop } from "@react-navigation/native";
 import { Redirect, useLocalSearchParams } from "expo-router";
 
-import SectionHeading from "../../../components/SectionHeading";
-import VerticalCarousel from "../../../components/VerticalCarousel";
-import { color } from "../../../constants/Colors";
-import { blogs } from "../../../constants/blogData";
-import Logo from "../../../assets/images/missing404.svg";
+import SectionHeading from "@components/SectionHeading";
+import VerticalCarousel from "@components/VerticalCarousel";
+import { color } from "@constants/Colors";
+import { blogs } from "@constants/blogData";
+import Logo from "@assets/images/missing404.svg";
 
 export const unstable_settings = {
     // Ensure that reloading on a page keeps a back button present.

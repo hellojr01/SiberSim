@@ -11,7 +11,7 @@ import {
 import { router } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 
-import { color } from "../../constants/Colors";
+import { color } from "@constants/Colors";
 
 const LoginScreen = () => {
     const windowWidth = Dimensions.get("window").width;

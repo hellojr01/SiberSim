@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 
-import { color } from "../../constants/Colors";
+import { color } from "@constants/Colors";
 
 const registerScreen = () => {
     const windowWidth = Dimensions.get("window").width;

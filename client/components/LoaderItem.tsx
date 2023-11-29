@@ -7,7 +7,7 @@ import {
     Platform,
     ActivityIndicator,
 } from "react-native";
-import { color } from "../constants/Colors";
+import { color } from "@constants/Colors";
 
 const LoaderItem = () => {
     return Platform.OS == "android" || Platform.OS == "ios" ? (
@@ -15,21 +15,21 @@ const LoaderItem = () => {
             <AnimatedLottieView
                 autoPlay
                 loop
-                source={require("../assets/animations/LoadingText.json")}
+                source={require("@assets/animations/LoadingText.json")}
                 style={{ width: 100, height: 100, shadowColor: color.black }}
             />
             {/* <Text style={styles.loadingText}>Loading</Text> */}
             <AnimatedLottieView
                 autoPlay
                 loop
-                source={require("../assets/animations/LoadingAnimation.json")}
+                source={require("@assets/animations/LoadingAnimation.json")}
                 style={{ width: 200, height: 200 }}
             />
 
             <AnimatedLottieView
                 autoPlay
                 loop
-                source={require("../assets/animations/LoadingBar.json")}
+                source={require("@assets/animations/LoadingBar.json")}
                 style={{
                     width: 300,
                     height: 300,
