@@ -49,9 +49,15 @@ run this command:
 
     npm uninstall expo-dev-client
 
-Then for each components using the native components (which won't work for Expo Go), comment it out like this, please do also includes all self writes components using it:
+then, for each components using the native components (which won't work for Expo Go), comment it out like this, please do also includes all self writes components using it:
 
 > # import TextRecognition, {TextRecognitionResult} from "@react-native-ml-kit/text-recognition";
+
+then, remove the node_modules file (!if you wish for faster android build, can consider keeping them).
+
+Lastly, reinstall your node_modules file using the command:
+
+    npm install
 
 Now you should be able to run your project on Expo Go(by default) again:
 
