@@ -26,6 +26,7 @@ export default function OcrReader() {
     const urlPattern: RegExp =
         /(http(s):\/\/.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     const phonePattern: RegExp = /(\+?6?01)[0-46-9]-?[0-9]{7,8}/;
+    const bankAccPattern: RegExp = /[0-9]{10,16}/;
 
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
@@ -87,7 +88,8 @@ export default function OcrReader() {
                             .find(
                                 (word: string) =>
                                     phonePattern.test(word) ||
-                                    urlPattern.test(word)
+                                    urlPattern.test(word) ||
+                                    bankAccPattern.test(word)
                             )}
                     </TextInput>
                     <Button title="Done" onPress={undefined} />
