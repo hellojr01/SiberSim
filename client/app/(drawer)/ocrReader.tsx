@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
     View,
     Text,
+    TextInput,
     Button,
     Image,
     StyleSheet,
@@ -14,6 +15,7 @@ import TextRecognition, {
 } from "@react-native-ml-kit/text-recognition";
 
 import { color } from "@constants/Colors";
+import LoaderItem from "@components/LoaderItem";
 
 export default function OcrReader() {
     const [loading, setLoading] = React.useState<boolean>(false);
@@ -21,13 +23,15 @@ export default function OcrReader() {
     const [result, setResult] = React.useState<
         TextRecognitionResult | undefined
     >();
+    const urlPattern: RegExp =
+        /(http(s):\/\/.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+    const phonePattern: RegExp = /(\+?6?01)[0-46-9]-?[0-9]{7,8}/;
 
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let imageResult = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
-            aspect: [3, 5],
             quality: 1,
         });
 
@@ -50,7 +54,8 @@ export default function OcrReader() {
     if (loading) {
         return (
             <SafeAreaView style={styles.base}>
-                <ActivityIndicator />
+                {/* <ActivityIndicator /> */}
+                <LoaderItem />
             </SafeAreaView>
         );
     }
@@ -74,7 +79,20 @@ export default function OcrReader() {
                     }}
                 />
             )}
-            {result && <Text style={{ fontSize: 10 }}>{result.text}</Text>}
+            {result && (
+                <View style={{ flexDirection: "row", rowGap: 10 }}>
+                    <TextInput style={styles.input}>
+                        {result.text
+                            .split(" ")
+                            .find(
+                                (word: string) =>
+                                    phonePattern.test(word) ||
+                                    urlPattern.test(word)
+                            )}
+                    </TextInput>
+                    <Button title="Done" onPress={undefined} />
+                </View>
+            )}
         </View>
     );
 }
@@ -84,5 +102,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         backgroundColor: color.lavender,
+    },
+    input: {
+        height: 30,
+        width: 200,
+        borderWidth: 1,
+        padding: 5,
+        fontSize: 14,
+        marginRight: 10,
     },
 });
