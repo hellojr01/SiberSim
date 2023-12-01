@@ -43,7 +43,7 @@ then follow the steps [here](https://www.geeksforgeeks.org/methods-of-generating
 ## Migrating back to Expo Go
 
 Okay so, basically Expo Go is the best, and you don't wanna quit it anytime so soon...
-Basically to migrate back to Expo Go, simply uninstall the Dev-Client, then comment out all files and components which only run natively, which will likely tocorrupt Expo Go (Some won't show the error unless there's some critical conflicts happening, it simply won't run the native library, but just taking it as the precaution)
+Basically to migrate back to Expo Go, simply uninstall the Dev-Client, then comment out all files and components which only run natively, which will likely to corrupt Expo Go (Some won't show the error unless there's some critical conflicts happening, it simply won't run the native library, but just taking it as the precaution)
 
 run this command:
 
@@ -55,12 +55,17 @@ then, for each components using the native components (which won't work for Expo
 
 **_(this is an example of a native only library)_**
 
-then, remove the node_modules and android file (!if you wish for faster android build next time, can consider keeping them).
+then, remove the node_modules & android folder (delete it manually using file explorer or using commands below)
+
+    rm -rf node_modules/
+    rm -rf android/
+
+(if you wish for faster android build next time, can consider keeping the android folder somewhere else and move it back when you needed it back).
 
 Lastly, reinstall your node_modules file using the command:
 
     npm install
 
-Now you should be able to run your project on Expo Go(by default) again:
+Now you should be able to migrate back your project on Expo Go again:
 
     npx expo start
