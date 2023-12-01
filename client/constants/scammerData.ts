@@ -5,6 +5,7 @@ const scammersData = [
     name: 'John Smith',
     contactInfo: '601110831460',
     contactType: 'Mobile',
+    path: '/scammer/1',
     reports: [
       { id: 1, name: 'John Doe', date: '2021-01-15', description: 'This scammer tried to sell me a fake product.' },
       { id: 2, name: 'Jane Smith', date: '2021-02-20', description: 'This scammer asked for my personal information.' },
@@ -19,6 +20,7 @@ const scammersData = [
     name: 'Emma Johnson',
     contactInfo: 'www.scammer1.com',
     contactType: 'Website',
+    path: '/scammer/2',
     reports: [
       { id: 1, name: 'Alice White', date: '2021-04-05', description: 'Received spam messages from this scammer\'s website.' },
       { id: 2, name: 'Chris Martin', date: '2021-05-12', description: 'The website is a scam, be cautious!' },
@@ -32,6 +34,7 @@ const scammersData = [
     name: 'Michael Brown',
     contactInfo: '123456789012',
     contactType: 'Bank Account',
+    path: '/scammer/3',
     reports: [
       { id: 1, name: 'David Johnson', date: '2021-06-20', description: 'This scammer used a fake bank account to trick me.' },
       { id: 2, name: 'Sarah Williams', date: '2021-07-05', description: 'Reported fraudulent activities related to this bank account.' },
@@ -45,6 +48,7 @@ const scammersData = [
     name: 'Linda Davis',
     contactInfo: '601220642871',
     contactType: 'Mobile',
+    path: '/scammer/4',
     reports: [
       { id: 1, name: 'Paul Robinson', date: '2021-08-12', description: 'Received scam calls from this mobile number.' },
       { id: 2, name: 'Emily Brown', date: '2021-09-01', description: 'Attempted phishing through mobile communication.' },
@@ -58,6 +62,7 @@ const scammersData = [
     name: 'William Wilson',
     contactInfo: 'www.scammer2.com',
     contactType: 'Website',
+    path: '/scammer/5',
     reports: [
       { id: 1, name: 'Alex Turner', date: '2021-10-18', description: 'Scammed by the website, lost money on a fake purchase.' },
       { id: 2, name: 'Sophia Hall', date: '2021-11-05', description: 'Fake products sold on the website, be aware!' },
@@ -71,6 +76,7 @@ const scammersData = [
     name: 'Patricia Moore',
     contactInfo: '234567890123',
     contactType: 'Bank Account',
+    path: '/scammer/6',
     reports: [
       { id: 1, name: 'Daniel Harris', date: '2021-12-15', description: 'Reported fraudulent transactions from this bank account.' },
       { id: 2, name: 'Mia Robinson', date: '2022-01-02', description: 'Beware of this bank account, involved in scam activities.' },
@@ -84,6 +90,7 @@ const scammersData = [
     name: 'James Anderson',
     contactInfo: '601932456789',
     contactType: 'Mobile',
+    path: '/scammer/7',
     reports: [
       { id: 1, name: 'Olivia Martinez', date: '2022-02-10', description: 'Received suspicious messages from this mobile number.' },
       { id: 2, name: 'Lucas Turner', date: '2022-03-20', description: 'Attempted scam calls, be cautious!' },
@@ -97,6 +104,7 @@ const scammersData = [
     name: 'Jennifer Lee',
     contactInfo: 'www.scammer3.com',
     contactType: 'Website',
+    path: '/scammer/8',
     reports: [
       { id: 1, name: 'Liam White', date: '2022-04-05', description: 'Fake products advertised on the website, avoid purchasing.' },
       { id: 2, name: 'Ella Davis', date: '2022-05-12', description: 'Scammed by this website, lost money on a fake deal.' },
@@ -110,6 +118,7 @@ const scammersData = [
     name: 'David Taylor',
     contactInfo: '345678901234',
     contactType: 'Bank Account',
+    path: '/scammer/9',
     reports: [
       { id: 1, name: 'Noah Robinson', date: '2022-06-20', description: 'Reported fraudulent transactions from this bank account.' },
       { id: 2, name: 'Ava Harris', date: '2022-07-05', description: 'Beware of this bank account, involved in scam activities.' },
@@ -123,6 +132,7 @@ const scammersData = [
     name: 'Susan Martinez',
     contactInfo: '601432109876',
     contactType: 'Mobile',
+    path: '/scammer/10',
     reports: [
       { id: 1, name: 'Jackson Smith', date: '2022-08-12', description: 'Received scam calls from this mobile number.' },
       { id: 2, name: 'Sophie Turner', date: '2022-09-01', description: 'Attempted phishing through mobile communication.' },
@@ -136,6 +146,7 @@ const scammersData = [
     name: 'Richard Jackson',
     contactInfo: 'www.scammer4.com',
     contactType: 'Website',
+    path: '/scammer/11',
     reports: [
       { id: 1, name: 'Emma Turner', date: '2022-10-18', description: 'Scammed by the website, lost money on a fake purchase.' },
       { id: 2, name: 'Henry Anderson', date: '2022-11-05', description: 'Fake products sold on the website, be aware!' },
@@ -149,6 +160,7 @@ const scammersData = [
     name: 'Mary Harris',
     contactInfo: '456789012345',
     contactType: 'Bank Account',
+    path: '/scammer/12',
     reports: [
       { id: 1, name: 'Ethan Martinez', date: '2022-12-15', description: 'Reported fraudulent transactions from this bank account.' },
       { id: 2, name: 'Isabella Davis', date: '2023-01-02', description: 'Beware of this bank account, involved in scam activities.' },
@@ -162,6 +174,7 @@ const scammersData = [
     name: 'Charles Clark',
     contactInfo: '601555123456',
     contactType: 'Mobile',
+    path: '/scammer/13',
     reports: [
       { id: 1, name: 'Mason Robinson', date: '2023-02-10', description: 'Received suspicious messages from this mobile number.' },
       { id: 2, name: 'Scarlett Turner', date: '2023-03-20', description: 'Attempted scam calls, be cautious!' },
@@ -175,6 +188,7 @@ const scammersData = [
     name: 'Patricia Lewis',
     contactInfo: 'www.scammer5.com',
     contactType: 'Website',
+    path: '/scammer/14',
     reports: [
       { id: 1, name: 'James White', date: '2023-04-05', description: 'Fake products advertised on the website, avoid purchasing.' },
       { id: 2, name: 'Ava Davis', date: '2023-05-12', description: 'Scammed by this website, lost money on a fake deal.' },
@@ -188,6 +202,7 @@ const scammersData = [
     name: 'Elizabeth Young',
     contactInfo: '567890123456',
     contactType: 'Bank Account',
+    path: '/scammer/15',
     reports: [
       { id: 1, name: 'Oliver Robinson', date: '2023-06-20', description: 'Reported fraudulent transactions from this bank account.' },
       { id: 2, name: 'Chloe Harris', date: '2023-07-05', description: 'Beware of this bank account, involved in scam activities.' },
@@ -201,6 +216,7 @@ const scammersData = [
     name: 'Thomas Walker',
     contactInfo: '601678987654',
     contactType: 'Mobile',
+    path: '/scammer/16',
     reports: [
       { id: 1, name: 'Liam Smith', date: '2023-08-12', description: 'Received scam calls from this mobile number.' },
       { id: 2, name: 'Sophie Turner', date: '2023-09-01', description: 'Attempted phishing through mobile communication.' },
@@ -214,6 +230,7 @@ const scammersData = [
     name: 'Jessica Hall',
     contactInfo: 'www.scammer6.com',
     contactType: 'Website',
+    path: '/scammer/17',
     reports: [
       { id: 1, name: 'Noah Davis', date: '2023-10-18', description: 'Scammed by the website, lost money on a fake purchase.' },
       { id: 2, name: 'Mia Turner', date: '2023-11-05', description: 'Fake products sold on the website, be aware!' },
@@ -227,6 +244,7 @@ const scammersData = [
     name: 'Daniel Perez',
     contactInfo: '678901234567',
     contactType: 'Bank Account',
+    path: '/scammer/18',
     reports: [
       { id: 1, name: 'Ethan Robinson', date: '2023-12-15', description: 'Reported fraudulent transactions from this bank account.' },
       { id: 2, name: 'Isabella Harris', date: '2024-01-02', description: 'Beware of this bank account, involved in scam activities.' },
@@ -240,6 +258,7 @@ const scammersData = [
     name: 'Sarah Green',
     contactInfo: '601333555777',
     contactType: 'Mobile',
+    path: '/scammer/19',
     reports: [
       { id: 1, name: 'Mason Smith', date: '2024-02-10', description: 'Received suspicious messages from this mobile number.' },
       { id: 2, name: 'Scarlett Turner', date: '2024-03-20', description: 'Attempted scam calls, be cautious!' },
@@ -253,6 +272,7 @@ const scammersData = [
     name: 'Frank White',
     contactInfo: 'www.scammer7.com',
     contactType: 'Website',
+    path: '/scammer/20',
     reports: [
       { id: 1, name: 'Oliver White', date: '2024-04-05', description: 'Fake products advertised on the website, avoid purchasing.' },
       { id: 2, name: 'Chloe Davis', date: '2024-05-12', description: 'Scammed by this website, lost money on a fake deal.' },
@@ -264,6 +284,7 @@ const scammersData = [
     name: 'Margaret King',
     contactInfo: '789012345678',
     contactType: 'Bank Account',
+    path: '/scammer/21',
     reports: [
       { id: 1, name: 'Ethan Robinson', date: '2024-06-20', description: 'Reported fraudulent transactions from this bank account.' },
       { id: 2, name: 'Isabella Harris', date: '2024-07-05', description: 'Beware of this bank account, involved in scam activities.' },
@@ -277,6 +298,7 @@ const scammersData = [
     name: 'Joseph Turner',
     contactInfo: '601876543210',
     contactType: 'Mobile',
+    path: '/scammer/22',
     reports: [
       { id: 1, name: 'Liam Smith', date: '2024-08-12', description: 'Received scam calls from this mobile number.' },
       { id: 2, name: 'Sophie Turner', date: '2024-09-01', description: 'Attempted phishing through mobile communication.' },
@@ -289,6 +311,7 @@ const scammersData = [
       name: 'Dorothy Martinez',
       contactInfo: 'www.scammer8.com',
       contactType: 'Website',
+      path: '/scammer/23',
       reports: [
         { id: 1, name: 'Noah Davis', date: '2022-01-15', description: 'Scammed by the website, lost money on a fake purchase.' },
         { id: 2, name: 'Mia Turner', date: '2022-02-20', description: 'Fake products sold on the website, be aware!' },
@@ -302,6 +325,7 @@ const scammersData = [
       name: 'Robert Scott',
       contactInfo: '890123456789',
       contactType: 'Bank Account',
+      path: '/scammer/24',
       reports: [
         { id: 1, name: 'Ethan Robinson', date: '2022-03-10', description: 'Reported fraudulent transactions from this bank account.' },
         { id: 2, name: 'Isabella Harris', date: '2022-04-05', description: 'Beware of this bank account, involved in scam activities.' },
@@ -315,6 +339,7 @@ const scammersData = [
       name: 'Karen Phillips',
       contactInfo: '601999888777',
       contactType: 'Mobile',
+      path: '/scammer/25',
       reports: [
         { id: 1, name: 'Mason Smith', date: '2022-05-12', description: 'Received scam calls from this mobile number.' },
         { id: 2, name: 'Scarlett Turner', date: '2022-06-20', description: 'Attempted phishing through mobile communication.' },
@@ -328,6 +353,7 @@ const scammersData = [
       name: 'William Moore',
       contactInfo: 'www.scammer9.com',
       contactType: 'Website',
+      path: '/scammer/26',
       reports: [
         { id: 1, name: 'Oliver White', date: '2022-07-05', description: 'Fake products advertised on the website, avoid purchasing.' },
         { id: 2, name: 'Chloe Davis', date: '2022-08-12', description: 'Scammed by this website, lost money on a fake deal.' },
@@ -341,6 +367,7 @@ const scammersData = [
       name: 'Linda Davis',
       contactInfo: '111222333444',
       contactType: 'Bank Account',
+      path: '/scammer/27',
       reports: [
         { id: 1, name: 'Ethan Robinson', date: '2022-09-01', description: 'Reported fraudulent transactions from this bank account.' },
         { id: 2, name: 'Isabella Harris', date: '2022-10-18', description: 'Beware of this bank account, involved in scam activities.' },
@@ -354,6 +381,7 @@ const scammersData = [
       name: 'Edward White',
       contactInfo: '601123456789',
       contactType: 'Mobile',
+      path: '/scammer/28',
       reports: [
         { id: 1, name: 'Liam Smith', date: '2022-11-05', description: 'Received scam calls from this mobile number.' },
         { id: 2, name: 'Sophie Turner', date: '2022-12-15', description: 'Attempted phishing through mobile communication.' },
@@ -367,6 +395,7 @@ const scammersData = [
       name: 'Sarah Johnson',
       contactInfo: 'www.scammer10.com',
       contactType: 'Website',
+      path: '/scammer/29',
       reports: [
         { id: 1, name: 'Noah Davis', date: '2023-01-02', description: 'Scammed by the website, lost money on a fake purchase.' },
         { id: 2, name: 'Mia Turner', date: '2023-02-10', description: 'Fake products sold on the website, be aware!' },
@@ -379,6 +408,7 @@ const scammersData = [
       name: 'Michael Harris',
       contactInfo: '999888777666',
       contactType: 'Bank Account',
+      path: '/scammer/30',
       reports: [
         { id: 1, name: 'Ethan Robinson', date: '2023-03-20', description: 'Reported fraudulent transactions from this bank account.' },
         { id: 2, name: 'Isabella Harris', date: '2023-04-05', description: 'Beware of this bank account, involved in scam activities.' },
