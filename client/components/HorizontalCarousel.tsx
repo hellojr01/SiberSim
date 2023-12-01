@@ -11,7 +11,7 @@ import {
 import { simulations } from "@constants/simulationData";
 import { blogs } from "@constants/blogData";
 import { color } from "@constants/Colors";
-import { scammers } from "@constants/scammerData";
+// import { scammers } from "@constants/scammerData";
 import { Redirect, router } from "expo-router";
 
 type Props = {
@@ -85,33 +85,33 @@ const HorizontalCarousel = ({ carouselDesign, redirect }: Props) => {
                 </ScrollView>
             </View>
         );
-    } else if (carouselDesign === "scammer") {
-        return (
-            <View style={styles.container}>
-                <ScrollView
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-                >
-                    {scammers.map((scammer) => (
-                        <View key={scammer.id} style={styles.scammer}>
-                            <Image
-                                source={scammer.image}
-                                style={styles.scamImage}
-                            />
-                            <Text style={styles.scamNumber}>
-                                {scammer.number}
-                            </Text>
-                            <Text style={styles.scamTitle}>
-                                {scammer.title}
-                            </Text>
-                            <Text style={styles.scamRecent}>
-                                {scammer.recent} Recent Report
-                            </Text>
-                        </View>
-                    ))}
-                </ScrollView>
-            </View>
-        );
+        // } else if (carouselDesign === "scammer") {
+        //     return (
+        //         <View style={styles.container}>
+        //             <ScrollView
+        //                 horizontal={true}
+        //                 showsHorizontalScrollIndicator={false}
+        //             >
+        //                 {scammers.map((scammer) => (
+        //                     <View key={scammer.id} style={styles.scammer}>
+        //                         <Image
+        //                             source={scammer.image}
+        //                             style={styles.scamImage}
+        //                         />
+        //                         <Text style={styles.scamNumber}>
+        //                             {scammer.number}
+        //                         </Text>
+        //                         <Text style={styles.scamTitle}>
+        //                             {scammer.title}
+        //                         </Text>
+        //                         <Text style={styles.scamRecent}>
+        //                             {scammer.recent} Recent Report
+        //                         </Text>
+        //                     </View>
+        //                 ))}
+        //             </ScrollView>
+        //         </View>
+        //     );
     }
 };
 
