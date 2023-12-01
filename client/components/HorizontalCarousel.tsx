@@ -11,7 +11,7 @@ import {
 import { simulations } from "@constants/simulationData";
 import { blogs } from "@constants/blogData";
 import { color } from "@constants/Colors";
-// import { scammers } from "@constants/scammerData";
+import scammersData  from "@constants/scammerData";
 import { Redirect, router } from "expo-router";
 
 type Props = {
@@ -85,33 +85,40 @@ const HorizontalCarousel = ({ carouselDesign, redirect }: Props) => {
                 </ScrollView>
             </View>
         );
-        // } else if (carouselDesign === "scammer") {
-        //     return (
-        //         <View style={styles.container}>
-        //             <ScrollView
-        //                 horizontal={true}
-        //                 showsHorizontalScrollIndicator={false}
-        //             >
-        //                 {scammers.map((scammer) => (
-        //                     <View key={scammer.id} style={styles.scammer}>
-        //                         <Image
-        //                             source={scammer.image}
-        //                             style={styles.scamImage}
-        //                         />
-        //                         <Text style={styles.scamNumber}>
-        //                             {scammer.number}
-        //                         </Text>
-        //                         <Text style={styles.scamTitle}>
-        //                             {scammer.title}
-        //                         </Text>
-        //                         <Text style={styles.scamRecent}>
-        //                             {scammer.recent} Recent Report
-        //                         </Text>
-        //                     </View>
-        //                 ))}
-        //             </ScrollView>
-        //         </View>
-        //     );
+    } else if (carouselDesign === "scammer") {
+        return (
+            <View style={styles.container}>
+                <ScrollView
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                >
+                    {scammersData.map((scammer) => (
+                        <TouchableHighlight
+                        onPress={() => {
+                            router.push("/scammer");
+                            setTimeout(
+                                () => router.push(scammer.path as any),
+                                5
+                            );
+                        }}
+                        underlayColor="transparent"
+                    >
+                        <View key={scammer.id} style={styles.scammer}>
+                            <View style={styles.avatarContainer}>
+                                <Text style={styles.avatarText}>{scammer.name.charAt(0)}</Text>
+                            </View>
+                            <Text style={styles.scamTitle}>
+                                {scammer.name}
+                            </Text>
+                            <Text style={styles.scamRecent}>
+                                {scammer.contactInfo}
+                            </Text>
+                        </View>
+                        </TouchableHighlight>
+                    ))}
+                </ScrollView>
+            </View>
+        );
     }
 };
 
@@ -177,6 +184,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         marginHorizontal: 10,
+        marginVertical: 10,
+        magin: 10,
         width: 100,
         height: 140,
     },
@@ -200,6 +209,19 @@ const styles = StyleSheet.create({
     scamRecent: {
         fontSize: 11,
         color: color.charcoal,
+    },
+    avatarContainer: {
+        width: 50,
+        height: 50,
+        backgroundColor: color.americanBlue,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 25,
+    },
+    avatarText: {
+        color: 'white',
+        fontSize: 20,
+        fontFamily: "NotoSansBold",
     },
 });
 
