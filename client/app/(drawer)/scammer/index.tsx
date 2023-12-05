@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
-import SearchComponent from './SearchBar';
+import SearchBar from '@components/SearchBar';
 import searchForScammers from '@constants/searchForScammers';
 import { color } from "@constants/Colors";
 import { router } from "expo-router";
@@ -44,7 +44,7 @@ const ScammerDatabaseScreen: React.FC = () => {
 
     return (
         <View style={styles.container}>
-            <SearchComponent
+            <SearchBar
                 placeholder="Enter mobile phone, bank account, or website"
                 onChangeText={(text) => setSearchQuery(text)}
             />
