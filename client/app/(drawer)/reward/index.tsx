@@ -15,16 +15,13 @@ const RewardPage: React.FC = () => {
     { id: 1, name: 'Discount Coupon 10%', points: 50 },
     { id: 2, name: 'Free Shipping', points: 30 },
     { id: 3, name: 'Gift Card $10', points: 80 },
-    // Add more rewards as needed
   ];
 
   const handleRewardPress = (reward: { id: number; name: string; points: number }) => {
     if (userPoints >= reward.points) {
       setSelectedReward(reward);
       setUserPoints(userPoints - reward.points);
-      // Implement logic to provide the coupon to the user
     } else {
-      // Show a message indicating insufficient points
       console.log('Insufficient points');
     }
   };

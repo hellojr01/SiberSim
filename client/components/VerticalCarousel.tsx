@@ -8,11 +8,7 @@ import {
     TouchableHighlight,
 } from "react-native";
 import { router, Redirect } from "expo-router";
-import { StackActions } from "@react-navigation/native";
-
-import { simulations } from "@constants/simulationData";
 import { blogs } from "@constants/blogData";
-import { scammers } from "@constants/scammerData";
 import { color } from "@constants/Colors";
 
 type Props = {
@@ -23,16 +19,6 @@ type Props = {
 const VerticalCarousel = ({ carouselDesign, redirect }: Props) => {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
-            {carouselDesign === "simulation" &&
-                simulations.map((simulation) => (
-                    <View key={simulation.id} style={styles.simulation}>
-                        <Image
-                            source={simulation.image}
-                            style={styles.simImage}
-                        />
-                        <Text style={styles.simtitle}>{simulation.title}</Text>
-                    </View>
-                ))}
             {carouselDesign === "cyberblog" &&
                 blogs.map((blog) => (
                     <View key={blog.id}>
@@ -99,21 +85,6 @@ const styles = StyleSheet.create({
         paddingVertical: 2,
         alignSelf: "flex-start",
         marginBottom: 2,
-    },
-    simulation: {
-        alignItems: "center",
-        marginBottom: 10,
-        width: 80,
-    },
-    simImage: {
-        width: 80,
-        height: 80,
-        resizeMode: "contain",
-    },
-    simtitle: {
-        fontSize: 14,
-        fontFamily: "NotoSansBold",
-        marginTop: 10,
     },
     blog: {
         flexDirection: "row", // Horizontal layout
