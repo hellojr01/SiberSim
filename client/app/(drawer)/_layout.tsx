@@ -158,7 +158,7 @@ export default function DrawerLayout() {
                         }),
                 }}
             />
-            <Drawer.Screen
+            {/* <Drawer.Screen
                 name="simulation" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: ({ focused, color }) =>
@@ -176,8 +176,8 @@ export default function DrawerLayout() {
                             iconType: "MCI",
                         }),
                 }}
-            />
-            {/* <Drawer.Screen // Learn page, commented out for now
+            /> */}
+            { <Drawer.Screen // Learn page, commented out for now
                 name="learn" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: ({ focused, color }) =>
@@ -195,7 +195,26 @@ export default function DrawerLayout() {
                             iconType: "FA5",
                         }),
                 }}
-            /> */}
+            />}
+            {<Drawer.Screen // Learn page, commented out for now
+                name="reward" // This is the name of the page and must match the url from root
+                options={{
+                    drawerLabel: ({ focused, color }) =>
+                        DisplayText({
+                            color: color,
+                            focused: focused,
+                            title: "Reward",
+                        }),
+                    title: "Reward",
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "book",
+                            iconType: "FA5",
+                        }),
+                }}
+            />}
             <Drawer.Screen
                 name="scammer" // This is the name of the page and must match the url from root
                 options={{
