@@ -6,7 +6,17 @@ export const simulations = [
     path: '/learn/1',
     type: 'Phishing',
     diff: 'Normal',
-    desc: 'Beware of an enticing Starbucks ad in your inbox. It promises a free coffee, but is it genuine or a phishing trap?'
+    desc: 'Beware of an enticing Starbucks ad in your inbox. It promises a free coffee, but is it genuine or a phishing trap?',
+    content: [
+      require('../assets/images/learn1-1.png'),
+      require('../assets/images/learn1-2.png'),
+      require('../assets/images/learn1-3.png'),
+      require('../assets/images/learn1-4.png'),
+      require('../assets/images/learn1-5.png'),
+    ],
+    question: 'Is This A Phishing Email?',
+    choices: ['Yes', 'No'],
+    correctAnswer: 0,
   },
   {
     id: 2,
@@ -15,7 +25,17 @@ export const simulations = [
     path: '/learn/2',
     type: 'Malware',
     diff: 'Normal',
-    desc: 'A tricky malware campaign awaits you. Can you identify the malicious email attachment before its too late?'
+    desc: 'A tricky malware campaign awaits you. Can you identify the malicious email attachment before its too late?',
+    content: [
+      require('../assets/images/learn1-1.png'),
+      require('../assets/images/learn1-2.png'),
+      require('../assets/images/learn1-3.png'),
+      require('../assets/images/learn1-4.png'),
+      require('../assets/images/learn1-5.png'),
+    ],
+    question: 'Is This A Phishing Email?',
+    choices: ['Yes', 'No'],
+    correctAnswer: 0,
   },
   {
     id: 3,
@@ -24,7 +44,17 @@ export const simulations = [
     path: '/learn/3',
     type: 'Social Engineering',
     diff: 'Normal',
-    desc: 'Test your social engineering awareness. Will you recognize the stranger who wants access to your personal information?'
+    desc: 'Test your social engineering awareness. Will you recognize the stranger who wants access to your personal information?',
+    content: [
+      require('../assets/images/learn1-1.png'),
+      require('../assets/images/learn1-2.png'),
+      require('../assets/images/learn1-3.png'),
+      require('../assets/images/learn1-4.png'),
+      require('../assets/images/learn1-5.png'),
+    ],
+    question: 'Is This A Phishing Email?',
+    choices: ['Yes', 'No'],
+    correctAnswer: 0,
   },
   {
     id: 4,
@@ -33,7 +63,17 @@ export const simulations = [
     path: '/learn/4',
     type: 'Romance Scam',
     diff: 'Normal',
-    desc: 'Enter the world of online romance and learn how to spot a potential romance scam. Is your heart protected?'
+    desc: 'Enter the world of online romance and learn how to spot a potential romance scam. Is your heart protected?',
+    content: [
+      require('../assets/images/learn1-1.png'),
+      require('../assets/images/learn1-2.png'),
+      require('../assets/images/learn1-3.png'),
+      require('../assets/images/learn1-4.png'),
+      require('../assets/images/learn1-5.png'),
+    ],
+    question: 'Is This A Phishing Email?',
+    choices: ['Yes', 'No'],
+    correctAnswer: 0,
   },
   {
     id: 5,
@@ -42,7 +82,17 @@ export const simulations = [
     path: '/learn/5',
     type: 'Phishing',
     diff: 'Difficult',
-    desc: 'Navigate a simulated phishing campaign. Will you fall for the deceptive email that wants your banking information?'
+    desc: 'Navigate a simulated phishing campaign. Will you fall for the deceptive email that wants your banking information?',
+    content: [
+      require('../assets/images/learn1-1.png'),
+      require('../assets/images/learn1-2.png'),
+      require('../assets/images/learn1-3.png'),
+      require('../assets/images/learn1-4.png'),
+      require('../assets/images/learn1-5.png'),
+    ],
+    question: 'Is This A Phishing Email?',
+    choices: ['Yes', 'No'],
+    correctAnswer: 0,
   },
   {
     id: 6,
@@ -51,6 +101,16 @@ export const simulations = [
     path: '/learn/6',
     type: 'Malware Infection',
     diff: 'Normal',
-    desc: 'You receive an unexpected email with an enticing download link. Can you identify and avoid the malware threat lurking within?'
+    desc: 'You receive an unexpected email with an enticing download link. Can you identify and avoid the malware threat lurking within?',
+    content: [
+      require('../assets/images/learn1-1.png'),
+      require('../assets/images/learn1-2.png'),
+      require('../assets/images/learn1-3.png'),
+      require('../assets/images/learn1-4.png'),
+      require('../assets/images/learn1-5.png'),
+    ],
+    question: 'Is This A Phishing Email?',
+    choices: ['Yes', 'No'],
+    correctAnswer: 0,
   }, 
 ];

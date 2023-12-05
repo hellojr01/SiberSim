@@ -17,6 +17,7 @@ const Home = () => {
                     <SectionHeading
                         title="Simulations Available"
                         viewAllButton={true}
+                        onPress={() => router.push("/learn")}
                     />
                     <Carousel carouselDesign="simulation" />
                 </View>
