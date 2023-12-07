@@ -10,6 +10,7 @@ import {
     FontAwesome,
     FontAwesome5,
     MaterialCommunityIcons,
+    Ionicons,
 } from "@expo/vector-icons";
 
 import { color } from "@constants/Colors";
@@ -26,7 +27,7 @@ type iconProps = {
     focused: Boolean;
     iconName: String;
     // Fa = FontAwesome, FA5 = FontAwesome5, MCI = MaterialCommunityIcons,
-    iconType: "FA" | "FA5" | "MCI";
+    iconType: "FA" | "FA5" | "MCI" | "Ion";
 };
 
 function DisplayText({ color, focused, title }: textProps) {
@@ -55,6 +56,9 @@ function DisplayIcon({ color, focused, iconName, iconType }: iconProps) {
             break;
         case "MCI":
             Icon = MaterialCommunityIcons;
+            break;
+        case "Ion":
+            Icon = Ionicons;
             break;
     }
 
@@ -158,7 +162,7 @@ export default function DrawerLayout() {
                         }),
                 }}
             />
-            {/* <Drawer.Screen
+            <Drawer.Screen // Simulation page, still working on it
                 name="simulation" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: ({ focused, color }) =>
@@ -176,45 +180,49 @@ export default function DrawerLayout() {
                             iconType: "MCI",
                         }),
                 }}
-            /> */}
-            { <Drawer.Screen // Learn page, commented out for now
-                name="learn" // This is the name of the page and must match the url from root
-                options={{
-                    drawerLabel: ({ focused, color }) =>
-                        DisplayText({
-                            color: color,
-                            focused: focused,
-                            title: "Learn",
-                        }),
-                    title: "Learn",
-                    drawerIcon: ({ focused, color }) =>
-                        DisplayIcon({
-                            color,
-                            focused,
-                            iconName: "book",
-                            iconType: "FA5",
-                        }),
-                }}
-            />}
-            {<Drawer.Screen // Learn page, commented out for now
-                name="reward" // This is the name of the page and must match the url from root
-                options={{
-                    drawerLabel: ({ focused, color }) =>
-                        DisplayText({
-                            color: color,
-                            focused: focused,
-                            title: "Reward",
-                        }),
-                    title: "Reward",
-                    drawerIcon: ({ focused, color }) =>
-                        DisplayIcon({
-                            color,
-                            focused,
-                            iconName: "book",
-                            iconType: "FA5",
-                        }),
-                }}
-            />}
+            />
+            {
+                <Drawer.Screen // Learn page, working on it
+                    name="learn" // This is the name of the page and must match the url from root
+                    options={{
+                        drawerLabel: ({ focused, color }) =>
+                            DisplayText({
+                                color: color,
+                                focused: focused,
+                                title: "Learn",
+                            }),
+                        title: "Learn",
+                        drawerIcon: ({ focused, color }) =>
+                            DisplayIcon({
+                                color,
+                                focused,
+                                iconName: "book",
+                                iconType: "FA5",
+                            }),
+                    }}
+                />
+            }
+            {
+                <Drawer.Screen // Reward page, merging with learn page
+                    name="reward" // This is the name of the page and must match the url from root
+                    options={{
+                        drawerLabel: ({ focused, color }) =>
+                            DisplayText({
+                                color: color,
+                                focused: focused,
+                                title: "Rewards",
+                            }),
+                        title: "Rewards",
+                        drawerIcon: ({ focused, color }) =>
+                            DisplayIcon({
+                                color,
+                                focused,
+                                iconName: "gift",
+                                iconType: "MCI",
+                            }),
+                    }}
+                />
+            }
             <Drawer.Screen
                 name="scammer" // This is the name of the page and must match the url from root
                 options={{
@@ -253,7 +261,7 @@ export default function DrawerLayout() {
                         }),
                 }}
             />
-            <Drawer.Screen
+            <Drawer.Screen // Profile page, still working on it
                 name="profile" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: ({ focused, color }) =>
@@ -272,7 +280,26 @@ export default function DrawerLayout() {
                         }),
                 }}
             />
-            <Drawer.Screen // Testing Loader
+            <Drawer.Screen // Challenge page, still working on it
+                name="chatbot" // This is the name of the page and must match the url from root
+                options={{
+                    drawerLabel: ({ focused, color }) =>
+                        DisplayText({
+                            color: color,
+                            focused: focused,
+                            title: "Challenges",
+                        }),
+                    title: "Challenges",
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "font-awesome-flag",
+                            iconType: "FA5",
+                        }),
+                }}
+            />
+            <Drawer.Screen // Testing Loader, will remove it eventually
                 name="loadertest" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: ({ focused, color }) =>
@@ -282,32 +309,32 @@ export default function DrawerLayout() {
                             title: "Loader",
                         }),
                     title: "Test Loader Page",
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "reload-circle",
+                            iconType: "Ion",
+                        }),
                 }}
             />
-            <Drawer.Screen // Declared to remove the logout page, in the upcoming update will change the directory of logout page somewhere else, oof!
-                name="logout" // This is the name of the page and must match the url from root
+            <Drawer.Screen // Testing OCR, will be merged with spot scam later
+                name="ocrReader" // This is the name of the page and must match the url from root
                 options={{
-                    drawerLabel: () =>
+                    drawerLabel: ({ focused, color }) =>
                         DisplayText({
-                            color: color.white,
-                            focused: false,
-                            title: "Log Out",
+                            color: color,
+                            focused: focused,
+                            title: "OCR",
                         }),
-                    title: "Log Out",
-                    drawerIcon: () =>
+                    title: "OCR Page",
+                    drawerIcon: ({ focused, color }) =>
                         DisplayIcon({
-                            color: color.white,
-                            focused: false,
-                            iconName: "logout",
+                            color,
+                            focused,
+                            iconName: "image",
                             iconType: "MCI",
                         }),
-                    drawerItemStyle: {
-                        display: "none",
-                        // bottom: 10,
-                        // position: "fixed",
-                        // width: "95%",
-                        // backgroundColor: color.purple,
-                    },
                 }}
             />
         </Drawer>

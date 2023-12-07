@@ -11,7 +11,7 @@ import {
 import { simulations } from "@constants/simulationData";
 import { blogs } from "@constants/blogData";
 import { color } from "@constants/Colors";
-import scammersData  from "@constants/scammerData";
+import scammersData from "@constants/scammerData";
 import { Redirect, router } from "expo-router";
 
 type Props = {
@@ -94,26 +94,29 @@ const HorizontalCarousel = ({ carouselDesign, redirect }: Props) => {
                 >
                     {scammersData.map((scammer) => (
                         <TouchableHighlight
-                        onPress={() => {
-                            router.push("/scammer");
-                            setTimeout(
-                                () => router.push(scammer.path as any),
-                                5
-                            );
-                        }}
-                        underlayColor="transparent"
-                    >
-                        <View key={scammer.id} style={styles.scammer}>
-                            <View style={styles.avatarContainer}>
-                                <Text style={styles.avatarText}>{scammer.name.charAt(0)}</Text>
+                            key={scammer.id}
+                            onPress={() => {
+                                router.push("/scammer");
+                                setTimeout(
+                                    () => router.push(scammer.path as any),
+                                    5
+                                );
+                            }}
+                            underlayColor="transparent"
+                        >
+                            <View style={styles.scammer}>
+                                <View style={styles.avatarContainer}>
+                                    <Text style={styles.avatarText}>
+                                        {scammer.name.charAt(0)}
+                                    </Text>
+                                </View>
+                                <Text style={styles.scamTitle}>
+                                    {scammer.name}
+                                </Text>
+                                <Text style={styles.scamRecent}>
+                                    {scammer.contactInfo}
+                                </Text>
                             </View>
-                            <Text style={styles.scamTitle}>
-                                {scammer.name}
-                            </Text>
-                            <Text style={styles.scamRecent}>
-                                {scammer.contactInfo}
-                            </Text>
-                        </View>
                         </TouchableHighlight>
                     ))}
                 </ScrollView>
@@ -214,12 +217,12 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         backgroundColor: color.americanBlue,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         borderRadius: 25,
     },
     avatarText: {
-        color: 'white',
+        color: "white",
         fontSize: 20,
         fontFamily: "NotoSansBold",
     },
