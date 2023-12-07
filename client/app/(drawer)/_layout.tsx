@@ -200,6 +200,25 @@ export default function DrawerLayout() {
                         }),
                 }}
             />
+            <Drawer.Screen // Challenge page, still working on it
+                name="chatbot" // This is the name of the page and must match the url from root
+                options={{
+                    drawerLabel: ({ focused, color }) =>
+                        DisplayText({
+                            color: color,
+                            focused: focused,
+                            title: "Challenges",
+                        }),
+                    title: "Challenges",
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "font-awesome-flag",
+                            iconType: "FA5",
+                        }),
+                }}
+            />
             <Drawer.Screen
                 name="scammer" // This is the name of the page and must match the url from root
                 options={{
@@ -254,63 +273,6 @@ export default function DrawerLayout() {
                             focused,
                             iconName: "user",
                             iconType: "FA",
-                        }),
-                }}
-            />
-            <Drawer.Screen // Challenge page, still working on it
-                name="chatbot" // This is the name of the page and must match the url from root
-                options={{
-                    drawerLabel: ({ focused, color }) =>
-                        DisplayText({
-                            color: color,
-                            focused: focused,
-                            title: "Challenges",
-                        }),
-                    title: "Challenges",
-                    drawerIcon: ({ focused, color }) =>
-                        DisplayIcon({
-                            color,
-                            focused,
-                            iconName: "font-awesome-flag",
-                            iconType: "FA5",
-                        }),
-                }}
-            />
-            <Drawer.Screen // Testing Loader, will remove it eventually
-                name="loadertest" // This is the name of the page and must match the url from root
-                options={{
-                    drawerLabel: ({ focused, color }) =>
-                        DisplayText({
-                            color: color,
-                            focused: focused,
-                            title: "Loader",
-                        }),
-                    title: "Test Loader Page",
-                    drawerIcon: ({ focused, color }) =>
-                        DisplayIcon({
-                            color,
-                            focused,
-                            iconName: "reload-circle",
-                            iconType: "Ion",
-                        }),
-                }}
-            />
-            <Drawer.Screen // Testing OCR, will be merged with spot scam later
-                name="ocrReader" // This is the name of the page and must match the url from root
-                options={{
-                    drawerLabel: ({ focused, color }) =>
-                        DisplayText({
-                            color: color,
-                            focused: focused,
-                            title: "OCR",
-                        }),
-                    title: "OCR Page",
-                    drawerIcon: ({ focused, color }) =>
-                        DisplayIcon({
-                            color,
-                            focused,
-                            iconName: "image",
-                            iconType: "MCI",
                         }),
                 }}
             />

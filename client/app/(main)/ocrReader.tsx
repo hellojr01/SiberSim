@@ -17,6 +17,7 @@ import TextRecognition, {
 import { color } from "@constants/Colors";
 import LoaderItem from "@components/LoaderItem";
 
+//Serving as backup purposes
 export default function OcrReader() {
     const [loading, setLoading] = React.useState<boolean>(false);
     const [image, setImage] = useState("");
