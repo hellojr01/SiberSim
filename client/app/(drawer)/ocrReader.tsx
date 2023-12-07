@@ -51,62 +51,52 @@ export default function OcrReader() {
         }
     };
 
-    // if (loading) {
-    //     return (
-    //         <SafeAreaView style={styles.base}>
-    //             {/* <ActivityIndicator /> */}
-    //             <LoaderItem />
-    //         </SafeAreaView>
-    //     );
-    // }
-    pickImage();
-    let value = result?.text
-        .split(" ")
-        .find(
-            (word: string) =>
-                phonePattern.test(word) ||
-                urlPattern.test(word) ||
-                bankAccPattern.test(word)
+    if (loading) {
+        return (
+            <SafeAreaView style={styles.base}>
+                {/* <ActivityIndicator /> */}
+                <LoaderItem />
+            </SafeAreaView>
         );
-    return value;
+    }
 
-    // return (
-    //     <View
-    //         style={{
-    //             flex: 1,
-    //             alignItems: "center",
-    //             justifyContent: "center",
-    //             rowGap: 20,
-    //         }}
-    //     >
-    //         <Button title="Select Image" onPress={pickImage} />
-    //         {image && (
-    //             <Image
-    //                 source={{ uri: image }}
-    //                 style={{
-    //                     width: 300,
-    //                     height: 300,
-    //                     resizeMode: "contain",
-    //                 }}
-    //             />
-    //         )}
-    //         {result && (
-    //             <View style={{ flexDirection: "row", rowGap: 10 }}>
-    //                 <TextInput style={styles.input}>
-    //                     {result.text
-    //                         .split(" ")
-    //                         .find(
-    //                             (word: string) =>
-    //                                 phonePattern.test(word) ||
-    //                                 urlPattern.test(word) ||
-    //                                 bankAccPattern.test(word)
-    //                         )}
-    //                 </TextInput>
-    //                 <Button title="Done" onPress={undefined} />
-    //             </View>
-    //         )}
-    //     </View>
-    // );
+    return (
+        <View
+            style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+                rowGap: 20,
+            }}
+        >
+            <Button title="Select Image" onPress={pickImage} />
+            {image && (
+                <Image
+                    source={{ uri: image }}
+                    style={{
+                        width: 300,
+                        height: 300,
+                        resizeMode: "contain",
+                    }}
+                />
+            )}
+            {result && (
+                <View style={{ flexDirection: "row", rowGap: 10 }}>
+                    <TextInput style={styles.input}>
+                        {result.text
+                            .split(" ")
+                            .find(
+                                (word: string) =>
+                                    phonePattern.test(word) ||
+                                    urlPattern.test(word) ||
+                                    bankAccPattern.test(word)
+                            )}
+                    </TextInput>
+                    <Button title="Done" onPress={undefined} />
+                </View>
+            )}
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({

@@ -50,7 +50,7 @@ const SearchResultItem: React.FC<Scammer> = ({
     );
 };
 
-function OcrReader() {
+async function OcrReader() {
     let result: TextRecognitionResult | undefined;
 
     const urlPattern: RegExp =
@@ -58,37 +58,33 @@ function OcrReader() {
     const phonePattern: RegExp = /(\+?6?01)[0-46-9]-?[0-9]{7,8}/;
     const bankAccPattern: RegExp = /[0-9]{10,16}/;
 
-    const pickImage = async () => {
-        // No permissions request is necessary for launching the image library
-        let imageResult = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            quality: 1,
-        });
+    // No permissions request is necessary for launching the image library
+    let imageResult = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        quality: 1,
+    });
 
-        console.log(imageResult);
+    // console.log(imageResult);
 
-        if (!imageResult.canceled) {
-            try {
-                result = await TextRecognition.recognize(
-                    imageResult.assets[0].uri
-                );
-            } catch (e) {
-                console.error(e);
-            }
+    if (!imageResult.canceled) {
+        try {
+            result = await TextRecognition.recognize(imageResult.assets[0].uri);
+        } catch (e) {
+            console.error(e);
         }
+    }
 
-        pickImage();
-        let value = result?.text
-            .split(" ")
-            .find(
-                (word: string) =>
-                    phonePattern.test(word) ||
-                    urlPattern.test(word) ||
-                    bankAccPattern.test(word)
-            );
-        return value;
-    };
+    let value = result?.text
+        .split(" ")
+        .find(
+            (word: string) =>
+                phonePattern.test(word) ||
+                urlPattern.test(word) ||
+                bankAccPattern.test(word)
+        );
+    // console.log("Value is: " + value);
+    return value;
 }
 
 const ScammerDatabaseScreen: React.FC = () => {
@@ -104,14 +100,16 @@ const ScammerDatabaseScreen: React.FC = () => {
         <View style={styles.container}>
             <SearchBar
                 placeholder="Enter mobile phone, bank account, or website"
+                value={searchQuery}
                 onChangeText={(text) => setSearchQuery(text)}
             />
             <Button
-                onPress={() => {
-                    let value = OcrReader();
+                onPress={async () => {
+                    const value = await OcrReader();
                     typeof value === "string"
                         ? setSearchQuery(value)
                         : undefined;
+                    // console.log("Search query is: " + searchQuery);
                 }}
                 buttonStyle={{
                     ...styles.customButton,
