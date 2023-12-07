@@ -7,7 +7,6 @@ import {
     ScrollView,
     RefreshControl,
 } from "react-native";
-// import { useScrollToTop } from "@react-navigation/native";
 import { Redirect, useLocalSearchParams } from "expo-router";
 
 import SectionHeading from "@components/SectionHeading";

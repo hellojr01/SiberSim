@@ -8,8 +8,6 @@ import {
     StyleSheet,
 } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
-import { Link, router } from "expo-router";
-import * as ImagePicker from "expo-image-picker";
 
 import RewardItem from "@components/RewardItem";
 import Button from "@components/CustomButton";
@@ -29,6 +27,7 @@ const RewardPage: React.FC<RewardPageProps> = ({ onPress }) => {
     const [userPoints, setUserPoints] = React.useState<number>(200); // Example points
     const [selectedReward, setSelectedReward] = React.useState<RewardObj[]>([]);
     const [showTips, setShowTips] = useState<boolean>(false); // Example tips
+    const [showBudgetError, setShowBudgetError] = useState<boolean>(false);
 
     const rewardsData = [
         { id: 1, name: "Unlock Simulation 1", points: 150 },
@@ -46,6 +45,7 @@ const RewardPage: React.FC<RewardPageProps> = ({ onPress }) => {
             setUserPoints(userPoints - reward.points);
         } else {
             console.log("Insufficient points");
+            setShowBudgetError(true);
         }
     };
 
@@ -98,18 +98,27 @@ const RewardPage: React.FC<RewardPageProps> = ({ onPress }) => {
                         </Text>
                     </Animated.View>
                 )}
-            {
-                <View
-                    style={{ justifyContent: "center", alignItems: "center" }}
-                >
-                    <Button
-                        title="Close"
-                        buttonStyle={styles.closeButton}
-                        textStyle={{ color: color.white }}
-                        onPress={onPress}
-                    ></Button>
-                </View>
-            }
+            {showBudgetError &&
+                setTimeout(() => setShowBudgetError(false), 3000) && (
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            color: color.red,
+                            marginBottom: 10,
+                            textAlign: "center",
+                        }}
+                    >
+                        Insufficient points!
+                    </Text>
+                )}
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <Button
+                    title="Close"
+                    buttonStyle={styles.closeButton}
+                    textStyle={{ color: color.white }}
+                    onPress={onPress}
+                ></Button>
+            </View>
         </View>
     );
 };

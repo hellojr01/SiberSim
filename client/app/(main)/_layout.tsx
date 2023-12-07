@@ -23,17 +23,23 @@ export default function MainLayout() {
                 name="forgotpassword/index"
                 options={{ title: "Forgot Password" }}
             />
-            <Stack.Screen
-                name="logout"
-                options={{ title: "Test Simulation" }}
-            />
+            <Stack.Screen name="logout" options={{ title: "Log Out Page" }} />
             <Stack.Screen
                 name="simulation/testsim"
-                options={{ title: "Test Simulation" }}
+                options={{ title: "Test Simulation Page" }}
             />
             <Stack.Screen
                 name="reward"
-                options={{ title: "Test Simulation" }}
+                options={{ title: "Reward/Shopping Page" }}
+            />
+            <Stack.Screen
+                name="ocrReader"
+                options={{ title: "Archieve for OCR Reader" }}
+            />
+            <Stack.Screen
+                // will remove it eventually
+                name="loadertest"
+                options={{ title: "Loader Test Preview" }}
             />
             {/*
             <Stack.Screen // This is for the forgot password (verification & new password) might need back later
