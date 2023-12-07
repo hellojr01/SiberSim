@@ -60,9 +60,9 @@ const Learn = (redirect : Props) => {
           <View style={styles.modalContainer}>
             <Text style={styles.modalTitle}>Knowledge Check Result</Text>
             {isAnswerCorrect ? (
-              <Text style={[styles.statusText, styles.correctStatus]}>Status: Completed</Text>
+              <Text style={[styles.statusText, styles.correctStatus]}>Completed</Text>
             ) : (
-              <Text style={[styles.statusText, styles.incorrectStatus]}>Status: Failed</Text>
+              <Text style={[styles.statusText, styles.incorrectStatus]}>Failed</Text>
             )}
             <Text style={styles.explanationText}>
               {isAnswerCorrect
@@ -70,7 +70,7 @@ const Learn = (redirect : Props) => {
                 : "Unfortunately, your answer is incorrect. Here's an explanation of why:"}
             </Text>
             <Text style={styles.explanationDetails}>
-              {/* Add your long explanation here */}
+              {learningDetails.knowledgeCheck}
             </Text>
             <TouchableOpacity
               onPress={() => {
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   modalContainer: {
-    backgroundColor: 'white',
+    backgroundColor: color.purple,
     padding: 20,
     borderRadius: 10,
     alignItems: 'center',
@@ -143,30 +143,37 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    color: color.white,
+    fontFamily: 'NotoSansBold',
     marginBottom: 10,
   },
   statusText: {
-    fontSize: 18,
+    fontSize: 40,
+    fontFamily: 'NotoSansBold',
     marginBottom: 10,
   },
   correctStatus: {
-    color: 'green',
+    color: '#00FF57',
   },
   incorrectStatus: {
     color: 'red',
   },
   explanationText: {
-    fontSize: 16,
+    fontSize: 13,
     marginBottom: 10,
+    color: color.white,
+    fontFamily: 'NotoSansBold',
   },
   explanationDetails: {
-    // Style your long explanation text here
+    fontFamily: 'NotoSansBold',
+    color: color.white,
+    fontSize: 13,
+    marginTop: 10,
   },
   returnButton: {
-    backgroundColor: 'blue',
+    backgroundColor: color.americanBlue,
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
     marginVertical: 15,
     alignItems: 'center',
   },

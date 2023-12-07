@@ -17,6 +17,7 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications.",
   },
   {
     id: 2,
@@ -36,6 +37,7 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications."
   },
   {
     id: 3,
@@ -55,6 +57,7 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications."
   },
   {
     id: 4,
@@ -74,6 +77,7 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications."
   },
   {
     id: 5,
@@ -93,6 +97,7 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications."
   },
   {
     id: 6,
@@ -112,5 +117,6 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications."
   }, 
 ];
