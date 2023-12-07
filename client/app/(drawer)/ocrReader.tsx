@@ -20,9 +20,8 @@ import LoaderItem from "@components/LoaderItem";
 export default function OcrReader() {
     const [loading, setLoading] = React.useState<boolean>(false);
     const [image, setImage] = useState("");
-    const [result, setResult] = React.useState<
-        TextRecognitionResult | undefined
-    >();
+    const [result, setResult] = React.useState<TextRecognitionResult>();
+
     const urlPattern: RegExp =
         /(http(s):\/\/.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     const phonePattern: RegExp = /(\+?6?01)[0-46-9]-?[0-9]{7,8}/;
@@ -52,51 +51,62 @@ export default function OcrReader() {
         }
     };
 
-    if (loading) {
-        return (
-            <SafeAreaView style={styles.base}>
-                {/* <ActivityIndicator /> */}
-                <LoaderItem />
-            </SafeAreaView>
+    // if (loading) {
+    //     return (
+    //         <SafeAreaView style={styles.base}>
+    //             {/* <ActivityIndicator /> */}
+    //             <LoaderItem />
+    //         </SafeAreaView>
+    //     );
+    // }
+    pickImage();
+    let value = result?.text
+        .split(" ")
+        .find(
+            (word: string) =>
+                phonePattern.test(word) ||
+                urlPattern.test(word) ||
+                bankAccPattern.test(word)
         );
-    }
-    return (
-        <View
-            style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-                rowGap: 20,
-            }}
-        >
-            <Button title="Select Image" onPress={pickImage} />
-            {image && (
-                <Image
-                    source={{ uri: image }}
-                    style={{
-                        width: 300,
-                        height: 300,
-                        resizeMode: "contain",
-                    }}
-                />
-            )}
-            {result && (
-                <View style={{ flexDirection: "row", rowGap: 10 }}>
-                    <TextInput style={styles.input}>
-                        {result.text
-                            .split(" ")
-                            .find(
-                                (word: string) =>
-                                    phonePattern.test(word) ||
-                                    urlPattern.test(word) ||
-                                    bankAccPattern.test(word)
-                            )}
-                    </TextInput>
-                    <Button title="Done" onPress={undefined} />
-                </View>
-            )}
-        </View>
-    );
+    return value;
+
+    // return (
+    //     <View
+    //         style={{
+    //             flex: 1,
+    //             alignItems: "center",
+    //             justifyContent: "center",
+    //             rowGap: 20,
+    //         }}
+    //     >
+    //         <Button title="Select Image" onPress={pickImage} />
+    //         {image && (
+    //             <Image
+    //                 source={{ uri: image }}
+    //                 style={{
+    //                     width: 300,
+    //                     height: 300,
+    //                     resizeMode: "contain",
+    //                 }}
+    //             />
+    //         )}
+    //         {result && (
+    //             <View style={{ flexDirection: "row", rowGap: 10 }}>
+    //                 <TextInput style={styles.input}>
+    //                     {result.text
+    //                         .split(" ")
+    //                         .find(
+    //                             (word: string) =>
+    //                                 phonePattern.test(word) ||
+    //                                 urlPattern.test(word) ||
+    //                                 bankAccPattern.test(word)
+    //                         )}
+    //                 </TextInput>
+    //                 <Button title="Done" onPress={undefined} />
+    //             </View>
+    //         )}
+    //     </View>
+    // );
 }
 
 const styles = StyleSheet.create({

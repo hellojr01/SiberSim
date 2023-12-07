@@ -1,18 +1,35 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
-import SearchBar from '@components/SearchBar';
-import searchForScammers from '@constants/searchForScammers';
-import { color } from "@constants/Colors";
+import React, { useState } from "react";
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    FlatList,
+} from "react-native";
 import { router } from "expo-router";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import TextRecognition, {
+    TextRecognitionResult,
+} from "@react-native-ml-kit/text-recognition";
+import * as ImagePicker from "expo-image-picker";
+
+import SearchBar from "@components/SearchBar";
+import searchForScammers from "@constants/searchForScammers";
+import Button from "@components/CustomButton";
+import { color } from "@constants/Colors";
 
 interface Scammer {
     id: number;
     name: string;
     contactInfo: string;
-    contactType: 'Mobile' | 'Bank Account' | 'Website';
+    contactType: "Mobile" | "Bank Account" | "Website";
 }
-
-const SearchResultItem: React.FC<Scammer> = ({ id, name, contactInfo, contactType }) => {
+const SearchResultItem: React.FC<Scammer> = ({
+    id,
+    name,
+    contactInfo,
+    contactType,
+}) => {
     const firstLetter = name.charAt(0);
 
     return (
@@ -33,8 +50,49 @@ const SearchResultItem: React.FC<Scammer> = ({ id, name, contactInfo, contactTyp
     );
 };
 
+function OcrReader() {
+    let result: TextRecognitionResult | undefined;
+
+    const urlPattern: RegExp =
+        /(http(s):\/\/.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+    const phonePattern: RegExp = /(\+?6?01)[0-46-9]-?[0-9]{7,8}/;
+    const bankAccPattern: RegExp = /[0-9]{10,16}/;
+
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        let imageResult = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            quality: 1,
+        });
+
+        console.log(imageResult);
+
+        if (!imageResult.canceled) {
+            try {
+                result = await TextRecognition.recognize(
+                    imageResult.assets[0].uri
+                );
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        pickImage();
+        let value = result?.text
+            .split(" ")
+            .find(
+                (word: string) =>
+                    phonePattern.test(word) ||
+                    urlPattern.test(word) ||
+                    bankAccPattern.test(word)
+            );
+        return value;
+    };
+}
+
 const ScammerDatabaseScreen: React.FC = () => {
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState<Scammer[]>([]);
 
     const handleSearch = () => {
@@ -48,8 +106,32 @@ const ScammerDatabaseScreen: React.FC = () => {
                 placeholder="Enter mobile phone, bank account, or website"
                 onChangeText={(text) => setSearchQuery(text)}
             />
+            <Button
+                onPress={() => {
+                    let value = OcrReader();
+                    typeof value === "string"
+                        ? setSearchQuery(value)
+                        : undefined;
+                }}
+                buttonStyle={{
+                    ...styles.customButton,
+                    ...styles.buttonContainer,
+                }}
+                textStyle={styles.buttonText}
+                icon={
+                    <MaterialCommunityIcons
+                        name="image"
+                        size={20}
+                        color={color.white}
+                    />
+                }
+                title="Extract text from image"
+            />
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.customButton} onPress={handleSearch}>
+                <TouchableOpacity
+                    style={styles.customButton}
+                    onPress={handleSearch}
+                >
                     <Text style={styles.buttonText}>Search</Text>
                 </TouchableOpacity>
             </View>
@@ -80,7 +162,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        justifyContent: 'flex-start',
+        justifyContent: "flex-start",
         backgroundColor: color.lavender,
     },
     heading: {
@@ -89,7 +171,7 @@ const styles = StyleSheet.create({
         color: color.americanBlue,
     },
     headingContainer: {
-        alignItems: 'flex-start',
+        alignItems: "flex-start",
         padding: 0,
     },
     buttonContainer: {
@@ -100,10 +182,10 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 30,
         borderRadius: 5,
-        alignItems: 'center',
+        alignItems: "center",
     },
     buttonText: {
-        color: 'white',
+        color: "white",
         fontFamily: "NotoSansBold",
         fontSize: 16,
     },
@@ -113,26 +195,26 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     resultItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
         padding: 10,
         borderRadius: 5,
         marginVertical: 5,
     },
     leftColumn: {
         flex: 1,
-        alignItems: 'center',
+        alignItems: "center",
     },
     avatarContainer: {
         width: 50,
         height: 50,
         backgroundColor: color.americanBlue,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         borderRadius: 25,
     },
     avatarText: {
-        color: 'white',
+        color: "white",
         fontSize: 18,
         fontFamily: "NotoSansBold",
     },
