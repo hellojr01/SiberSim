@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import {
     View,
+    ScrollView,
     Text,
     TextInput,
+    Image,
     TouchableOpacity,
     StyleSheet,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import Modal from "react-native-modal";
 import { Link } from "expo-router";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
 
 import { color } from "@constants/Colors";
+// import { ScrollView } from "react-native-gesture-handler";
 
 const AddBlog = () => {
     const [title, setTitle] = useState("");
@@ -19,6 +23,7 @@ const AddBlog = () => {
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");
     const [isModalVisible, setModalVisible] = useState(false);
+    const [image, setImage] = useState("");
     const isSubmitDisabled = !title || !description || !content || !category;
     const handleSubmit = () => {
         if (!isSubmitDisabled) {
@@ -30,79 +35,125 @@ const AddBlog = () => {
         setModalVisible(false);
     };
 
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        let imageResult = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            quality: 1,
+        });
+
+        console.log(imageResult);
+
+        if (!imageResult.canceled) {
+            try {
+                setImage(imageResult.assets[0].uri);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+    };
+
     return (
-        <View style={styles.container}>
-            <Text style={styles.heading}>Add A New Blog</Text>
-            <Text style={styles.label}>*Title</Text>
-            <TextInput
-                style={styles.input}
-                value={title}
-                onChangeText={setTitle}
-                placeholder="Enter title"
-            />
-            <Text style={styles.label}>*Description</Text>
-            <TextInput
-                style={styles.input}
-                value={description}
-                onChangeText={setDescription}
-                placeholder="Enter description"
-            />
-            <Text style={styles.label}>*Content</Text>
-            <TextInput
-                style={styles.input}
-                value={content}
-                onChangeText={setContent}
-                placeholder="Enter content"
-                multiline
-            />
-            <Text style={styles.label}>*Category</Text>
-            <Picker
-                selectedValue={category}
-                onValueChange={setCategory}
-                style={styles.input}
-                itemStyle={styles.itemStyle}
-            >
-                <Picker.Item label="Select category" value="" />
-                <Picker.Item label="Scam Alert" value="scamAlert" />
-                <Picker.Item label="Security Tips" value="securityTips" />
-                <Picker.Item label="User Story" value="userStory" />
-            </Picker>
-            <Text style={styles.label}>*Photo</Text>
-            <View style={styles.square}>
-                <Text style={styles.plus}>+</Text>
-            </View>
-            <TouchableOpacity
-                style={[
-                    styles.button,
-                    isSubmitDisabled ? styles.disabledButton : styles.button,
-                ]}
-                onPress={handleSubmit}
-                disabled={isSubmitDisabled}
-            >
-                <Text style={styles.buttonText}>Submit A Blog</Text>
-            </TouchableOpacity>
-            <Modal isVisible={isModalVisible} style={styles.modal}>
-                <View style={styles.modalContent}>
-                    <TouchableOpacity
-                        style={styles.closeButton}
-                        onPress={closeModal}
-                    >
-                        <Link href="/blog">
-                            <Text style={styles.closeButtonText}>X</Text>
-                        </Link>
-                    </TouchableOpacity>
-                    <Text style={styles.modalText}>
-                        Blog Submitted. Awaiting For Approval
-                    </Text>
-                    <Icon
-                        name="check"
-                        style={styles.icon}
-                        size={150}
-                        color="green"
+        <ScrollView>
+            <View style={styles.container}>
+                <Text style={styles.heading}>Add A New Blog</Text>
+                <Text style={styles.label}>*Title</Text>
+                <TextInput
+                    style={styles.input}
+                    value={title}
+                    onChangeText={setTitle}
+                    placeholder="Enter title"
+                />
+                <Text style={styles.label}>*Description</Text>
+                <TextInput
+                    style={styles.input}
+                    value={description}
+                    onChangeText={setDescription}
+                    placeholder="Enter description"
+                />
+                <Text style={styles.label}>*Content</Text>
+                <TextInput
+                    style={styles.input}
+                    value={content}
+                    onChangeText={setContent}
+                    placeholder="Enter content"
+                    multiline
+                />
+                <Text style={styles.label}>*Category</Text>
+                <Picker
+                    selectedValue={category}
+                    onValueChange={setCategory}
+                    style={styles.input}
+                    itemStyle={styles.itemStyle}
+                >
+                    <Picker.Item
+                        label="Select category"
+                        value=""
+                        enabled={false}
+                        style={{ color: color.purple }}
                     />
-                </View>
-            </Modal>
-        </View>
+                    <Picker.Item label="Scam Alert" value="scamAlert" />
+                    <Picker.Item label="Security Tips" value="securityTips" />
+                    <Picker.Item label="User Story" value="userStory" />
+                </Picker>
+                <Text style={styles.label}>*Photo</Text>
+                {image ? (
+                    <Image
+                        source={{ uri: image }}
+                        style={{
+                            width: 300,
+                            height: 300,
+                            resizeMode: "contain",
+                            marginBottom: 20,
+                        }}
+                    />
+                ) : (
+                    <TouchableOpacity onPress={pickImage}>
+                        <View style={styles.square}>
+                            <Text style={styles.plus}>+</Text>
+                        </View>
+                    </TouchableOpacity>
+                )}
+
+                <TouchableOpacity
+                    style={[
+                        styles.button,
+                        isSubmitDisabled
+                            ? styles.disabledButton
+                            : styles.button,
+                    ]}
+                    onPress={handleSubmit}
+                    disabled={isSubmitDisabled}
+                >
+                    <Text style={styles.buttonText}>Submit A Blog</Text>
+                </TouchableOpacity>
+                <Modal isVisible={isModalVisible} style={styles.modal}>
+                    <View style={styles.modalContent}>
+                        <TouchableOpacity
+                            style={styles.closeButton}
+                            onPress={closeModal}
+                        >
+                            <Link href="/blog">
+                                <MaterialCommunityIcons
+                                    name="close-box"
+                                    size={35}
+                                />
+                            </Link>
+                        </TouchableOpacity>
+                        <Text style={styles.modalText}>
+                            Blog Submitted. Awaiting For Approval
+                        </Text>
+                        <FontAwesome
+                            name="check"
+                            style={styles.icon}
+                            size={150}
+                            color="green"
+                        />
+                    </View>
+                </Modal>
+            </View>
+        </ScrollView>
     );
 };
 
