@@ -181,48 +181,25 @@ export default function DrawerLayout() {
                         }),
                 }}
             />
-            {
-                <Drawer.Screen // Learn page, working on it
-                    name="learn" // This is the name of the page and must match the url from root
-                    options={{
-                        drawerLabel: ({ focused, color }) =>
-                            DisplayText({
-                                color: color,
-                                focused: focused,
-                                title: "Learn",
-                            }),
-                        title: "Learn",
-                        drawerIcon: ({ focused, color }) =>
-                            DisplayIcon({
-                                color,
-                                focused,
-                                iconName: "book",
-                                iconType: "FA5",
-                            }),
-                    }}
-                />
-            }
-            {
-                <Drawer.Screen // Reward page, merging with learn page
-                    name="reward" // This is the name of the page and must match the url from root
-                    options={{
-                        drawerLabel: ({ focused, color }) =>
-                            DisplayText({
-                                color: color,
-                                focused: focused,
-                                title: "Rewards",
-                            }),
-                        title: "Rewards",
-                        drawerIcon: ({ focused, color }) =>
-                            DisplayIcon({
-                                color,
-                                focused,
-                                iconName: "gift",
-                                iconType: "MCI",
-                            }),
-                    }}
-                />
-            }
+            <Drawer.Screen // Learn page, working on it
+                name="learn" // This is the name of the page and must match the url from root
+                options={{
+                    drawerLabel: ({ focused, color }) =>
+                        DisplayText({
+                            color: color,
+                            focused: focused,
+                            title: "Learn",
+                        }),
+                    title: "Learn",
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "book",
+                            iconType: "FA5",
+                        }),
+                }}
+            />
             <Drawer.Screen
                 name="scammer" // This is the name of the page and must match the url from root
                 options={{

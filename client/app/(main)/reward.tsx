@@ -26,14 +26,14 @@ interface RewardPageProps {
 }
 
 const RewardPage: React.FC<RewardPageProps> = ({ onPress }) => {
-    const [userPoints, setUserPoints] = React.useState<number>(100); // Example points
+    const [userPoints, setUserPoints] = React.useState<number>(200); // Example points
     const [selectedReward, setSelectedReward] = React.useState<RewardObj[]>([]);
     const [showTips, setShowTips] = useState<boolean>(false); // Example tips
 
     const rewardsData = [
-        { id: 1, name: "Discount Coupon 10%", points: 50 },
-        { id: 2, name: "Free Shipping", points: 30 },
-        { id: 3, name: "Gift Card $10", points: 80 },
+        { id: 1, name: "Unlock Simulation 1", points: 150 },
+        { id: 2, name: "Unlock Simulation 2", points: 200 },
+        { id: 3, name: "Purchase 1 Challenge Ticket", points: 100 },
     ];
 
     const handleRewardPress = (reward: {

@@ -24,7 +24,15 @@ export default function MainLayout() {
                 options={{ title: "Forgot Password" }}
             />
             <Stack.Screen
+                name="logout"
+                options={{ title: "Test Simulation" }}
+            />
+            <Stack.Screen
                 name="simulation/testsim"
+                options={{ title: "Test Simulation" }}
+            />
+            <Stack.Screen
+                name="reward"
                 options={{ title: "Test Simulation" }}
             />
             {/*
