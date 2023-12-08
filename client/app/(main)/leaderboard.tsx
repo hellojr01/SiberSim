@@ -19,7 +19,7 @@ const LeaderboardScreen = () => {
             <Card.Content>
                 {item.id}
                 <Title>{item.name}</Title>
-                <Paragraph>{item.score} Messages</Paragraph>
+                <Paragraph>{item.score} Turns</Paragraph>
             </Card.Content>
         </Card>
     );
