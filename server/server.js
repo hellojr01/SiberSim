@@ -1,7 +1,7 @@
 import app from "./app.js";
-import connectDB from "./db/db.js";
+import connectDB from "#db/db.js";
 
-// connectDB();
+connectDB();
 
 if (process.env.NODE_ENV !== "PRODUCTION") {
     console.log("Development mode");

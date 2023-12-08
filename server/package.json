@@ -7,7 +7,9 @@
         "#controller/*": "./controller/*",
         "#middleware/*": "./middleware/*",
         "#models/*": "./models/*",
-        "#utils/*": "./utils/*"
+        "#utils/*": "./utils/*",
+        "#routes/*": "./routes/*",
+        "#db/*": "./db/*"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
