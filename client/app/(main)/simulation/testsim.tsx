@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     View,
     Text,
@@ -20,12 +20,21 @@ import ApplicationItem from "@components/simulation/ApplicationItem";
 import Header from "@components/Header";
 import { color } from "@constants/Colors";
 import BankApp from "@components/simulation/BankItem";
+import EmailDetailScreen from "@components/simulation/EmailItem3";
+import { router } from "expo-router";
 
 // Intended file for testing purposes only
 const TestSimulation = () => {
     const [hideHeader, setHideHeader] = useState(false);
-    const [view, setView] = useState<any>();
     const [showMain, setShowMain] = useState(true);
+    const [shownScreen, setShownScreen] = useState<string>();
+    const [showNotification, setShowNotification] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShowNotification(true);
+        }, 5000);
+    }, [showNotification]);
 
     return (
         <View style={style.base}>
@@ -47,6 +56,7 @@ const TestSimulation = () => {
                             borderRadius: 8,
                             padding: 10,
                         }}
+                        onPress={() => router.push("/home")}
                     >
                         <Text
                             style={{
@@ -95,10 +105,10 @@ const TestSimulation = () => {
                             iconName="email"
                             color={color.white}
                             backgroundColor={color.indigo}
-                            // notification
+                            notification={showNotification}
                             title="Email"
                             onPress={() => {
-                                setView(BankApp);
+                                setShownScreen("Email");
                                 setShowMain(false);
                             }}
                         />
@@ -110,7 +120,7 @@ const TestSimulation = () => {
                             // notification
                             title="Bank App"
                             onPress={() => {
-                                setView(BankApp);
+                                setShownScreen("Bank");
                                 setShowMain(false);
                             }}
                         />
@@ -148,7 +158,21 @@ const TestSimulation = () => {
                     </View>
                 </ImageBackground>
             )}
-            {view && <view />}
+            {shownScreen == "Bank" ? (
+                <BankApp
+                    onPress={() => {
+                        setShowMain(true);
+                        setShownScreen(undefined);
+                    }}
+                />
+            ) : shownScreen == "Email" ? (
+                <EmailDetailScreen
+                    onPress={() => {
+                        setShowMain(true);
+                        setShownScreen(undefined);
+                    }}
+                />
+            ) : undefined}
         </View>
     );
 };

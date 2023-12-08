@@ -4,7 +4,11 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { color } from "@constants/Colors";
 
-const EmailDetailScreen = () => {
+interface EmailDetailScreenProps {
+    onPress: () => void;
+}
+
+const EmailDetailScreen = ({ onPress }: EmailDetailScreenProps) => {
     // Sample email data
     const email = {
         id: "1",
@@ -27,7 +31,7 @@ const EmailDetailScreen = () => {
                     name="arrow-back"
                     size={25}
                     style={{ backgroundColor: color.charcoal }}
-                    onPress={() => console.log("Back to home")}
+                    onPress={() => onPress()}
                 />
             </View>
             {/* Email Header */}
@@ -56,6 +60,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#fff",
+        // margin: 16,
         padding: 16,
     },
     header: {
@@ -74,6 +79,7 @@ const styles = StyleSheet.create({
     },
     content: {
         marginTop: 16,
+        marginBottom: 32,
     },
     contentText: {
         fontSize: 16,

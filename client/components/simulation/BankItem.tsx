@@ -13,8 +13,13 @@ const Card = ({ title, children }: any) => (
     </View>
 );
 
+interface BankAppProps {
+    clear?: boolean;
+    onPress: () => void;
+}
+
 // BankApp component
-const BankApp = (clear: boolean) => {
+const BankApp = ({ clear, onPress }: BankAppProps) => {
     const bankDetails = {
         name: "Bobbie",
         accountNumber: "1234-5678-9012-3456",
@@ -32,13 +37,14 @@ const BankApp = (clear: boolean) => {
             <View
                 style={{
                     alignItems: "flex-start",
+                    paddingBottom: 15,
                 }}
             >
                 <Ionicons.Button
                     name="arrow-back"
                     size={25}
                     style={{ backgroundColor: color.charcoal }}
-                    onPress={() => console.log("Back to home")}
+                    onPress={() => onPress()}
                 />
             </View>
             {/* Bank details card */}

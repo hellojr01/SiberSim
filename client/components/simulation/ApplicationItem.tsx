@@ -62,28 +62,6 @@ function ApplicationItem({
 
     return (
         <View>
-            {notification && (
-                <View
-                    style={{
-                        ...style.baseButton,
-                        ...style.lock,
-                        backgroundColor: "transparent",
-                        zIndex: 3,
-                    }}
-                >
-                    <View
-                        style={{
-                            borderRadius: 30,
-                            width: 30,
-                            height: 30,
-                            backgroundColor: colorlist.red,
-                            top: 0,
-                            right: 0,
-                            position: "absolute",
-                        }}
-                    />
-                </View>
-            )}
             {locked && (
                 <View style={{ ...style.baseButton, ...style.lock }}>
                     <FontAwesome
@@ -94,9 +72,13 @@ function ApplicationItem({
                 </View>
             )}
             <TouchableHighlight
+                // onPress={() => {
+                //     onPress;
+                //     notification = false;
+                // }}
                 onPress={() => {
-                    onPress;
                     notification = false;
+                    onPress ? onPress() : null;
                 }}
                 style={{
                     ...style.baseButton,
@@ -106,9 +88,26 @@ function ApplicationItem({
                 activeOpacity={0.5}
                 underlayColor={colorlist.charcoal}
             >
-                <View style={style.container}>
-                    <Icon name={iconName} size={50} color={color} />
-                    <Text style={[style.title, { color: color }]}>{title}</Text>
+                <View>
+                    {notification && (
+                        <View
+                            style={{
+                                borderRadius: 30,
+                                width: 30,
+                                height: 30,
+                                backgroundColor: colorlist.red,
+                                top: -5,
+                                right: -55,
+                                position: "absolute",
+                            }}
+                        />
+                    )}
+                    <View style={style.container}>
+                        <Icon name={iconName} size={50} color={color} />
+                        <Text style={[style.title, { color: color }]}>
+                            {title}
+                        </Text>
+                    </View>
                 </View>
             </TouchableHighlight>
         </View>
