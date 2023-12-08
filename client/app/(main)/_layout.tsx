@@ -41,11 +41,6 @@ export default function MainLayout() {
                 name="test"
                 options={{ title: "Loader Test Preview" }}
             />
-            <Stack.Screen
-                // will remove it eventually
-                name="leaderboard"
-                options={{ title: "Leaderboard Preview" }}
-            />
             {/*
             <Stack.Screen // This is for the forgot password (verification & new password) might need back later
                 name="(pages)/forgotpassword/newPassword"

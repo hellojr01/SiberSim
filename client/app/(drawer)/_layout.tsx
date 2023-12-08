@@ -11,6 +11,7 @@ import {
     FontAwesome5,
     MaterialCommunityIcons,
     Ionicons,
+    MaterialIcons,
 } from "@expo/vector-icons";
 
 import { color } from "@constants/Colors";
@@ -27,7 +28,7 @@ type iconProps = {
     focused: Boolean;
     iconName: String;
     // Fa = FontAwesome, FA5 = FontAwesome5, MCI = MaterialCommunityIcons,
-    iconType: "FA" | "FA5" | "MCI" | "Ion";
+    iconType: "FA" | "FA5" | "MI" | "MCI" | "Ion";
 };
 
 function DisplayText({ color, focused, title }: textProps) {
@@ -53,6 +54,9 @@ function DisplayIcon({ color, focused, iconName, iconType }: iconProps) {
             break;
         case "FA5":
             Icon = FontAwesome5;
+            break;
+        case "MI":
+            Icon = MaterialIcons;
             break;
         case "MCI":
             Icon = MaterialCommunityIcons;
@@ -162,25 +166,6 @@ export default function DrawerLayout() {
                         }),
                 }}
             />
-            <Drawer.Screen // Simulation page, still working on it
-                name="simulation" // This is the name of the page and must match the url from root
-                options={{
-                    drawerLabel: ({ focused, color }) =>
-                        DisplayText({
-                            color: color,
-                            focused: focused,
-                            title: "Simulations",
-                        }),
-                    title: "Simulations",
-                    drawerIcon: ({ focused, color }) =>
-                        DisplayIcon({
-                            color,
-                            focused,
-                            iconName: "cards-playing-spade-multiple",
-                            iconType: "MCI",
-                        }),
-                }}
-            />
             <Drawer.Screen // Learn page, working on it
                 name="learn" // This is the name of the page and must match the url from root
                 options={{
@@ -200,6 +185,26 @@ export default function DrawerLayout() {
                         }),
                 }}
             />
+            <Drawer.Screen // Simulation page, still working on it? Partially finished...
+                name="simulation" // This is the name of the page and must match the url from root
+                options={{
+                    drawerLabel: ({ focused, color }) =>
+                        DisplayText({
+                            color: color,
+                            focused: focused,
+                            title: "Simulations",
+                        }),
+                    title: "Simulations",
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "cards-playing-spade-multiple",
+                            iconType: "MCI",
+                        }),
+                }}
+            />
+
             <Drawer.Screen // Challenge page, still working on it
                 name="chatbot" // This is the name of the page and must match the url from root
                 options={{
@@ -257,7 +262,26 @@ export default function DrawerLayout() {
                         }),
                 }}
             />
-            <Drawer.Screen // Profile page, still working on it
+            <Drawer.Screen // Leaderboard page, partially done?...
+                name="leaderboard" // This is the name of the page and must match the url from root
+                options={{
+                    drawerLabel: ({ focused, color }) =>
+                        DisplayText({
+                            color: color,
+                            focused: focused,
+                            title: "Leaderboard",
+                        }),
+                    title: "Leaderboard Page",
+                    drawerIcon: ({ focused, color }) =>
+                        DisplayIcon({
+                            color,
+                            focused,
+                            iconName: "leaderboard",
+                            iconType: "MI",
+                        }),
+                }}
+            />
+            <Drawer.Screen // Profile page, not working on it, do not show this to judges...
                 name="profile" // This is the name of the page and must match the url from root
                 options={{
                     drawerLabel: ({ focused, color }) =>
