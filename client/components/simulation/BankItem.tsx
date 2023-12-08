@@ -14,7 +14,7 @@ const Card = ({ title, children }: any) => (
 );
 
 // BankApp component
-const BankApp = () => {
+const BankApp = (clear: boolean) => {
     const bankDetails = {
         name: "Bobbie",
         accountNumber: "1234-5678-9012-3456",
@@ -50,7 +50,9 @@ const BankApp = () => {
                 <Text style={styles.info}>{bankDetails.accountNumber}</Text>
 
                 <Text style={styles.label}>Balance:</Text>
-                <Text style={styles.info}>{bankDetails.balance}</Text>
+                <Text style={styles.info}>
+                    {clear ? 0 : bankDetails.balance}
+                </Text>
             </Card>
 
             {/* Transfer card */}

@@ -9,8 +9,8 @@ export default function Loader() {
     return (
         <View style={styles.base}>
             {/* <LoaderItem /> */}
-            {/* <EmailScreen /> */}
-            <BankApp />
+            <EmailScreen />
+            {/* <BankApp /> */}
         </View>
     );
 }
