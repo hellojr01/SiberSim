@@ -14,6 +14,12 @@ export default function SimulationLayout() {
                     title: "Simulation Home",
                 }}
             />
+            <Stack.Screen
+                name="[id]"
+                options={{
+                    title: "Learn Id #[id]",
+                }}
+            />
         </Stack>
     );
 }

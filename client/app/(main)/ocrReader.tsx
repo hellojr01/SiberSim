@@ -17,12 +17,12 @@ import TextRecognition, {
 import { color } from "@constants/Colors";
 import LoaderItem from "@components/LoaderItem";
 
+//Serving as backup purposes
 export default function OcrReader() {
     const [loading, setLoading] = React.useState<boolean>(false);
     const [image, setImage] = useState("");
-    const [result, setResult] = React.useState<
-        TextRecognitionResult | undefined
-    >();
+    const [result, setResult] = React.useState<TextRecognitionResult>();
+
     const urlPattern: RegExp =
         /(http(s):\/\/.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     const phonePattern: RegExp = /(\+?6?01)[0-46-9]-?[0-9]{7,8}/;
@@ -60,6 +60,7 @@ export default function OcrReader() {
             </SafeAreaView>
         );
     }
+
     return (
         <View
             style={{

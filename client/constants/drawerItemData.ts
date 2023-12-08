@@ -16,6 +16,16 @@ export const drawerItems = [
         iconName: "calculator-variant",
     },
     {
+        name: "Rewards",
+        iconType: "MaterialCommunityIcons",
+        iconName: "gift",
+    },
+    {
+        name: "Challenges",
+        iconType: "FontAwesome5",
+        iconName: "font-awesome-flag",
+    },
+    {
         name: "Identify / Spot Scam",
         iconType: "MaterialCommunityIcons",
         iconName: "magnify-scan",

@@ -69,3 +69,12 @@ Lastly, reinstall your node_modules file using the command:
 Now you should be able to migrate back your project on Expo Go again:
 
     npx expo start
+
+## Build unexpectedly failed?!
+
+run this command:
+
+    npx react-native doctor
+
+With doctor we'll find issues with your development environment and give you the option to automatically fix them.
+After running this command, if you get an error or warning, press "e", "w" or "f" to fix the problem and download the correct version.

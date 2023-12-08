@@ -17,6 +17,7 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications.",
   },
   {
     id: 2,
@@ -27,15 +28,15 @@ export const simulations = [
     diff: 'Normal',
     desc: 'A tricky malware campaign awaits you. Can you identify the malicious email attachment before its too late?',
     content: [
-      require('../assets/images/learn1-1.png'),
-      require('../assets/images/learn1-2.png'),
-      require('../assets/images/learn1-3.png'),
-      require('../assets/images/learn1-4.png'),
-      require('../assets/images/learn1-5.png'),
+      require('../assets/images/learn2-1.png'),
+      require('../assets/images/learn2-2.png'),
+      require('../assets/images/learn2-3.png'),
+      require('../assets/images/learn2-4.png'),
     ],
-    question: 'Is This A Phishing Email?',
+    question: 'Assess the attachment type. Is it a file safe to download?',
     choices: ['Yes', 'No'],
-    correctAnswer: 0,
+    correctAnswer: 1,
+    knowledgeCheck: "The attachment in the email is flagged as potentially unsafe due to its file type, which is an executable (.exe) file. Executable files can contain programs or scripts that, when run, may execute commands on your computer. These files have the potential to carry malicious software, posing a significant security risk. It is a common tactic for cybercriminals to disguise harmful content within seemingly innocent files, especially executable files."
   },
   {
     id: 3,
@@ -55,6 +56,7 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications."
   },
   {
     id: 4,
@@ -74,6 +76,7 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications."
   },
   {
     id: 5,
@@ -93,6 +96,7 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications."
   },
   {
     id: 6,
@@ -112,5 +116,6 @@ export const simulations = [
     question: 'Is This A Phishing Email?',
     choices: ['Yes', 'No'],
     correctAnswer: 0,
+    knowledgeCheck: "The email claims to be from starbucks@emailna.com.gov, which is an unusual and suspicious domain. Legitimate Starbucks communications would typically come from an official Starbucks domain. The email provides a brief description of the Starbucks app's benefits but lacks specific details or branding elements typically found in legitimate Starbucks communications."
   }, 
 ];
