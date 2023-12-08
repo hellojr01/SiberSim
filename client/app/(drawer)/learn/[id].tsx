@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
   },
   question: {
     fontSize: 20,
+    width:'80%',
     color: color.americanBlue,
     fontFamily: 'NotoSansBold',
     textAlign: 'center',
