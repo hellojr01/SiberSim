@@ -1,7 +1,7 @@
-import User from '../models/user';
-import ErrorHandler from '../utils/errorHandler';
-import catchAsyncErrors from './catchAsyncErrors';
-import sendToken from '../utils/jwtToken';
+import User from '../models/userModel.js';
+import ErrorHandler from '../utils/errorHandler.js';
+import catchAsyncErrors from '../middleware/catchAsyncErrors.js';
+import sendToken from '../utils/jwtToken.js';
 
 /*
  * Create user
@@ -166,7 +166,7 @@ export const updateUser = catchAsyncErrors(async (req, res, next) => {
  */
 export const getUsersFromGroup = catchAsyncErrors(async (req, res, next) => {
   try {
-    const users = await User.find({ groups: req.params.id });
+    const users = await User.find({ groups: req.params.groupId });
     res.status(200).json({
       success: true,
       users,

@@ -39,6 +39,12 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) next();
+
+  this.password = await bcrypt.hash(this.password, 10);
+});
+
 userSchema.methods.getJwtToken = function () {
   return jwt.sign({ id: this._id }, 'sibersimulasi', {
     expiresIn: '30d',
