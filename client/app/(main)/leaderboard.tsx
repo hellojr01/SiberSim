@@ -3,8 +3,10 @@
 
 // LeaderboardScreen.js
 import React from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { Appbar, Card, Title, Paragraph } from "react-native-paper";
+
+import { color } from "@constants/Colors";
 
 const LeaderboardScreen = () => {
     const data = [
@@ -16,11 +18,17 @@ const LeaderboardScreen = () => {
 
     const renderItem = ({ item }: any) => (
         <Card style={styles.card}>
-            <Card.Content>
-                {item.id}
-                <Title>{item.name}</Title>
-                <Paragraph>{item.score} Turns</Paragraph>
-            </Card.Content>
+            <Card.Title
+                title={item.name}
+                titleVariant="titleLarge"
+                subtitle={`${item.score} Turns`}
+                subtitleVariant="bodyMedium"
+                left={(props) => (
+                    <Text style={{ fontSize: 20, color: color.red }}>
+                        {item.id}
+                    </Text>
+                )}
+            />
         </Card>
     );
 
@@ -41,6 +49,7 @@ const LeaderboardScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: color.lavender,
     },
     card: {
         margin: 8,

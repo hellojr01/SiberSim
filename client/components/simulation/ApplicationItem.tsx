@@ -94,7 +94,10 @@ function ApplicationItem({
                 </View>
             )}
             <TouchableHighlight
-                onPress={onPress}
+                onPress={() => {
+                    onPress;
+                    notification = false;
+                }}
                 style={{
                     ...style.baseButton,
                     backgroundColor: backgroundColor,

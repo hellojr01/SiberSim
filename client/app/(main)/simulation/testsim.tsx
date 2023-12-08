@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    ImageBackground,
+    TouchableOpacity,
+} from "react-native";
 
 import {
     FontAwesome,
@@ -13,11 +19,13 @@ import { StatusBar } from "expo-status-bar";
 import ApplicationItem from "@components/simulation/ApplicationItem";
 import Header from "@components/Header";
 import { color } from "@constants/Colors";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import BankApp from "@components/simulation/BankItem";
 
 // Intended file for testing purposes only
 const TestSimulation = () => {
     const [hideHeader, setHideHeader] = useState(false);
+    const [view, setView] = useState<any>();
+    const [showMain, setShowMain] = useState(true);
 
     return (
         <View style={style.base}>
@@ -57,79 +65,90 @@ const TestSimulation = () => {
                 //     />
                 // }
             />
-            <ImageBackground
-                source={require("../../../assets/images/phone-background.jpg")}
-                resizeMode="cover"
-                style={{
-                    flex: 1,
-                    width: "auto",
-                    height: "auto",
-                    paddingVertical: 30,
-                }}
-            >
-                <View
+            {showMain && (
+                <ImageBackground
+                    source={require("../../../assets/images/phone-background.jpg")}
+                    resizeMode="cover"
                     style={{
-                        ...style.appItemContainer,
-                        // marginTop: 30,
+                        flex: 1,
+                        width: "auto",
+                        height: "auto",
+                        paddingVertical: 30,
                     }}
                 >
-                    <ApplicationItem
-                        Icon={FontAwesome}
-                        iconName="globe"
-                        color={color.white}
-                        backgroundColor={color.steelBlue}
-                        title="Browser"
-                        locked
-                    />
-                    <ApplicationItem
-                        Icon={MaterialIcons}
-                        iconName="email"
-                        color={color.white}
-                        backgroundColor={color.indigo}
-                        // notification
-                        title="Email"
-                    />
-                    <ApplicationItem
-                        Icon={FontAwesome}
-                        iconName="bank"
-                        color={color.white}
-                        backgroundColor={color.gold}
-                        // notification
-                        title="Bank App"
-                    />
-                    <ApplicationItem
-                        Icon={Ionicons}
-                        iconName="chatbubble-ellipses"
-                        color={color.white}
-                        backgroundColor={color.emeraldGreen}
-                        title="Social Media"
-                        locked
-                    />
-                </View>
-                <View
-                    style={{
-                        ...style.appItemContainer,
-                        ...style.botAppItemContainer,
-                    }}
-                >
-                    <ApplicationItem
-                        Icon={MaterialCommunityIcons}
-                        iconName="phone"
-                        color={color.white}
-                        backgroundColor={color.emeraldGreen}
-                        title="Contacts"
-                        locked
-                    />
-                    <ApplicationItem
-                        Icon={MaterialIcons}
-                        iconName="message"
-                        color={color.white}
-                        backgroundColor={color.tangerine}
-                        title="SMS"
-                        locked
-                    />
-                </View>
-            </ImageBackground>
+                    <View
+                        style={{
+                            ...style.appItemContainer,
+                            // marginTop: 30,
+                        }}
+                    >
+                        <ApplicationItem
+                            Icon={FontAwesome}
+                            iconName="globe"
+                            color={color.white}
+                            backgroundColor={color.steelBlue}
+                            title="Browser"
+                            locked
+                        />
+                        <ApplicationItem
+                            Icon={MaterialIcons}
+                            iconName="email"
+                            color={color.white}
+                            backgroundColor={color.indigo}
+                            // notification
+                            title="Email"
+                            onPress={() => {
+                                setView(BankApp);
+                                setShowMain(false);
+                            }}
+                        />
+                        <ApplicationItem
+                            Icon={FontAwesome}
+                            iconName="bank"
+                            color={color.white}
+                            backgroundColor={color.gold}
+                            // notification
+                            title="Bank App"
+                            onPress={() => {
+                                setView(BankApp);
+                                setShowMain(false);
+                            }}
+                        />
+                        <ApplicationItem
+                            Icon={Ionicons}
+                            iconName="chatbubble-ellipses"
+                            color={color.white}
+                            backgroundColor={color.emeraldGreen}
+                            title="Social Media"
+                            locked
+                        />
+                    </View>
+                    <View
+                        style={{
+                            ...style.appItemContainer,
+                            ...style.botAppItemContainer,
+                        }}
+                    >
+                        <ApplicationItem
+                            Icon={MaterialCommunityIcons}
+                            iconName="phone"
+                            color={color.white}
+                            backgroundColor={color.emeraldGreen}
+                            title="Contacts"
+                            locked
+                        />
+                        <ApplicationItem
+                            Icon={MaterialIcons}
+                            iconName="message"
+                            color={color.white}
+                            backgroundColor={color.tangerine}
+                            title="SMS"
+                            locked
+                        />
+                    </View>
+                </ImageBackground>
+            )}
+            {view && <view />}
         </View>
     );
 };
