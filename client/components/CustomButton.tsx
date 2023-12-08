@@ -6,6 +6,7 @@ interface ButtonProps {
     textStyle?: object;
     title: string;
     icon?: any;
+    disabled?: boolean;
 }
 
 const Button = ({
@@ -14,8 +15,14 @@ const Button = ({
     textStyle,
     title,
     icon,
+    disabled,
 }: ButtonProps) => (
-    <TouchableOpacity activeOpacity={0.5} onPress={onPress} style={buttonStyle}>
+    <TouchableOpacity
+        activeOpacity={0.5}
+        onPress={onPress}
+        style={buttonStyle}
+        disabled={disabled}
+    >
         <View
             style={{
                 justifyContent: "center",

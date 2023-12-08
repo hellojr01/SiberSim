@@ -86,6 +86,7 @@ const TestSimulation = () => {
                         iconName="email"
                         color={color.white}
                         backgroundColor={color.indigo}
+                        // notification
                         title="Email"
                     />
                     <ApplicationItem
@@ -93,8 +94,8 @@ const TestSimulation = () => {
                         iconName="bank"
                         color={color.white}
                         backgroundColor={color.gold}
+                        // notification
                         title="Bank App"
-                        locked
                     />
                     <ApplicationItem
                         Icon={Ionicons}

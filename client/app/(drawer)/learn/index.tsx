@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     },
     shopButton: {
         justifyContent: "center",
-        backgroundColor: color.red,
+        backgroundColor: color.purple,
         borderRadius: 8,
         padding: 8,
         width: 100,

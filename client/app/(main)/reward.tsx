@@ -8,12 +8,13 @@ import {
     StyleSheet,
 } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+import { Tooltip } from "react-native-paper";
 
 import RewardItem from "@components/RewardItem";
 import Button from "@components/CustomButton";
 import { color } from "@constants/Colors";
 
-interface RewardObj {
+interface RewardItemProps {
     id: number;
     name: string;
     points: number;
@@ -23,15 +24,17 @@ interface RewardPageProps {
     onPress: () => void;
 }
 
-const RewardPage: React.FC<RewardPageProps> = ({ onPress }) => {
+const RewardPage = ({ onPress }: RewardPageProps) => {
     const [userPoints, setUserPoints] = React.useState<number>(200); // Example points
-    const [selectedReward, setSelectedReward] = React.useState<RewardObj[]>([]);
+    const [selectedReward, setSelectedReward] = React.useState<
+        RewardItemProps[]
+    >([]);
     const [showTips, setShowTips] = useState<boolean>(false); // Example tips
     const [showBudgetError, setShowBudgetError] = useState<boolean>(false);
 
     const rewardsData = [
-        { id: 1, name: "Unlock Simulation 1", points: 150 },
-        { id: 2, name: "Unlock Simulation 2", points: 200 },
+        { id: 1, name: "Unlock Simulation 4", points: 150 },
+        { id: 2, name: "Unlock Simulation 5", points: 200 },
         { id: 3, name: "Purchase 1 Challenge Ticket", points: 100 },
     ];
 
@@ -55,12 +58,14 @@ const RewardPage: React.FC<RewardPageProps> = ({ onPress }) => {
                 onPress={() => setShowTips(!showTips)}
                 disabled={showTips}
             >
+                {/* <Tooltip title="Earn more points by completing new lessons" leaveTouchDelay={2500}> */}
                 <Text
                     style={{
                         ...styles.pointsText,
                         marginBottom: showTips ? 10 : 40,
                     }}
                 >{`Your Points: ${userPoints}`}</Text>
+                {/* </Tooltip> */}
             </TouchableOpacity>
             {showTips && setTimeout(() => setShowTips(!showTips), 3000) && (
                 <Text

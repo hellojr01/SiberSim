@@ -9,6 +9,7 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 import "react-native-gesture-handler";
+import { PaperProvider } from "react-native-paper";
 
 import { color } from "@constants/Colors";
 
@@ -72,14 +73,22 @@ function RootLayoutNav() {
         <ThemeProvider
             value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
-            <Stack initialRouteName="index">
-                <Stack.Screen name="index" options={{ headerShown: false }} />
-                <Stack.Screen
-                    name="(drawer)"
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen name="(main)" options={{ headerShown: false }} />
-            </Stack>
+            <PaperProvider>
+                <Stack initialRouteName="index">
+                    <Stack.Screen
+                        name="index"
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="(drawer)"
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="(main)"
+                        options={{ headerShown: false }}
+                    />
+                </Stack>
+            </PaperProvider>
         </ThemeProvider>
     );
 }

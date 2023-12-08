@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
     View,
     TouchableHighlight,
@@ -7,6 +7,7 @@ import {
     Dimensions,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { Audio } from "expo-av";
 
 import { color as colorlist } from "@constants/Colors";
 
@@ -17,6 +18,7 @@ type Props = {
     backgroundColor?: string;
     title: string;
     locked?: boolean;
+    notification?: boolean;
     onPress?: () => void;
 };
 
@@ -27,10 +29,61 @@ function ApplicationItem({
     backgroundColor,
     title,
     locked = false,
+    notification = false,
     onPress = undefined,
 }: Props) {
+    const [sound, setSound] = useState<Audio.Sound>();
+
+    async function playSound() {
+        // console.log("Loading Sound");
+        const { sound } = await Audio.Sound.createAsync(
+            require("@assets/sounds/notification.mp3")
+        );
+        setSound(sound);
+
+        // console.log("Playing Sound");
+        await sound.playAsync();
+    }
+
+    useEffect(() => {
+        return sound
+            ? () => {
+                  //   console.log("Unloading Sound");
+                  sound.unloadAsync();
+              }
+            : undefined;
+    }, [sound]);
+
+    useEffect(() => {
+        if (notification) {
+            playSound();
+        }
+    }, [notification]);
+
     return (
         <View>
+            {notification && (
+                <View
+                    style={{
+                        ...style.baseButton,
+                        ...style.lock,
+                        backgroundColor: "transparent",
+                        zIndex: 3,
+                    }}
+                >
+                    <View
+                        style={{
+                            borderRadius: 30,
+                            width: 30,
+                            height: 30,
+                            backgroundColor: colorlist.red,
+                            top: 0,
+                            right: 0,
+                            position: "absolute",
+                        }}
+                    />
+                </View>
+            )}
             {locked && (
                 <View style={{ ...style.baseButton, ...style.lock }}>
                     <FontAwesome
